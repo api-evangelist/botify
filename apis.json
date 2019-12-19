@@ -1,0 +1,91 @@
+{
+    "name": "Botify",
+    "description": "At Botify, we\u2019re giving SEO stakeholders the data, tools, and diagnostics necessary to create and maintain high quality digital assets for search engines and voice assistants. We\u2019re proud that our suite of applications is often referred as the \u201cadvanced version of Google Search Console\u201d by our customers. Hundreds of leading international companies have already made the switch to Botify, making our application a new standard in organic search analytics for enterprise businesses.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/pull_image_09-22-2019-06-59-pm.png",
+    "tags": [
+        "api provider",
+        "api service provider",
+        "bots",
+        "content",
+        "diagnostics",
+        "digital assets",
+        "have api",
+        "have swagger",
+        "profile",
+        "rankings",
+        "relative data",
+        "search",
+        "service api"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/botify\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Botify",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/pull_image_09-22-2019-06-59-pm.png",
+            "humanURL": "http:\/\/www.botify.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/botify.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/botify-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/botify-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Website",
+            "url": "http:\/\/www.botify.com"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/botify"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/developers.botify.com\/api\/"
+        },
+        {
+            "type": "Email",
+            "url": "jobs@botify.com"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@botify.com"
+        },
+        {
+            "type": "Email",
+            "url": "hello@botify.com"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/28561-2019-09-02-22-09-19.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/28561-2019-09-02-21-16-58.json"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/botify"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/botify.com"
+        }
+    ]
+}
