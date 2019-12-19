@@ -1,0 +1,1633 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Botify",
+        "description": "Botify Saas API",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsapi.botify.com\/v1"
+    ],
+    "paths": {
+        "\/analyses\/{username}\/{project_slug}": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug",
+                "description": "Get analyses username project slug.",
+                "operationId": "GetAnalysesUsernameProjectSlug",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    },
+                    {
+                        "name": "only_success",
+                        "in": "query",
+                        "description": "Return only successfully finished analyses"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug",
+                "description": "Parameters analyses username project slug.",
+                "operationId": "ParametersAnalysesUsernameProjectSlug",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug",
+                "description": "Get analyses username project slug analysis slug.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlug",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug",
+                "description": "Parameters analyses username project slug analysis slug.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlug",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/crawl_statistics": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Crawl Statistics",
+                "description": "Get analyses username project slug analysis slug crawl statistics.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugCrawlStatistics",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Crawl Statistics",
+                "description": "Parameters analyses username project slug analysis slug crawl statistics.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugCrawlStatistics",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/crawl_statistics\/time": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Crawl Statistics Time",
+                "description": "Return crawl statistics grouped by time frequency (1 min, 5 mins or 60 min) for an analysis",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugCrawlStatisticsTime",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "max number of elements to retrieve"
+                    },
+                    {
+                        "name": "frequency",
+                        "in": "query",
+                        "description": "Aggregation frequency"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Crawl Statistics Time",
+                "description": "Parameters analyses username project slug analysis slug crawl statistics time.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugCrawlStatisticsTime",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/crawl_statistics\/urls\/{list_type}": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Crawl Statistics Urls List Type",
+                "description": "Return a list of 1000 latest URLs crawled (all crawled URLs or only URLS with HTTP errors)",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugCrawlStatisticsUrlsListType",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Crawl Statistics Urls List Type",
+                "description": "Parameters analyses username project slug analysis slug crawl statistics urls list type.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugCrawlStatisticsUrlsListType",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/ganalytics\/orphan_urls\/{medium}\/{source}": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Features Ganalytics Orphan Urls Medium Source",
+                "description": "Legacy    List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings).   For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugFeaturesGanalyticsOrphanUrlsMediumSource",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Features Ganalytics Orphan Urls Medium Source",
+                "description": "Parameters analyses username project slug analysis slug features ganalytics orphan urls medium source.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugFeaturesGanalyticsOrphanUrlsMediumSource",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/links\/percentiles": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Features Links Percentiles",
+                "description": "Get analyses username project slug analysis slug features links percentiles.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugFeaturesLinksPercentiles",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Features Links Percentiles",
+                "description": "Parameters analyses username project slug analysis slug features links percentiles.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugFeaturesLinksPercentiles",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/pagerank\/lost": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Features Pagerank Lost",
+                "description": "Get analyses username project slug analysis slug features pagerank lost.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugFeaturesPagerankLost",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Features Pagerank Lost",
+                "description": "Parameters analyses username project slug analysis slug features pagerank lost.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugFeaturesPagerankLost",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/sitemaps\/report": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Features Sitemaps Report",
+                "description": "Get global information of the sitemaps found (sitemaps indexes, invalid sitemaps urls, etc.)",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugFeaturesSitemapsReport",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Features Sitemaps Report",
+                "description": "Parameters analyses username project slug analysis slug features sitemaps report.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugFeaturesSitemapsReport",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/sitemaps\/samples\/out_of_config": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Features Sitemaps Samples Out Of Config",
+                "description": "Sample list of URLs which were found in your sitemaps but outside of the crawl perimeter defined for the project, for instance domain\/subdomain or protocol (HTTP\/HTTPS) not allowed in the crawl settings.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugFeaturesSitemapsSamplesOutOfConfig",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Features Sitemaps Samples Out Of Config",
+                "description": "Parameters analyses username project slug analysis slug features sitemaps samples out of config.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugFeaturesSitemapsSamplesOutOfConfig",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/sitemaps\/samples\/sitemap_only": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Features Sitemaps Samples Sitemap Only",
+                "description": "Sample list of URLs which were found in your sitemaps, within the project allowed scope (allowed domains\/subdomains\/protocols), but not found by the Botify crawler.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugFeaturesSitemapsSamplesSitemapOnly",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Features Sitemaps Samples Sitemap Only",
+                "description": "Parameters analyses username project slug analysis slug features sitemaps samples sitemap only.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugFeaturesSitemapsSamplesSitemapOnly",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/top_domains\/domains": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Features Top Domains Domains",
+                "description": "Get analyses username project slug analysis slug features top domains domains.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugFeaturesTopDomainsDomains",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Features Top Domains Domains",
+                "description": "Parameters analyses username project slug analysis slug features top domains domains.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugFeaturesTopDomainsDomains",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/top_domains\/subdomains": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Features Top Domains Subdomains",
+                "description": "Get analyses username project slug analysis slug features top domains subdomains.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugFeaturesTopDomainsSubdomains",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Features Top Domains Subdomains",
+                "description": "Parameters analyses username project slug analysis slug features top domains subdomains.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugFeaturesTopDomainsSubdomains",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/visits\/orphan_urls\/{medium}\/{source}": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Features Visits Orphan Urls Medium Source",
+                "description": "List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings).   For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google+, linkedi",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugFeaturesVisitsOrphanUrlsMediumSource",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Features Visits Orphan Urls Medium Source",
+                "description": "Parameters analyses username project slug analysis slug features visits orphan urls medium source.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugFeaturesVisitsOrphanUrlsMediumSource",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls": {
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Urls",
+                "description": "Parameters analyses username project slug analysis slug urls.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugUrls",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Post Analyses Username Project Slug Analysis Slug Urls",
+                "description": "Post analyses username project slug analysis slug urls.",
+                "operationId": "PostAnalysesUsernameProjectSlugAnalysisSlugUrls",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "UrlsQuery",
+                        "in": "body",
+                        "description": "Urls query"
+                    },
+                    {
+                        "name": "area",
+                        "in": "query",
+                        "description": "Analysis context"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ]
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/aggs": {
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Urls Aggs",
+                "description": "Parameters analyses username project slug analysis slug urls aggs.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugUrlsAggs",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Post Analyses Username Project Slug Analysis Slug Urls Aggs",
+                "description": "Post analyses username project slug analysis slug urls aggs.",
+                "operationId": "PostAnalysesUsernameProjectSlugAnalysisSlugUrlsAggs",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "UrlsAggsQueries",
+                        "in": "body",
+                        "description": "UrlsAggs queries"
+                    },
+                    {
+                        "name": "area",
+                        "in": "query",
+                        "description": "Analysis context"
+                    }
+                ]
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/datamodel": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Urls Datamodel",
+                "description": "Get analyses username project slug analysis slug urls datamodel.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugUrlsDatamodel",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "area",
+                        "in": "query",
+                        "description": "Analysis context"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Urls Datamodel",
+                "description": "Parameters analyses username project slug analysis slug urls datamodel.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugUrlsDatamodel",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/export": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Urls Export",
+                "description": "Get analyses username project slug analysis slug urls export.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugUrlsExport",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Urls Export",
+                "description": "Parameters analyses username project slug analysis slug urls export.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugUrlsExport",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Post Analyses Username Project Slug Analysis Slug Urls Export",
+                "description": "Creates a new UrlExport object and starts a task that will export the results into a csv. Returns the model id that manages the task",
+                "operationId": "PostAnalysesUsernameProjectSlugAnalysisSlugUrlsExport",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "UrlsQuery",
+                        "in": "body",
+                        "description": "Urls query"
+                    },
+                    {
+                        "name": "area",
+                        "in": "query",
+                        "description": "Analysis context"
+                    }
+                ]
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/export\/{url_export_id}": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Urls Export Url Export",
+                "description": "Checks the status of an CSVUrlExportJob object. Returns json object with the status.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugUrlsExportUrlExport",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Urls Export Url Export",
+                "description": "Parameters analyses username project slug analysis slug urls export url export.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugUrlsExportUrlExport",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/suggested_filters": {
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Urls Suggested Filters",
+                "description": "Parameters analyses username project slug analysis slug urls suggested filters.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugUrlsSuggestedFilters",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Post Analyses Username Project Slug Analysis Slug Urls Suggested Filters",
+                "description": "Return most frequent segments (= suggested patterns in the previous version) for a Botify Query.",
+                "operationId": "PostAnalysesUsernameProjectSlugAnalysisSlugUrlsSuggestedFilters",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "UrlsAggsQuery",
+                        "in": "body",
+                        "description": "UrlsAggs query"
+                    },
+                    {
+                        "name": "area",
+                        "in": "query",
+                        "description": "Analysis context"
+                    }
+                ]
+            }
+        },
+        "\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/{url}": {
+            "get": {
+                "summary": "Get Analyses Username Project Slug Analysis Slug Urls Url",
+                "description": "Get analyses username project slug analysis slug urls url.",
+                "operationId": "GetAnalysesUsernameProjectSlugAnalysisSlugUrlsUrl",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "comma separated list of fields to return (c.f. URLs Datamodel)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Analyses Username Project Slug Analysis Slug Urls Url",
+                "description": "Parameters analyses username project slug analysis slug urls url.",
+                "operationId": "ParametersAnalysesUsernameProjectSlugAnalysisSlugUrlsUrl",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/projects\/{username}": {
+            "get": {
+                "summary": "Get Projects Username",
+                "description": "List all active projects for the user",
+                "operationId": "GetProjectsUsername",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Project's name"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Projects Username",
+                "description": "Parameters projects username.",
+                "operationId": "ParametersProjectsUsername",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/projects\/{username}\/{project_slug}\/filters": {
+            "get": {
+                "summary": "Get Projects Username Project Slug Filters",
+                "description": "List all the project's saved filters (each filter's name, ID and filter value)",
+                "operationId": "GetProjectsUsernameProjectSlugFilters",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Projects Username Project Slug Filters",
+                "description": "Parameters projects username project slug filters.",
+                "operationId": "ParametersProjectsUsernameProjectSlugFilters",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/projects\/{username}\/{project_slug}\/filters\/{identifier}": {
+            "get": {
+                "summary": "Get Projects Username Project Slug Filters Entifier",
+                "description": "Retrieves a specific saved filter's name, ID and filter value",
+                "operationId": "GetProjectsUsernameProjectSlugFiltersEntifier",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Projects Username Project Slug Filters Entifier",
+                "description": "Parameters projects username project slug filters entifier.",
+                "operationId": "ParametersProjectsUsernameProjectSlugFiltersEntifier",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/projects\/{username}\/{project_slug}\/urls\/aggs": {
+            "parameters": {
+                "summary": "Parameters Projects Username Project Slug Urls Aggs",
+                "description": "Parameters projects username project slug urls aggs.",
+                "operationId": "ParametersProjectsUsernameProjectSlugUrlsAggs",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Post Projects Username Project Slug Urls Aggs",
+                "description": "Project Query aggregator. It accepts multiple queries that will be executed on all completed analyses in the project",
+                "operationId": "PostProjectsUsernameProjectSlugUrlsAggs",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "UrlsAggsQueries",
+                        "in": "body",
+                        "description": "UrlsAggs queries"
+                    },
+                    {
+                        "name": "area",
+                        "in": "query",
+                        "description": "Analysis context"
+                    },
+                    {
+                        "name": "last_analysis_slug",
+                        "in": "query",
+                        "description": "Last analysis on the trend"
+                    },
+                    {
+                        "name": "nb_analyses",
+                        "in": "query",
+                        "description": "Max number of analysis to return"
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AdvancedExportStatus": {
+                "type": "object",
+                "properties": {
+                    "advanced_export_type": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_created": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "job_id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "job_status": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "job_url": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "nb_lines": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "query": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "results": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "AdvancedExporter": {
+                "type": "object",
+                "properties": {
+                    "group": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "lines": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "AdvancedExporters": {
+                "type": "object",
+                "properties": {
+                    "exporters": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "Analysis": {
+                "type": "object",
+                "properties": {
+                    "computing_revision": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "config": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_created": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_finished": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_last_modified": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_launched": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "features": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "urls_done": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "urls_in_queue": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "AnalysisDetail": {
+                "type": "object",
+                "properties": {
+                    "computing_revision": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "config": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_finished": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_last_modified": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_launched": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "failures": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "features": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "red_button_domain": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "urls_done": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "urls_in_queue": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "AnalysisUpdateLaunch": {
+                "type": "object",
+                "properties": {
+                    "refresh_features": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "AnalysisUpdateSuggest": {
+                "type": "object",
+                "properties": {
+                    "add_on_features": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "features_to_update": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "CrawlOrphanURLs": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "visits": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "CrawlStatistics": {
+                "type": "object",
+                "properties": {
+                    "depth_current": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "last_upd_dt": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "pages_dones": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "pages_dones_2xx": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "pages_dones_3xx": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "pages_dones_4xx": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "pages_dones_5xx": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "pages_dones_networkerror": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "pages_dones_xxx": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "pages_known": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "CrawlStatisticsTime": {
+                "type": "object",
+                "properties": {
+                    "avg_delay": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "avg_size": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "frequency": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "http_code_2xx": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "http_code_3xx": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "http_code_4xx": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "http_code_5xx": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "http_code_xxx": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "last_update_date": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "new_urls": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "CrawlStatisticsTimePoint": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "datetime": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "CrawlStatisticsUrls": {
+                "type": "object",
+                "properties": {
+                    "content_type": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "delay_first_byte": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "delay_last_byte": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "gzip": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "http": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "length": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "redirects_to": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "CsvExportStatus": {
+                "type": "object",
+                "properties": {
+                    "area": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_created": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "job_id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "job_status": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "job_url": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "nb_results": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "results": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "Datamodel": {
+                "type": "object",
+                "properties": {
+                    "aliases": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "fields": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "groups": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "max_timeseries_fields": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "DatamodelField": {
+                "type": "object",
+                "properties": {
+                    "aliases": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "group": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "multiple": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "permissions": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "subtype": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "DatamodelGroup": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "Default": {
+                "type": "object"
+            },
+            "DefaultPayload": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "FieldValues": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "results": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "FieldValuesResult": {
+                "type": "object",
+                "properties": {
+                    "nb_urls": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "value": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "LinksPercentiles": {
+                "type": "object",
+                "properties": {
+                    "domain": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "percentiles": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "LinksPercentilesItem": {
+                "type": "object",
+                "properties": {
+                    "avg": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "max": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "metric_total": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "min": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "url_total": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "LinksTopDomains": {
+                "type": "object",
+                "properties": {
+                    "domain": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "follow_links": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "follow_samples": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "nofollow_links": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "nofollow_samples": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "unique_follow_links": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "unique_nofollow_links": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "LinksTopDomainsSamples": {
+                "type": "object",
+                "properties": {
+                    "sources": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "unique_links": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "PageRankLost": {
+                "type": "object",
+                "properties": {
+                    "external": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "non_crawled": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "robots_txt": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "Project": {
+                "type": "object",
+                "properties": {
+                    "active": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_created": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "has_log_analysis": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "last_analysis": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "ProjectSavedFilter": {
+                "type": "object",
+                "properties": {
+                    "filters": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "identifier": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "ProjectSettings": {
+                "type": "object",
+                "properties": {
+                    "allowed_domains": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "blacklisted_domains": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "compare_crawl": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "crawl_gzip": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "extra_headers": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "google_analytics_account_email": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "google_analytics_nb_days": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "google_analytics_site_id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "google_social_auth_id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "has_robots_txt": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "header_settings": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "max_depth": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "max_nb_pages": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "max_pages_per_sec": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "respect_nofollow": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "sitemaps": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "start_urls": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "user_agent": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "RewritingRule": {
+                "type": "object",
+                "properties": {
+                    "ignore_case": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "regex": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "replace": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "SitemapsReport": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "errors": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "sitemap_indexes": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "sitemaps": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "SitemapsReportOnly": {
+                "type": "object",
+                "properties": {
+                    "in_configuration": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "out_of_configuration": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "SitemapsReportSitemap": {
+                "type": "object",
+                "properties": {
+                    "file_type": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "invalid_urls": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "sitemap_indexes": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "valid_urls": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "SitemapsReportSitemapError": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "SuggestedUpdatesAddOnFeatures": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "options": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "SuggestedUpdatesFeaturesToUpdate": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "new_options": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "previous_options": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "URLRewritingRules": {
+                "type": "object",
+                "properties": {
+                    "rules": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "urls": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "UrlDetail": {
+                "type": "object"
+            },
+            "UrlsAgg": {
+                "type": "object",
+                "properties": {
+                    "aggs": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "UrlsAggs": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "UrlsAggsQuery": {
+                "type": "object",
+                "properties": {
+                    "aggs": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "filters": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "UrlsErrorAgg": {
+                "type": "object",
+                "properties": {
+                    "error_code": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "message": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "UrlsQuery": {
+                "type": "object",
+                "properties": {
+                    "fields": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "filters": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "sort": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "company_name": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "date_joined": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "first_name": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "is_organization": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "last_name": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "login": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "string": {
+                "type": "object"
+            }
+        }
+    }
+}
