@@ -1,5 +1,5 @@
 {
-    "id": "0135a3f2a84c1587f47e70f4f3108e1f",
+    "id": "d355942c396b4f5c665eb62acf5cff81",
     "name": "Botify",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "aac9cdf6bc55265ca533d27c07b64973",
+            "id": "26e02eb6dd165365ee27a7e34beb6906",
             "name": "Get Analyses Username Project Slug",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}",
             "description": "Get analyses username project slug.",
@@ -51,11 +51,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "6606da9945e89d14f7890c2c41a15928",
+            "id": "d6c6fdbf8abe824eb2a84bb889c83e07",
             "name": "Parameters Analyses Username Project Slug",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}",
             "description": "Parameters analyses username project slug.",
@@ -74,11 +74,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "a3bf280fea93226d4bae101861bee277",
+            "id": "53bdae98d2bc7170f79bdcb3c4a9a359",
             "name": "Get Analyses Username Project Slug Analysis Slug",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}",
             "description": "Get analyses username project slug analysis slug.",
@@ -97,11 +97,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "d03a7e468d4c564ad7124a39076734cd",
+            "id": "20dfab67588e198e842b7f5aa51a65b8",
             "name": "Parameters Analyses Username Project Slug Analysis Slug",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}",
             "description": "Parameters analyses username project slug analysis slug.",
@@ -120,11 +120,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "68764bf200392dd292c9ff34f07c8bec",
+            "id": "460bb828aeacbb7e8745f3b6e34756f1",
             "name": "Get Analyses Username Project Slug Analysis Slug Crawl Statistics",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/crawl_statistics",
             "description": "Get analyses username project slug analysis slug crawl statistics.",
@@ -143,11 +143,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "cbc813fd7453c890e8b9ce2a46fb0f60",
+            "id": "3eb7f8384930dc20f42d0d2e15e3998e",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Crawl Statistics",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/crawl_statistics",
             "description": "Parameters analyses username project slug analysis slug crawl statistics.",
@@ -166,11 +166,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "3c5f9178f2d42c35fcf6147808b1d009",
+            "id": "846dceb7f7850d87f067fe942227b30d",
             "name": "Get Analyses Username Project Slug Analysis Slug Crawl Statistics Time",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/crawl_statistics\/time",
             "description": "Return crawl statistics grouped by time frequency (1 min, 5 mins or 60 min) for an analysis",
@@ -204,11 +204,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "76b126bdce294b92c150c34e3c3929b8",
+            "id": "f5713742ce9fc5f24ba6cff6ff36f012",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Crawl Statistics Time",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/crawl_statistics\/time",
             "description": "Parameters analyses username project slug analysis slug crawl statistics time.",
@@ -227,11 +227,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "8a8a8424378231cb53acc20d96ae6e27",
+            "id": "580653dafb5e772e887a9ec83b16927c",
             "name": "Get Analyses Username Project Slug Analysis Slug Crawl Statistics Urls List Type",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/crawl_statistics\/urls\/{list_type}",
             "description": "Return a list of 1000 latest URLs crawled (all crawled URLs or only URLS with HTTP errors)",
@@ -250,11 +250,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "e7ce06ebaaea3b4defe1f336a4267272",
+            "id": "3699d345fc01d283f3a9a76c0f170bb8",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Crawl Statistics Urls List Type",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/crawl_statistics\/urls\/{list_type}",
             "description": "Parameters analyses username project slug analysis slug crawl statistics urls list type.",
@@ -273,11 +273,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "6dcd6b6c48b99e79c0d5b6bc582d405a",
+            "id": "fd5aa86f5133e1118d6608ccd63c685c",
             "name": "Get Analyses Username Project Slug Analysis Slug Features Ganalytics Orphan Urls Medium Source",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/ganalytics\/orphan_urls\/{medium}\/{source}",
             "description": "Legacy    List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings).   For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google",
@@ -311,11 +311,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "471a8b3aeb42ca9d7e4c43d3b4825a00",
+            "id": "7fa0c297fdb84434a1a65a401d768234",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Features Ganalytics Orphan Urls Medium Source",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/ganalytics\/orphan_urls\/{medium}\/{source}",
             "description": "Parameters analyses username project slug analysis slug features ganalytics orphan urls medium source.",
@@ -334,11 +334,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "7d3700b34b6322feb5ea997c86a17d02",
+            "id": "3a7359fd990df1899fbb542aedb01e94",
             "name": "Get Analyses Username Project Slug Analysis Slug Features Links Percentiles",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/links\/percentiles",
             "description": "Get analyses username project slug analysis slug features links percentiles.",
@@ -357,11 +357,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "36a7e41b33d92fcccb85274b7025e51a",
+            "id": "3e0537388fb96802bc1743164c4fd621",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Features Links Percentiles",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/links\/percentiles",
             "description": "Parameters analyses username project slug analysis slug features links percentiles.",
@@ -380,11 +380,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "468b4ae943dd2bf74a62a6c3bffdac53",
+            "id": "cd96b6b8a530bac77d1ebff1884ada5b",
             "name": "Get Analyses Username Project Slug Analysis Slug Features Pagerank Lost",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/pagerank\/lost",
             "description": "Get analyses username project slug analysis slug features pagerank lost.",
@@ -403,11 +403,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "0f1850116aff72a6ad09cdc463c8b340",
+            "id": "b79e1a11b0067037e0df24bed66ebbf1",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Features Pagerank Lost",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/pagerank\/lost",
             "description": "Parameters analyses username project slug analysis slug features pagerank lost.",
@@ -426,11 +426,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "a066d775a95595b7001d7b65563820f2",
+            "id": "062b69f05e6e5c3949ab9ba3bcf4912b",
             "name": "Get Analyses Username Project Slug Analysis Slug Features Sitemaps Report",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/sitemaps\/report",
             "description": "Get global information of the sitemaps found (sitemaps indexes, invalid sitemaps urls, etc.)",
@@ -449,11 +449,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "e3c3b6fe8c312ecb7848defcba470117",
+            "id": "a876c5f4489dde5983506d9286dacd24",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Features Sitemaps Report",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/sitemaps\/report",
             "description": "Parameters analyses username project slug analysis slug features sitemaps report.",
@@ -472,11 +472,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "af99f2b6ab9f4de2d5df1d0dc2f06d13",
+            "id": "5dbecc25292484525f52f38f3b9ae42a",
             "name": "Get Analyses Username Project Slug Analysis Slug Features Sitemaps Samples Out Of Config",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/sitemaps\/samples\/out_of_config",
             "description": "Sample list of URLs which were found in your sitemaps but outside of the crawl perimeter defined for the project, for instance domain\/subdomain or protocol (HTTP\/HTTPS) not allowed in the crawl settings.",
@@ -510,11 +510,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "e5b9ac405c3d04acfa63d9b6f73ff9e7",
+            "id": "46e1d68b94e071005b2bc580b46728af",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Features Sitemaps Samples Out Of Config",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/sitemaps\/samples\/out_of_config",
             "description": "Parameters analyses username project slug analysis slug features sitemaps samples out of config.",
@@ -533,11 +533,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "dff1cc28f2ee3b76a1fbbd481d2580f8",
+            "id": "5e8fe09df5fa28d0575f6f5882658c41",
             "name": "Get Analyses Username Project Slug Analysis Slug Features Sitemaps Samples Sitemap Only",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/sitemaps\/samples\/sitemap_only",
             "description": "Sample list of URLs which were found in your sitemaps, within the project allowed scope (allowed domains\/subdomains\/protocols), but not found by the Botify crawler.",
@@ -571,11 +571,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "a594daefd049c86a1055f7653cd7618a",
+            "id": "083237c9558d133078328bd652a7189e",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Features Sitemaps Samples Sitemap Only",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/sitemaps\/samples\/sitemap_only",
             "description": "Parameters analyses username project slug analysis slug features sitemaps samples sitemap only.",
@@ -594,11 +594,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "693a837ae4c035626429d2ada7b3e920",
+            "id": "1f7a41409ee092833d69993161a615a8",
             "name": "Get Analyses Username Project Slug Analysis Slug Features Top Domains Domains",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/top_domains\/domains",
             "description": "Get analyses username project slug analysis slug features top domains domains.",
@@ -632,11 +632,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "89ba3d85c4d4f56ca407c30eb4319151",
+            "id": "ba8173f11025c71c3a76939d41cc9194",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Features Top Domains Domains",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/top_domains\/domains",
             "description": "Parameters analyses username project slug analysis slug features top domains domains.",
@@ -655,11 +655,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "d15893f9170f7c99d513952abcb1f7e8",
+            "id": "58be8630de9857735b5b41884154c22f",
             "name": "Get Analyses Username Project Slug Analysis Slug Features Top Domains Subdomains",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/top_domains\/subdomains",
             "description": "Get analyses username project slug analysis slug features top domains subdomains.",
@@ -693,11 +693,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "c0a1a0cdb6fa9bc0eac8b0ca1dbbff9b",
+            "id": "36a8392d22bac74caae637b216b2e7d0",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Features Top Domains Subdomains",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/top_domains\/subdomains",
             "description": "Parameters analyses username project slug analysis slug features top domains subdomains.",
@@ -716,11 +716,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "3357247dbe9b34cbfff31286ef86b123",
+            "id": "c41e818d54f79fc4e0526e71217b6724",
             "name": "Get Analyses Username Project Slug Analysis Slug Features Visits Orphan Urls Medium Source",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/visits\/orphan_urls\/{medium}\/{source}",
             "description": "List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings).   For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google+, linkedi",
@@ -754,11 +754,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "20f52f67fe97d7aa6c31afdfa72ac3e9",
+            "id": "98f9bdb970dfb00582242f6beccf1b9d",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Features Visits Orphan Urls Medium Source",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/features\/visits\/orphan_urls\/{medium}\/{source}",
             "description": "Parameters analyses username project slug analysis slug features visits orphan urls medium source.",
@@ -777,11 +777,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "635c7efae86d14551dc4d52c220c6bd0",
+            "id": "e56646c8873fc8fe14585b1a772ae22d",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Urls",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls",
             "description": "Parameters analyses username project slug analysis slug urls.",
@@ -800,11 +800,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "ad872a61f6c8d295b96128745524b737",
+            "id": "39b75c77c385cbe06d5ee135b5cbcea4",
             "name": "Post Analyses Username Project Slug Analysis Slug Urls",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls",
             "description": "Post analyses username project slug analysis slug urls.",
@@ -852,11 +852,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "1dd7a1bb1159bb654b19cf22130c52c3",
+            "id": "7b0ae7c3e879289102dd60baf91dca5b",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Urls Aggs",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/aggs",
             "description": "Parameters analyses username project slug analysis slug urls aggs.",
@@ -875,11 +875,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "a1338c16957937e8e532d5cd5ad294b6",
+            "id": "2692d49a2b2c45b324b7540af6b65a8f",
             "name": "Post Analyses Username Project Slug Analysis Slug Urls Aggs",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/aggs",
             "description": "Post analyses username project slug analysis slug urls aggs.",
@@ -913,11 +913,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "e1727413e20134984a16f8a5bec166c9",
+            "id": "a6e22f128f016fe00e8a3562d4b9ebc7",
             "name": "Get Analyses Username Project Slug Analysis Slug Urls Datamodel",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/datamodel",
             "description": "Get analyses username project slug analysis slug urls datamodel.",
@@ -944,11 +944,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "01402e027a9b29b951c06b0b548ee816",
+            "id": "a8e04ef0db6c2303b35ddfc20b2a05e9",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Urls Datamodel",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/datamodel",
             "description": "Parameters analyses username project slug analysis slug urls datamodel.",
@@ -967,11 +967,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "625edcc14e8c4fe50406251e73a88ddb",
+            "id": "bea15fec261cd998030b6e2f1fd4a706",
             "name": "Get Analyses Username Project Slug Analysis Slug Urls Export",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/export",
             "description": "Get analyses username project slug analysis slug urls export.",
@@ -1005,11 +1005,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "d4ff5330e63325552e4a5bb13d7b39af",
+            "id": "1ef2466e8a09bd049762ac668df46840",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Urls Export",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/export",
             "description": "Parameters analyses username project slug analysis slug urls export.",
@@ -1028,11 +1028,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "ed160bfb73c023c58f396ebf2fcc864c",
+            "id": "a8932180dc3be752e9388fed82134b45",
             "name": "Post Analyses Username Project Slug Analysis Slug Urls Export",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/export",
             "description": "Creates a new UrlExport object and starts a task that will export the results into a csv. Returns the model id that manages the task",
@@ -1066,11 +1066,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "c33af9de022deba8c0b24970f2419277",
+            "id": "8b7db142e1c3b4c2e120c0dc5757cce1",
             "name": "Get Analyses Username Project Slug Analysis Slug Urls Export Url Export",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/export\/{url_export_id}",
             "description": "Checks the status of an CSVUrlExportJob object. Returns json object with the status.",
@@ -1089,11 +1089,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "51d0dd5ac144b679a5f7bedeca2b8637",
+            "id": "1ad91cbb84cf60621a52d86d870652a4",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Urls Export Url Export",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/export\/{url_export_id}",
             "description": "Parameters analyses username project slug analysis slug urls export url export.",
@@ -1112,11 +1112,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "c5214842dd889a5f5263d6f0ba4c151a",
+            "id": "19f3b2b6e1541f2a4e924dff93b017e2",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Urls Suggested Filters",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/suggested_filters",
             "description": "Parameters analyses username project slug analysis slug urls suggested filters.",
@@ -1135,11 +1135,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "adac404f0a2345e1b680decdda5f5afd",
+            "id": "2aaa4324a08e56d4b2a2927242440c22",
             "name": "Post Analyses Username Project Slug Analysis Slug Urls Suggested Filters",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/suggested_filters",
             "description": "Return most frequent segments (= suggested patterns in the previous version) for a Botify Query.",
@@ -1173,11 +1173,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "71ca13137dacaac417af285bb535755e",
+            "id": "14f88359af2faaafb9f6dd6dfc55d2d7",
             "name": "Get Analyses Username Project Slug Analysis Slug Urls Url",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/{url}",
             "description": "Get analyses username project slug analysis slug urls url.",
@@ -1204,11 +1204,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "6f6055a4a7c40ca58ec2bb9435cf8357",
+            "id": "8ecf1c3b5b592c6544668286a258b840",
             "name": "Parameters Analyses Username Project Slug Analysis Slug Urls Url",
             "url": "httpsapi.botify.com\/v1\/analyses\/{username}\/{project_slug}\/{analysis_slug}\/urls\/{url}",
             "description": "Parameters analyses username project slug analysis slug urls url.",
@@ -1227,11 +1227,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "8b11748db10af621acdd1d53587928ce",
+            "id": "9dc2403fcd50f157a6e7864d88db3ec5",
             "name": "Get Projects Username",
             "url": "httpsapi.botify.com\/v1\/projects\/{username}",
             "description": "List all active projects for the user",
@@ -1272,11 +1272,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "e5ac79076d3caa9512ff59947751a8e3",
+            "id": "ad490e5363252dde3e8b84e31055555f",
             "name": "Parameters Projects Username",
             "url": "httpsapi.botify.com\/v1\/projects\/{username}",
             "description": "Parameters projects username.",
@@ -1295,11 +1295,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "2b898ec2b643f59e2f12bcdde1a51276",
+            "id": "bece17d3781722da39eed9606085c1a5",
             "name": "Get Projects Username Project Slug Filters",
             "url": "httpsapi.botify.com\/v1\/projects\/{username}\/{project_slug}\/filters",
             "description": "List all the project's saved filters (each filter's name, ID and filter value)",
@@ -1333,11 +1333,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "765abeab7e673d65d74d9e581ce22b29",
+            "id": "4084e3134946149b84510a8bc538f75a",
             "name": "Parameters Projects Username Project Slug Filters",
             "url": "httpsapi.botify.com\/v1\/projects\/{username}\/{project_slug}\/filters",
             "description": "Parameters projects username project slug filters.",
@@ -1356,11 +1356,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "dded77e18b31484aaa15662685063b99",
+            "id": "135a37c240ea99fc85ab3f5342ab03d7",
             "name": "Get Projects Username Project Slug Filters Entifier",
             "url": "httpsapi.botify.com\/v1\/projects\/{username}\/{project_slug}\/filters\/{identifier}",
             "description": "Retrieves a specific saved filter's name, ID and filter value",
@@ -1379,11 +1379,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "c94f0a9778634a9e98206f149a002424",
+            "id": "77a8644794a01dce133499c7de8395a8",
             "name": "Parameters Projects Username Project Slug Filters Entifier",
             "url": "httpsapi.botify.com\/v1\/projects\/{username}\/{project_slug}\/filters\/{identifier}",
             "description": "Parameters projects username project slug filters entifier.",
@@ -1402,11 +1402,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "541e36e13575bd3ffa92267db7ff20ef",
+            "id": "fc43476637819d3371dfc4376eae02cb",
             "name": "Parameters Projects Username Project Slug Urls Aggs",
             "url": "httpsapi.botify.com\/v1\/projects\/{username}\/{project_slug}\/urls\/aggs",
             "description": "Parameters projects username project slug urls aggs.",
@@ -1425,11 +1425,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         },
         {
-            "id": "943770dcf7f36d56b7324b7cf8cf526d",
+            "id": "6ef561a2a9531e735c3fd5bf74d85f3f",
             "name": "Post Projects Username Project Slug Urls Aggs",
             "url": "httpsapi.botify.com\/v1\/projects\/{username}\/{project_slug}\/urls\/aggs",
             "description": "Project Query aggregator. It accepts multiple queries that will be executed on all completed analyses in the project",
@@ -1477,7 +1477,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "0135a3f2a84c1587f47e70f4f3108e1f",
+            "collectionId": "d355942c396b4f5c665eb62acf5cff81",
             "rawModeData": ""
         }
     ]
