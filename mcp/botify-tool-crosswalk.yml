@@ -1,0 +1,329 @@
+generated: '2026-08-08'
+method: derived
+source: openapi/botify-api-swagger.json + https://mcp.botify.com/.well-known/oauth-protected-resource
+note: Botify runs both a documented REST surface (api.botify.com/v1, Swagger 2.0) and a hosted MCP server (mcp.botify.com).
+  The MCP tools/list call is OAuth-gated (HTTP 401 invalid_token) and Botify publishes no tool catalog in its llms.txt or
+  docs, so NO tool name is known to us. Rather than invent a mapping, this crosswalk records the REST side in full and leaves
+  crosswalk[] empty until an authenticated introspection is possible. Every REST operation below is therefore listed as rest_only,
+  meaning "no PUBLICLY KNOWN tool binds to it" — not "the MCP server cannot do it".
+surfaces:
+  openapi:
+    file: openapi/botify-api-swagger.json
+    base_url: https://api.botify.com/v1
+    gated: false
+    operations: 48
+  graphql:
+    endpoint: null
+    gated: null
+    note: Botify publishes no GraphQL endpoint. Its query surface is BQL, a JSON DSL POSTed to the REST /query and /jobs endpoints.
+  mcp:
+    url: https://mcp.botify.com/
+    gated: true
+    gate: OAuth 2.1 authorization_code + PKCE S256, scope mcp_read_write, authorization server https://app.botify.com/
+    tools_discovered: 0
+crosswalk: []
+mcp_only: []
+rest_only:
+- operationId: createUrlsExport
+  method: POST
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/urls/export
+  summary: Creates a new UrlExport object and starts a task that will export the results into a csv. Returns the model id
+    that manages the task
+  tags:
+  - Analysis
+- operationId: getAnalysisSegments
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/segments
+  summary: Get the segments feature public metadata of an analysis.
+  tags:
+  - Analysis
+- operationId: getAnalysisSummary
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}
+  summary: Get an Analysis detail
+  tags:
+  - Analysis
+- operationId: getCrawlStatistics
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics
+  summary: Return global statistics for an analysis
+  tags:
+  - Analysis
+- operationId: getCrawlStatisticsByFrequency
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics/time
+  summary: Return crawl statistics grouped by time frequency (1 min, 5 mins or 60 min) for an analysis
+  tags:
+  - Analysis
+- operationId: getCrawlStatisticsUrls
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics/urls/{list_type}
+  summary: Return a list of 1000 latest URLs crawled (all crawled URLs or only URLS with HTTP errors)
+  tags:
+  - Analysis
+- operationId: getGanalyticsOrphanURLs
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/ganalytics/orphan_urls/{medium}/{source}
+  summary: Legacy
+  tags:
+  - Analysis
+- operationId: getKeywordsStats
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/search_console/stats
+  summary: List clicks and impressions per day
+  tags:
+  - Analysis
+- operationId: getLinksPercentiles
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/links/percentiles
+  summary: Get inlinks percentiles
+  tags:
+  - Analysis
+- operationId: getLinksTopDomains
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/top_domains/domains
+  summary: Top domains
+  tags:
+  - Analysis
+- operationId: getLinksTopSubdomains
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/top_domains/subdomains
+  summary: Top subddomains
+  tags:
+  - Analysis
+- operationId: getPageRankLost
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/pagerank/lost
+  summary: Lost pagerank
+  tags:
+  - Analysis
+- operationId: getRobotsTxtFileView
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/staticfiles/robots-txt-indexes/{robots_txt}
+  summary: Return content of a robots.txt file.
+  tags:
+  - Analysis
+- operationId: getRobotsTxtIndexesView
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/staticfiles/robots-txt-indexes
+  summary: Return an object containing all robots.txt files found on the project's domains. The object is null for virtual
+    robots.txt.
+  tags:
+  - Analysis
+- operationId: getScoring
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/scoring/summary
+  summary: Scoring summary
+  tags:
+  - Analysis
+- operationId: getSitemapsReport
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/report
+  summary: Get global information of the sitemaps found (sitemaps indexes, invalid sitemaps urls, etc.)
+  tags:
+  - Analysis
+- operationId: getSitemapsSamplesOutOfConfig
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/samples/out_of_config
+  summary: Sample list of URLs which were found in your sitemaps but outside of the crawl perimeter defined for the project,
+    for instance domain/subdomain or protocol (HTT
+  tags:
+  - Analysis
+- operationId: getSitemapsSamplesSitemapsOnly
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/samples/sitemap_only
+  summary: Sample list of URLs which were found in your sitemaps, within the project allowed scope (allowed domains/subdomains/protocols),
+    but not found by the Botify craw
+  tags:
+  - Analysis
+- operationId: getUrlAI
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/urls/ai/{url}
+  summary: Gets AI suggestions of an URL for an analysis
+  tags:
+  - Analysis
+- operationId: getUrlDetail
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/urls/{url}
+  summary: Gets the detail of an URL for an analysis
+  tags:
+  - Analysis
+- operationId: getUrlHTML
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/urls/html/{url}
+  summary: Gets the HTML of an URL for an analysis
+  tags:
+  - Analysis
+- operationId: getUrls
+  method: POST
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/urls
+  summary: Executes a query and returns a paginated response
+  tags:
+  - Analysis
+- operationId: getUrlsAggs
+  method: POST
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/urls/aggs
+  summary: Query aggregator. It accepts multiple queries and dispatches them.
+  tags:
+  - Analysis
+- operationId: getUrlsDatamodel
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/urls/datamodel
+  summary: Gets an Analysis datamodel
+  tags:
+  - Analysis
+- operationId: getUrlsDatasets
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/urls/datasets
+  summary: Gets Analysis Datasets
+  tags:
+  - Analysis
+- operationId: getUrlsExportStatus
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/urls/export/{url_export_id}
+  summary: Checks the status of an CSVUrlExportJob object. Returns json object with the status.
+  tags:
+  - Analysis
+- operationId: getUrlsExports
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/urls/export
+  summary: A list of the CSV Exports requests and their current status
+  tags:
+  - Analysis
+- operationId: getVisitsOrphanURLs
+  method: GET
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/features/visits/orphan_urls/{medium}/{source}
+  summary: List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but
+    were not crawled with by the Botify crawler (e
+  tags:
+  - Analysis
+- operationId: launchAnalysisCreate
+  method: POST
+  path: /analyses/{username}/{project_slug}/create/launch
+  summary: Create and launch an analysis for a project
+  tags:
+  - Analysis
+- operationId: pauseAnalysis
+  method: POST
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/pause
+  summary: Pause an analysis for a project
+  tags:
+  - Analysis
+- operationId: resumeAnalysis
+  method: POST
+  path: /analyses/{username}/{project_slug}/{analysis_slug}/resume
+  summary: Resume an analysis for a project
+  tags:
+  - Analysis
+- operationId: getCollectionDetail
+  method: GET
+  path: /projects/{username}/{project_slug}/collections/{collection}
+  summary: Get the detail of a collection
+  tags:
+  - Collections
+- operationId: getProjectCollections
+  method: GET
+  path: /projects/{username}/{project_slug}/collections
+  summary: List all collections for a project
+  tags:
+  - Collections
+- operationId: getDatasourcesSummaryByProjects
+  method: GET
+  path: /users/{username}/datasources_summary_by_projects
+  summary: Get the datasources details for all projects of a user
+  tags:
+  - Datasource
+- operationId: createJob
+  method: POST
+  path: /jobs
+  summary: Creates a job instance of a class which depends on the "job_type" parameter you sent. Returns the model id that
+    manages the task.
+  tags:
+  - Job
+- operationId: getJob
+  method: GET
+  path: /jobs/{job_id}
+  summary: Retrieve one job
+  tags:
+  - Job
+- operationId: getJobs
+  method: GET
+  path: /jobs
+  summary: List All jobs
+  tags:
+  - Job
+- operationId: cloneValuesList
+  method: POST
+  path: /projects/{username}/{project_slug}/values_list/clone
+  summary: Clone all keyword groups of the current project to another one.  This endpoint is a little more general (for further
+    use). That's why you will see a 'type' fiel
+  tags:
+  - Project
+  - KeywordsGroups
+- operationId: getAllUserProjects
+  method: GET
+  path: /users/{username}/projects
+  summary: List all active projects for the user
+  tags:
+  - Project
+- operationId: getFilter
+  method: GET
+  path: /projects/{username}/{project_slug}/filters/{identifier}
+  summary: Retrieve a specific project saved, account or recommended filter's name, ID and filter value
+  tags:
+  - Project
+- operationId: getProjectAnalyses
+  method: GET
+  path: /analyses/{username}/{project_slug}
+  summary: List all analyses for a project
+  tags:
+  - Project
+- operationId: getProjectAnalysesLight
+  method: GET
+  path: /analyses/{username}/{project_slug}/light
+  summary: List all analyses for a project (light)
+  tags:
+  - Project
+- operationId: getProjectUrlsAggs
+  method: POST
+  path: /projects/{username}/{project_slug}/urls/aggs
+  summary: Project Query aggregator. It accepts multiple queries that will be executed on all completed analyses in the project
+  tags:
+  - Project
+- operationId: getSavedExplorers
+  method: GET
+  path: /projects/{username}/{project_slug}/saved_explorers
+  summary: List all the project's Saved Explorers.
+  tags:
+  - Project
+- operationId: getSavedFilters
+  method: GET
+  path: /projects/{username}/{project_slug}/filters
+  summary: List all the project's saved filters (each filter's name, ID and filter value)
+  tags:
+  - Project
+- operationId: projectQuery
+  method: POST
+  path: /projects/{username}/{project_slug}/query
+  summary: Query collections at a project level.
+  tags:
+  - Project
+- operationId: getAccountSavedFilters
+  method: GET
+  path: /projects/{username}/{project_slug}/account_filters
+  summary: List all the account saved filters
+  tags:
+  - ProjectQuery
+- operationId: getUserProjects
+  method: GET
+  path: /projects/{username}
+  summary: List all active projects for the user
+  tags:
+  - User
+coverage:
+  rest_operations: 48
+  mcp_tools_known: 0
+  mapped: 0
+  rest_only: 48
+  mcp_only: 0
+  confidence: none — MCP tool schema is auth-gated

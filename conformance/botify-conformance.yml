@@ -1,0 +1,183 @@
+generated: '2026-08-08'
+method: searched
+source: >-
+  https://api.botify.com/v1/swagger.json + https://app.botify.com/.well-known/oauth-authorization-server +
+  https://mcp.botify.com/.well-known/oauth-protected-resource + https://www.botify.com/data-and-compliance
+api: Botify
+note: >-
+  Botify's conformance profile is lopsided in an unusual way. The agent surface (MCP) is built on current
+  standards — OAuth 2.1 with PKCE, RFC 8414, RFC 9728, RFC 7591 dynamic client registration — while the REST
+  surface it sits next to is a 2015-era Django REST Framework API on Swagger 2.0 with an unscoped bearer-ish
+  token, a proprietary error envelope and no RFC 9457, no RFC 8594, no RFC 9116 and no standard rate-limit
+  headers.
+standards:
+- id: openapi-3
+  name: OpenAPI 3.x
+  conforms: false
+  evidence: >-
+    The published contract at https://api.botify.com/v1/swagger.json is `swagger: "2.0"` (info.version 1.0.0,
+    46 paths, 48 operations, 123 definitions). No OpenAPI 3.x document is published anywhere.
+- id: swagger-2
+  name: Swagger / OpenAPI 2.0
+  conforms: true
+  evidence: https://api.botify.com/v1/swagger.json returns HTTP 200 application/json and parses as swagger 2.0.
+- id: oauth2
+  name: OAuth 2.0 / 2.1
+  conforms: partial
+  evidence: >-
+    Full authorization-code + refresh_token flow with PKCE S256 at https://app.botify.com/oauth/authorize and
+    /oauth/token/ — but scoped ONLY to the MCP server. The REST API at api.botify.com/v1 does not support
+    OAuth at all; it uses a single unscoped API token (`Authorization: Token <TOKEN>`).
+- id: rfc7636
+  name: PKCE (RFC 7636)
+  conforms: true
+  evidence: 'code_challenge_methods_supported: ["S256"] in the authorization-server metadata.'
+- id: rfc8414
+  name: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+  conforms: true
+  evidence: https://app.botify.com/.well-known/oauth-authorization-server returns HTTP 200 application/json.
+- id: rfc9728
+  name: OAuth 2.0 Protected Resource Metadata (RFC 9728)
+  conforms: true
+  evidence: >-
+    https://mcp.botify.com/.well-known/oauth-protected-resource returns HTTP 200 with resource,
+    authorization_servers, scopes_supported and resource_name "Botify Agents MCP"; the 401 on the MCP endpoint
+    carries a matching WWW-Authenticate resource_metadata parameter.
+- id: rfc7591
+  name: OAuth 2.0 Dynamic Client Registration (RFC 7591)
+  conforms: true
+  evidence: 'registration_endpoint: https://app.botify.com/oauth/register/ advertised in RFC 8414 metadata.'
+- id: rfc7662
+  name: OAuth 2.0 Token Introspection (RFC 7662)
+  conforms: true
+  evidence: 'introspection_endpoint: https://app.botify.com/oauth/introspect/'
+- id: rfc7009
+  name: OAuth 2.0 Token Revocation (RFC 7009)
+  conforms: true
+  evidence: 'revocation_endpoint: https://app.botify.com/oauth/revoke/'
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence: >-
+    https://app.botify.com/.well-known/openid-configuration returns HTTP 200 but with the single-page-app HTML
+    shell, not OIDC discovery metadata. No id_token, no userinfo endpoint, response_types_supported is ["code"]
+    only.
+- id: mcp
+  name: Model Context Protocol
+  conforms: true
+  evidence: >-
+    Hosted server at https://mcp.botify.com/ answering JSON-RPC over streamable HTTP with the MCP-standard
+    OAuth challenge. tools/list is auth-gated (HTTP 401 invalid_token), so tool-level conformance was not
+    verifiable anonymously.
+- id: a2a
+  name: A2A Agent Card
+  conforms: false
+  evidence: >-
+    /.well-known/agent-card.json and /.well-known/agent.json return 404 on api.botify.com, mcp.botify.com,
+    www.botify.com and developers.botify.com. app.botify.com answers 200 for both, but with the SPA HTML shell
+    rather than an AgentCard object — a catch-all, not a published card.
+- id: rfc9457
+  name: Problem Details for HTTP APIs (RFC 9457 / 7807)
+  conforms: false
+  evidence: >-
+    Errors use a proprietary envelope {"error": {"message", "error_code", "error_detail"}} served as
+    application/json, not application/problem+json. See errors/botify-problem-types.yml.
+- id: rfc8594
+  name: Sunset header (RFC 8594)
+  conforms: false
+  evidence: No Sunset or Deprecation header is documented or declared; no operation is marked deprecated.
+- id: rfc9116
+  name: security.txt (RFC 9116)
+  conforms: false
+  evidence: >-
+    /.well-known/security.txt 404s on www.botify.com, api.botify.com and mcp.botify.com;
+    app.botify.com returns 200 with the SPA HTML shell, not a security.txt.
+- id: ratelimit-headers
+  name: IETF RateLimit header fields
+  conforms: false
+  evidence: >-
+    Limits are documented in prose (5 QPS; 50 CSV exports/day; 100k URLs per export) and enforced with HTTP 429
+    plus error_code 1053, but no RateLimit-*, X-RateLimit-* or Retry-After header is published.
+- id: idempotency
+  name: Idempotency keys
+  conforms: false
+  evidence: No Idempotency-Key header in the Swagger and no retry-safety guidance in the docs.
+- id: pagination
+  name: Consistent pagination
+  conforms: true
+  evidence: >-
+    Page-number pagination with `page` + `size` query params (18/19 operations) and a uniform
+    count/page/size/next/previous/results envelope on collection responses.
+- id: json-api
+  name: JSON:API
+  conforms: false
+  evidence: Plain JSON; no JSON:API media type, no resource/relationship objects.
+- id: graphql
+  name: GraphQL
+  conforms: false
+  evidence: >-
+    No /graphql endpoint. Botify's query surface is BQL, a proprietary JSON DSL POSTed to REST endpoints.
+- id: asyncapi
+  name: AsyncAPI / event surface
+  conforms: false
+  evidence: >-
+    Botify publishes no webhooks, events or streaming surface — the llms.txt index and the Swagger contain no
+    webhook, event or notification entries, and /asyncapi.yaml 404s. Data delivery is pull-only (query) or
+    batch (export jobs to S3/Redshift/GCS/BigQuery). Not applicable rather than failed.
+compliance:
+- id: soc2-type1
+  name: SOC 2 Type 1
+  claimed: true
+  status: announced
+  date: '2021-12'
+  evidence: >-
+    Botify press release, "Botify Achieves SOC 2 Type 1 Certification for its Enterprise Organic Search
+    Platform" —
+    https://botify.reportablenews.com/pr/botify-achieves-soc-2-type-1-certification-for-its-enterprise-organic-search-platform-ensuring-the-highest-standards-of-data-privacy-and-security
+    (HTTP 200). Not restated on www.botify.com/data-and-compliance, and no Type 2 report is claimed publicly.
+- id: gdpr
+  name: GDPR
+  claimed: true
+  evidence: >-
+    "Botify complies with international privacy regulations, including the General Data Protection Regulation
+    (GDPR)" — https://www.botify.com/data-and-compliance (HTTP 200), plus
+    https://www.botify.com/blog/the-gdpr-and-beyond-how-botify-is-compliant-by-design
+- id: iso27001
+  name: ISO/IEC 27001
+  claimed: false
+  evidence: Not named on www.botify.com/data-and-compliance or anywhere on the public site.
+- id: hipaa
+  name: HIPAA
+  claimed: false
+  evidence: Not applicable to an SEO analytics platform; not claimed.
+- id: pci-dss
+  name: PCI DSS
+  claimed: false
+  evidence: Not claimed.
+trust_center:
+  published: false
+  note: >-
+    No trust center, no subprocessor list, no public security whitepaper, no vulnerability-disclosure policy
+    and no bug bounty were found. www.botify.com/data-and-compliance is a marketing page naming GDPR only;
+    /trust, /trust-center, /security and /security-and-compliance all 404.
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+  - url: https://api.botify.com/v1/swagger.json
+    http_status: 200
+  - url: https://app.botify.com/.well-known/oauth-authorization-server
+    http_status: 200
+  - url: https://mcp.botify.com/.well-known/oauth-protected-resource
+    http_status: 200
+  - url: https://mcp.botify.com/
+    http_status: 401
+  - url: https://www.botify.com/data-and-compliance
+    http_status: 200
+  - url: https://www.botify.com/trust
+    http_status: 404
+  - url: https://www.botify.com/security
+    http_status: 404
+  - url: https://www.botify.com/.well-known/security.txt
+    http_status: 404
+  - url: https://mcp.botify.com/.well-known/agent-card.json
+    http_status: 404

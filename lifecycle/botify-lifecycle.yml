@@ -1,0 +1,85 @@
+generated: '2026-08-08'
+method: searched
+source: https://developers.botify.com/ + https://api.botify.com/v1/swagger.json + https://status.botify.com/
+api: Botify API
+versioning:
+  style: uri-path
+  current_version: v1
+  spec_info_version: 1.0.0
+  base_url: https://api.botify.com/v1
+  policy_published: false
+  note: >-
+    Botify has shipped a single major version, v1, for the life of the public API. No version negotiation
+    header, no dated versions, no published policy for how a breaking change would be introduced or how long
+    an old version would be supported.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  note: >-
+    No deprecation or sunset policy is published, and no operation in the Swagger carries `deprecated: true`.
+    Deprecation IS visible at the DATA-MODEL level rather than the operation level — getUrlsDatamodel accepts
+    a `deprecated_fields` query parameter that opts a caller into fields Botify has marked deprecated, which
+    is the only deprecation signal in the whole surface. There is no way for a client to learn that an
+    ENDPOINT is going away.
+  deprecated_operations: []
+  deprecation_signals:
+  - kind: datamodel field flag
+    operation: getUrlsDatamodel
+    parameter: deprecated_fields
+    note: opt-in inclusion of deprecated datamodel fields in the response
+  legacy_surfaces:
+  - name: Legacy developer portal
+    url: https://old.developers.botify.com/
+    status: 200
+    note: >-
+      Still online and still the ONLY published home of the API error-code reference and the export/rate-limit
+      table. Superseded by developers.botify.com but never redirected, and content was lost in the move — the
+      new portal has no error reference. Content on the legacy portal is copyright-dated 2020.
+  - kind: operation
+    operation: getGanalyticsOrphanURLs
+    path: /analyses/{username}/{project_slug}/{analysis_slug}/features/ganalytics/orphan_urls/{medium}/{source}
+    note: >-
+      Labelled "Legacy" in Botify's own llms.txt API-reference index, superseded by getVisitsOrphanURLs. Not
+      marked `deprecated` in the Swagger.
+status_page:
+  url: https://status.botify.com/
+  status: 200
+  platform: HetrixTools
+  scope: single monitor, "Botify App and API"
+  history_since: '2020-10'
+  probe_frequency: 1 minute
+  probe_locations:
+  - New York
+  - San Francisco
+  - Amsterdam
+  - Tokyo
+  rss: false
+  api: false
+  note: >-
+    An uptime-monitor page rather than an incident-communication status page — one aggregate monitor covering
+    the app and the API together, with no per-component breakdown, no incident history, no scheduled-maintenance
+    notices, no subscribe/RSS and no status API for a client to poll.
+sla:
+  published: false
+  note: >-
+    No public SLA. Availability and support commitments sit in the Botify Master Service Agreement, referenced
+    by the docs but not published; export credit allowances are also MSA-scoped.
+support:
+  url: https://support.botify.com/
+  contact: https://www.botify.com/request-a-demo
+changelog:
+  url: https://developers.botify.com/changelog
+  see: changelog/botify-changelog.yml
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+  - url: https://status.botify.com/
+    http_status: 200
+  - url: https://api.botify.com/v1/swagger.json
+    http_status: 200
+  - url: https://old.developers.botify.com/
+    http_status: 200
+  - url: https://developers.botify.com/changelog/welcome.md
+    http_status: 200

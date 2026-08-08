@@ -1,0 +1,236 @@
+generated: '2026-08-08'
+method: searched
+source: https://old.developers.botify.com/api/error-codes/
+api: Botify API
+format: proprietary
+rfc9457: false
+note: Botify does NOT use RFC 9457 application/problem+json. It returns a proprietary JSON envelope on 4xx, with a numeric
+  `error_code` that is more specific than the HTTP status. The 61 codes below are published verbatim on the legacy developer
+  portal (old.developers.botify.com); the current ReadMe-hosted portal at developers.botify.com has NOT carried the error
+  reference forward, and the Swagger declares only a single untyped `default` response per operation bound to DefaultPayload.
+  So the machine-readable contract tells a client nothing about errors — the only usable error reference is on the retired
+  portal.
+envelope:
+  media_type: application/json
+  schema: '#/definitions/DefaultPayload'
+  shape:
+    error:
+      error_code: string — numeric Botify error code (see problems[])
+      message: string — human-readable message
+      error_detail: object — optional detail, present on some errors
+http_statuses_documented:
+  4xx: Any client error returns the error envelope with an error_code.
+  '429': Returned once a rate limit or export quota is hit (https://old.developers.botify.com/api/rate-limit/). No Retry-After
+    header is published.
+derived_from_openapi:
+  operations: 48
+  declared_error_responses: 0
+  note: Every operation declares only 200/201 plus a single `default` response. No 4xx or 5xx status code appears anywhere
+    in openapi/botify-api-swagger.json.
+problems:
+- code: '1000'
+  title: Unknown error
+  category: server
+- code: '1001'
+  title: Not Authorized
+  category: authentication
+  remediation: 'Send a valid `Authorization: Token <TOKEN>` header; regenerate the token on the Botify account page if it
+    was rotated.'
+- code: '1002'
+  title: Permission denied
+  category: authorization
+  remediation: The token owner has no access to this project or feature. Check the project ownership and the plan entitlements
+    with the account CSM.
+- code: '1004'
+  title: Analysis was not found
+  category: not-found
+- code: '1005'
+  title: Insight was not found
+  category: not-found
+- code: '1006'
+  title: Url export was not found
+  category: not-found
+- code: '1007'
+  title: User was not found
+  category: not-found
+- code: '1008'
+  title: Revision was not found
+  category: not-found
+- code: '1009'
+  title: Query was not found
+  category: not-found
+- code: '1010'
+  title: Project was not found
+  category: not-found
+- code: '1011'
+  title: Crawl Statistics Data is currently not available
+  category: other
+- code: '1012'
+  title: Pdf Export was not found
+  category: not-found
+- code: '1013'
+  title: Dry run segment not found
+  category: not-found
+- code: '1014'
+  title: Segment Rule not found
+  category: not-found
+- code: '1015'
+  title: Bad regular expression
+  category: validation
+- code: '1016'
+  title: Fields are mandatory
+  category: validation
+- code: '1017'
+  title: No result for this URL
+  category: other
+- code: '1018'
+  title: Insight identifiers are mandatory
+  category: validation
+- code: '1019'
+  title: Invalid area
+  category: validation
+- code: '1020'
+  title: Badly formatted request
+  category: validation
+- code: '1021'
+  title: Query not found on request
+  category: not-found
+- code: '1022'
+  title: Badly formatted queries
+  category: validation
+- code: '1023'
+  title: Badly formatted aggregation query
+  category: validation
+- code: '1024'
+  title: Query parameter should be an object
+  category: validation
+- code: '1025'
+  title: Frequency not found on request
+  category: not-found
+- code: '1026'
+  title: Incorrect value for 'frequency' parameter
+  category: validation
+- code: '1027'
+  title: 'Cannot launch export: more than 10 fields requested'
+  category: validation
+  remediation: Request at most 10 fields on an export.
+- code: '1028'
+  title: 'Cannot launch export: more than 1 multiple field requested'
+  category: validation
+  remediation: Request at most 1 multiple-valued field on an export.
+- code: '1029'
+  title: Field does not exist
+  category: other
+- code: '1030'
+  title: Field is not allowed to perform suggest operation
+  category: validation
+- code: '1031'
+  title: Field is not allowed to perform top values operation
+  category: validation
+- code: '1032'
+  title: Can not request insight in current context
+  category: other
+- code: '1033'
+  title: Crawl data file (S3) is missing
+  category: not-found
+- code: '1034'
+  title: The requested feature is disabled
+  category: entitlement
+  remediation: The feature is not enabled on this project or plan.
+- code: '1035'
+  title: The comparison features is disabled
+  category: entitlement
+  remediation: The comparison feature is not enabled on this project or plan.
+- code: '1036'
+  title: The Visits feature is disabled
+  category: entitlement
+  remediation: The Visits feature is not enabled on this project or plan.
+- code: '1037'
+  title: The requested task failed
+  category: server
+- code: '1038'
+  title: Cannot delete an already-launched planified crawl
+  category: other
+- code: '1039'
+  title: Method not allowed
+  category: validation
+- code: '1040'
+  title: Logfile was not found
+  category: not-found
+- code: '1041'
+  title: Logfile preview is not allowed
+  category: validation
+- code: '1042'
+  title: User setting was not found
+  category: not-found
+- code: '1043'
+  title: The query is too big to execute it
+  category: query
+  remediation: Narrow the BQL query — fewer dimensions/metrics, tighter filters, or move to an export job.
+- code: '1044'
+  title: Query can not be executed
+  category: query
+- code: '1045'
+  title: The list of urls for dry run on segments contains invalid URLs
+  category: validation
+- code: '1046'
+  title: The Search Engines feature is disabled
+  category: entitlement
+  remediation: The Search Engines feature is not enabled on this project or plan.
+- code: '1047'
+  title: Orphans not found
+  category: not-found
+- code: '1048'
+  title: Search Engines Internal Error
+  category: server
+- code: '1049'
+  title: Logfile analysis was not found
+  category: not-found
+- code: '1050'
+  title: Logfile analysis id not allowed
+  category: validation
+- code: '1051'
+  title: Logfile samples was not found
+  category: not-found
+- code: '1052'
+  title: A CSV export is already running
+  category: conflict
+  remediation: A CSV export is already running for this analysis. Poll getUrlsExportStatus until the running export completes.
+- code: '1053'
+  title: Too many requests
+  category: rate-limit
+  remediation: Back off and retry. Botify enforces 5 API calls/second and 50 CSV exports/day, shared with the Botify application;
+    there is no Retry-After header, so self-throttle.
+- code: '1054'
+  title: Log file analysis job settings not found
+  category: not-found
+- code: '1055'
+  title: Out of range logfile analysis date
+  category: other
+- code: '1056'
+  title: Too large logfile analysis date range
+  category: other
+- code: '1057'
+  title: Badly formatted regex in query
+  category: validation
+- code: '1058'
+  title: An advanced export is already running
+  category: conflict
+  remediation: An advanced export is already running. Poll the job with getJob until it completes.
+- code: '1059'
+  title: Advanced export was not found
+  category: not-found
+- code: '1060'
+  title: The export failed
+  category: server
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+  - url: https://old.developers.botify.com/api/error-codes/
+    http_status: 200
+  - url: https://old.developers.botify.com/api/rate-limit/
+    http_status: 200
+  - url: https://developers.botify.com/docs/errors
+    http_status: 404
+  - url: https://developers.botify.com/docs/error-codes
+    http_status: 404

@@ -1,0 +1,56 @@
+generated: '2026-08-08'
+method: searched
+source: openapi/botify-api-swagger.json
+docs: https://developers.botify.com/docs/getting-started
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  note: >-
+    Two independent auth systems. The REST API uses one long-lived, per-user API token with no scopes, no
+    expiry and no rotation policy published beyond "regenerating immediately invalidates the previous token".
+    The MCP server uses a full OAuth 2.1 stack (authorization code + PKCE S256 + dynamic client registration)
+    on a separate authorization server. Nothing bridges the two.
+schemes:
+- name: DjangoRestToken
+  type: apiKey
+  in: header
+  parameter: Authorization
+  scheme_format: 'Authorization: Token <YOUR_TOKEN>'
+  applies_to: https://api.botify.com/v1
+  scopes: none
+  token_source: >-
+    Botify application account page (https://app.botify.com/<username>/account). API access may need to be
+    enabled on the account by Botify.
+  rotation: >-
+    A token can be regenerated from the account page; regenerating immediately invalidates the previous token,
+    so clients must be updated on rotation. Botify publishes no expiry or forced-rotation policy.
+  sources:
+  - openapi/botify-api-swagger.json
+  - https://developers.botify.com/docs/getting-started
+  - https://developers.botify.com/docs/querying-seo-data
+- name: BotifyMCPOAuth
+  type: oauth2
+  applies_to: https://mcp.botify.com/
+  flows:
+    authorizationCode:
+      authorizationUrl: https://app.botify.com/oauth/authorize
+      tokenUrl: https://app.botify.com/oauth/token/
+      refreshUrl: https://app.botify.com/oauth/token/
+      scopes:
+        mcp_read_write: Read and write access to the Botify Agents MCP surface.
+  pkce: S256
+  dynamic_client_registration: https://app.botify.com/oauth/register/
+  revocation: https://app.botify.com/oauth/revoke/
+  introspection: https://app.botify.com/oauth/introspect/
+  bearer_methods:
+  - header
+  sources:
+  - https://app.botify.com/.well-known/oauth-authorization-server
+  - https://mcp.botify.com/.well-known/oauth-protected-resource
+gaps:
+- No OpenID Connect discovery document is published (app.botify.com/.well-known/openid-configuration returns the SPA HTML shell, not OIDC metadata).
+- The REST API token is unscoped and long-lived; there is no read-only credential for the REST surface.
+- No mTLS, no signed-request scheme, no IP allow-listing documented.

@@ -1,0 +1,141 @@
+generated: '2026-08-08'
+method: derived
+source: openapi/botify-api-swagger.json
+docs:
+- https://developers.botify.com/docs/getting-started
+- https://developers.botify.com/docs/querying-seo-data
+- https://developers.botify.com/docs/limits
+api: Botify API
+base_url: https://api.botify.com/v1
+authentication:
+  style: api-key-header
+  header: Authorization
+  format: 'Token <YOUR_TOKEN>'
+  see: authentication/botify-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    Botify documents no idempotency key. The Swagger contains no Idempotency-Key header on any of the 48
+    operations, and the docs never mention safe retry semantics. The write operations that matter —
+    POST /jobs (createJob), POST /analyses/.../urls/export (createUrlsExport) and
+    POST /analyses/.../create/launch (launchAnalysisCreate) — each create a new job/analysis on every call, so a
+    retried request after a timeout will start duplicate work and, for exports, consume export credits twice.
+pagination:
+  style: page-number
+  request_params:
+  - name: page
+    default: 1
+    note: 1-indexed page number
+  - name: size
+    default: 500
+    note: results per page; the BQL /query endpoint returns at most 2000 rows per call
+  response_envelope:
+    count: total number of matching records
+    page: current page number
+    size: page size in effect
+    next: URL of the next page, or null
+    previous: URL of the previous page, or null
+    results: array of records
+  note: >-
+    Consistent across the collection endpoints (getProjectAnalyses, getProjectAnalysesLight, getAllUserProjects,
+    getUserProjects, getSavedFilters, getSavedExplorers, getJobs, getUrlsExports, getProjectCollections and
+    others — 18 operations take `page`, 19 take `size`).
+query_language:
+  name: BQL (Botify Query Language)
+  type: JSON DSL
+  docs: https://developers.botify.com/docs/bql-introduction
+  interactive_endpoint: POST /projects/{username}/{project_slug}/query
+  export_endpoint: POST /jobs
+  shape:
+    collections: array of data sources, e.g. crawl.YYYYMMDD, search_console, conversion, paid_search.ga4.dip
+    query:
+      dimensions: array of fields to group by
+      metrics: array of aggregations
+      filters: predicate tree
+      sort: array of sort directives
+  note: >-
+    BQL is the real interface — the REST paths are mostly metadata around it. Field availability is
+    project-specific and must be read at runtime from getUrlsDatamodel / getProjectCollections /
+    getCollectionDetail rather than assumed.
+field_selection:
+  supported: partial
+  params:
+  - name: fields
+    note: available on a small number of operations
+  - name: deprecated_fields
+    note: opt-in inclusion of deprecated datamodel fields on getUrlsDatamodel
+  note: BQL `dimensions` + `metrics` are the real projection mechanism for SEO data.
+error_envelope:
+  media_type: application/json
+  rfc9457: false
+  schema: '#/definitions/DefaultPayload'
+  shape:
+    error:
+      message: human-readable error message
+      error_code: string error code
+      error_detail: optional object with detail
+  note: >-
+    Every one of the 48 operations declares a single `default` response bound to DefaultPayload — there are no
+    per-status-code error schemas anywhere in the spec, so the contract does not tell a client which HTTP codes
+    an operation can return. See errors/botify-problem-types.yml.
+rate_limiting:
+  documented: true
+  docs: https://developers.botify.com/docs/limits
+  limits:
+  - scope: project-related endpoints (including the BQL query endpoint)
+    limit: 5 requests per second
+    unit: QPS
+    source: https://developers.botify.com/docs/limits
+  - scope: CSV exports (shared with the Botify web application)
+    limit: 50 per day
+    source: https://old.developers.botify.com/api/rate-limit/
+  - scope: CSV export size
+    limit: 100000 URLs per export
+    source: https://old.developers.botify.com/api/rate-limit/
+  on_exceeded:
+    http_status: 429
+    error_code: '1053'
+    source: https://old.developers.botify.com/api/rate-limit/
+  headers:
+    published: false
+    note: >-
+      No X-RateLimit-*, RateLimit-* or Retry-After header is declared in the Swagger or documented. Clients
+      must self-throttle to the published 5 QPS; there is no runtime signal to back off on.
+  quotas:
+  - name: export credits
+    scope: per web property, per package (Essential / Pro / Enterprise)
+    accounting: 1 credit per exported data row; 0.1 credit per row linked to the links graph
+    docs: https://developers.botify.com/docs/limits
+  - name: interactive query size
+    limit: 2000 rows per call
+    docs: https://developers.botify.com/docs/querying-seo-data
+request_tracing:
+  request_id_header: null
+  note: >-
+    The REST API declares no request-id header. (The MCP host at mcp.botify.com does return x-trace-id and
+    x-cloud-trace-context, but that is Google Frontend infrastructure, not a documented Botify contract.)
+versioning:
+  style: uri-path
+  current: v1
+  example: https://api.botify.com/v1/...
+  see: lifecycle/botify-lifecycle.yml
+media_types:
+  request: application/json
+  response: application/json
+  export_formats:
+  - csv
+  - json
+  - xml
+  - sitemap
+export_backends:
+- direct download
+- AWS S3
+- AWS Redshift
+- Google Cloud Storage
+- Google BigQuery
+cross_links:
+  authentication: authentication/botify-authentication.yml
+  errors: errors/botify-problem-types.yml
+  lifecycle: lifecycle/botify-lifecycle.yml
+  scopes: scopes/botify-scopes.yml
+  data_model: data-model/botify-data-model.yml

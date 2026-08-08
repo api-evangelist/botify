@@ -1,0 +1,60 @@
+generated: '2026-08-08'
+method: probed
+source: https://mcp.botify.com/.well-known/oauth-protected-resource
+status: live
+name: Botify Agents MCP
+description: >-
+  Hosted Model Context Protocol server operated by Botify, announced alongside its AI agents so teams can pull
+  Botify SEO/AI-search data into external agent tooling and bring their own agents into the Botify environment.
+  The server identifies itself through RFC 9728 protected-resource metadata as "Botify Agents MCP" and delegates
+  authorization to app.botify.com.
+endpoint: https://mcp.botify.com/
+transport: streamable-http
+authentication:
+  type: oauth2
+  flow: authorization_code
+  pkce: S256
+  dynamic_client_registration: true
+  authorization_server: https://app.botify.com/
+  authorization_endpoint: https://app.botify.com/oauth/authorize
+  token_endpoint: https://app.botify.com/oauth/token/
+  registration_endpoint: https://app.botify.com/oauth/register/
+  revocation_endpoint: https://app.botify.com/oauth/revoke/
+  introspection_endpoint: https://app.botify.com/oauth/introspect/
+  scopes:
+  - mcp_read_write
+  bearer_methods_supported:
+  - header
+tools:
+  discovered: false
+  note: >-
+    tools/list is auth-gated. An anonymous JSON-RPC POST of {"jsonrpc":"2.0","id":1,"method":"tools/list"} to
+    https://mcp.botify.com/ returns HTTP 401 with
+    WWW-Authenticate: Bearer error="invalid_token" ... resource_metadata="https://mcp.botify.com/.well-known/oauth-protected-resource".
+    Botify does not publish a tool catalog in its llms.txt or its developer documentation, so the real tool
+    names and inputSchemas require an authenticated introspection with a Botify customer account. No tool list
+    is asserted here — see mcp/botify-tool-crosswalk.yml for what that means for REST mapping.
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+  - url: https://mcp.botify.com/
+    method: POST tools/list
+    http_status: 401
+    body: '{"error": "invalid_token", "error_description": "Authentication failed..."}'
+  - url: https://mcp.botify.com/.well-known/oauth-protected-resource
+    method: GET
+    http_status: 200
+    content_type: application/json
+  - url: https://app.botify.com/.well-known/oauth-authorization-server
+    method: GET
+    http_status: 200
+    content_type: application/json
+  - url: https://mcp.botify.com/mcp
+    method: POST tools/list
+    http_status: 404
+  - url: https://app.botify.com/mcp
+    method: POST tools/list
+    http_status: 403
+references:
+- https://www.botify.com/platform/botify-assist
+- https://www.businesswire.com/news/home/20250618148317/en/Botify-Expands-its-AI-Agents-and-MCP-Server-Integration-to-Equip-Brands-to-Lead-in-AI-Search

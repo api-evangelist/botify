@@ -1,0 +1,109 @@
+generated: '2026-08-08'
+method: probed
+source: live GET of /.well-known/* on every Botify host in apis.yml
+note: >-
+  app.botify.com answers 200 with the single-page-app HTML shell for ANY /.well-known/* path, so a 200 alone
+  is not evidence there. Only the two documents below returned real JSON; every other path on that host was
+  rejected as an SPA catch-all (content-type text/html). api.botify.com, www.botify.com and
+  developers.botify.com return honest 404s.
+hosts:
+- host: https://app.botify.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: botify-oauth-authorization-server.json
+    spec: RFC 8414
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html
+    file: null
+    note: SPA catch-all HTML, not OIDC discovery — rejected
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    file: null
+    note: SPA catch-all HTML, not RFC 9116 — rejected
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: text/html
+    file: null
+    note: SPA catch-all HTML — rejected (the real one is served by mcp.botify.com)
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: text/html
+    file: null
+    note: SPA catch-all HTML — rejected
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    content_type: text/html
+    file: null
+    note: SPA catch-all HTML — rejected
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    file: null
+    note: SPA catch-all HTML — no A2A agent card
+  - path: /.well-known/agent.json
+    status: 200
+    content_type: text/html
+    file: null
+    note: SPA catch-all HTML — no A2A agent card
+- host: https://mcp.botify.com
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: application/json
+    file: botify-oauth-protected-resource.json
+    spec: RFC 9728
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://api.botify.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://www.botify.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://developers.botify.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+security_txt:
+  published: false
+  checked:
+  - https://www.botify.com/.well-known/security.txt
+  - https://www.botify.com/security.txt
+  - https://api.botify.com/.well-known/security.txt
+  - https://mcp.botify.com/.well-known/security.txt

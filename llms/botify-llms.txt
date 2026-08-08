@@ -1,0 +1,59 @@
+# Botify Documentation
+
+> Botify's developer API for SEO data retrieval querying and exporting. Use BQL (Botify Query Language) to query and export business search engine optimization data. Also use the REST API (documented with swagger/openAPI) to fetch users, projects, analyses and much more. Among our core products: Botify SiteCrawler, LogAnalyzer, RealKeywords (Google Search Console), ActionBoard, AlertPanel, SpeedWorkers, EngagementAnalytics
+
+## Guides
+- [Collections](https://developers.botify.com/docs/collections.md)
+
+## API Reference
+- [/analyses/{username}/{project_slug}](https://developers.botify.com/reference/getprojectanalyses-1.md): List all analyses for a project
+- [/analyses/{username}/{project_slug}/light](https://developers.botify.com/reference/getprojectanalyseslight-1.md): List all analyses for a project (light)
+- [/projects/{username}/{project_slug}/filters](https://developers.botify.com/reference/getsavedfilters-1.md): List all the project's saved filters (each filter's name, ID and filter value)
+- [/projects/{username}/{project_slug}/filters/{identifier}](https://developers.botify.com/reference/getfilter-1.md): Retrieve a specific project saved, account or recommended filter's name, ID and filter value
+- [/projects/{username}/{project_slug}/query](https://developers.botify.com/reference/projectquery-2.md): Query collections at a project level.
+- [/projects/{username}/{project_slug}/saved_explorers](https://developers.botify.com/reference/getsavedexplorers-1.md): List all the project's Saved Explorers.
+- [/projects/{username}/{project_slug}/urls/aggs](https://developers.botify.com/reference/getprojecturlsaggs-1.md): Project Query aggregator. It accepts multiple queries that will be executed on all completed analyses in the project
+- [/projects/{username}/{project_slug}/values_list/clone](https://developers.botify.com/reference/clonevalueslist.md): Clone all keyword groups of the current project to another one.  This endpoint is a little more general (for further use). That's why you will see a 'type' field (with a default value of: 'keywords').
+- [/users/{username}/projects](https://developers.botify.com/reference/getalluserprojects-1.md): List all active projects for the user
+- [/analyses/{username}/{project_slug}/create/launch](https://developers.botify.com/reference/launchanalysiscreate.md): Create and launch an analysis for a project
+- [/analyses/{username}/{project_slug}/{analysis_slug}](https://developers.botify.com/reference/getanalysissummary-1.md): Get an Analysis detail
+- [/analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics](https://developers.botify.com/reference/getcrawlstatistics-1.md): Return global statistics for an analysis
+- [/analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics/time](https://developers.botify.com/reference/getcrawlstatisticsbyfrequency-1.md): Return crawl statistics grouped by time frequency (1 min, 5 mins or 60 min) for an analysis
+- [/analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics/urls/{list_type}](https://developers.botify.com/reference/getcrawlstatisticsurls-1.md): Return a list of 1000 latest URLs crawled (all crawled URLs or only URLS with HTTP errors)
+- [Legacy](https://developers.botify.com/reference/getganalyticsorphanurls-1.md): Legacy    List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings).   For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google+, linkedin, pinterest, reddit, tumblr, twitter)
+- [/analyses/{username}/{project_slug}/{analysis_slug}/features/links/percentiles](https://developers.botify.com/reference/getlinkspercentiles-1.md): Get inlinks percentiles
+- [/analyses/{username}/{project_slug}/{analysis_slug}/features/pagerank/lost](https://developers.botify.com/reference/getpageranklost-1.md): Lost pagerank
+- [/analyses/{username}/{project_slug}/{analysis_slug}/features/scoring/summary](https://developers.botify.com/reference/getscoring-1.md): Scoring summary
+- [/analyses/{username}/{project_slug}/{analysis_slug}/features/search_console/stats](https://developers.botify.com/reference/getkeywordsstats-1.md): List clicks and impressions per day
+- [/analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/report](https://developers.botify.com/reference/getsitemapsreport-1.md): Get global information of the sitemaps found (sitemaps indexes, invalid sitemaps urls, etc.)
+- [/analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/samples/out_of_config](https://developers.botify.com/reference/getsitemapssamplesoutofconfig-1.md): Sample list of URLs which were found in your sitemaps but outside of the crawl perimeter defined for the project, for instance domain/subdomain or protocol (HTTP/HTTPS) not allowed in the crawl settings.
+- [/analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/samples/sitemap_only](https://developers.botify.com/reference/getsitemapssamplessitemapsonly-1.md): Sample list of URLs which were found in your sitemaps, within the project allowed scope (allowed domains/subdomains/protocols), but not found by the Botify crawler.
+- [/analyses/{username}/{project_slug}/{analysis_slug}/features/top_domains/domains](https://developers.botify.com/reference/getlinkstopdomains-1.md): Top domains
+- [/analyses/{username}/{project_slug}/{analysis_slug}/features/top_domains/subdomains](https://developers.botify.com/reference/getlinkstopsubdomains-1.md): Top subddomains
+- [/analyses/{username}/{project_slug}/{analysis_slug}/features/visits/orphan_urls/{medium}/{source}](https://developers.botify.com/reference/getvisitsorphanurls-1.md): List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings).   For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google+, linkedin, pinterest, reddit, tumblr, twitter)
+- [/analyses/{username}/{project_slug}/{analysis_slug}/pause](https://developers.botify.com/reference/pauseanalysis.md): Pause an analysis for a project
+- [/analyses/{username}/{project_slug}/{analysis_slug}/resume](https://developers.botify.com/reference/resumeanalysis.md): Resume an analysis for a project
+- [/analyses/{username}/{project_slug}/{analysis_slug}/segments](https://developers.botify.com/reference/getanalysissegments-1.md): Get the segments feature public metadata of an analysis.
+- [/analyses/{username}/{project_slug}/{analysis_slug}/staticfiles/robots-txt-indexes](https://developers.botify.com/reference/getrobotstxtindexesview-1.md): Return an object containing all robots.txt files found on the project's domains. The object is null for virtual robots.txt.
+- [/analyses/{username}/{project_slug}/{analysis_slug}/staticfiles/robots-txt-indexes/{robots_txt}](https://developers.botify.com/reference/getrobotstxtfileview-1.md): Return content of a robots.txt file.
+- [/analyses/{username}/{project_slug}/{analysis_slug}/urls](https://developers.botify.com/reference/geturls-1.md): Executes a query and returns a paginated response
+- [/analyses/{username}/{project_slug}/{analysis_slug}/urls/aggs](https://developers.botify.com/reference/geturlsaggs-1.md): Query aggregator. It accepts multiple queries and dispatches them.
+- [/analyses/{username}/{project_slug}/{analysis_slug}/urls/ai/{url}](https://developers.botify.com/reference/geturlai.md): Gets AI suggestions of an URL for an analysis
+- [/analyses/{username}/{project_slug}/{analysis_slug}/urls/datamodel](https://developers.botify.com/reference/geturlsdatamodel-1.md): Gets an Analysis datamodel
+- [/analyses/{username}/{project_slug}/{analysis_slug}/urls/datasets](https://developers.botify.com/reference/geturlsdatasets-1.md): Gets Analysis Datasets
+- [/analyses/{username}/{project_slug}/{analysis_slug}/urls/export](https://developers.botify.com/reference/geturlsexports-1.md): A list of the CSV Exports requests and their current status
+- [/analyses/{username}/{project_slug}/{analysis_slug}/urls/export](https://developers.botify.com/reference/createurlsexport-1.md): Creates a new UrlExport object and starts a task that will export the results into a csv. Returns the model id that manages the task
+- [/analyses/{username}/{project_slug}/{analysis_slug}/urls/export/{url_export_id}](https://developers.botify.com/reference/geturlsexportstatus-1.md): Checks the status of an CSVUrlExportJob object. Returns json object with the status.
+- [/analyses/{username}/{project_slug}/{analysis_slug}/urls/html/{url}](https://developers.botify.com/reference/geturlhtml-1.md): Gets the HTML of an URL for an analysis
+- [/analyses/{username}/{project_slug}/{analysis_slug}/urls/{url}](https://developers.botify.com/reference/geturldetail-1.md): Gets the detail of an URL for an analysis
+- [/jobs](https://developers.botify.com/reference/getjobs.md): List All jobs
+- [/jobs](https://developers.botify.com/reference/createjob.md): Creates a job instance of a class which depends on the "job_type" parameter you sent. Returns the model id that manages the task.
+- [/jobs/{job_id}](https://developers.botify.com/reference/getjob.md): Retrieve one job
+- [/projects/{username}](https://developers.botify.com/reference/getuserprojects-1.md): List all active projects for the user
+- [/projects/{username}/{project_slug}/account_filters](https://developers.botify.com/reference/getaccountsavedfilters-1.md): List all the account saved filters
+- [/projects/{username}/{project_slug}/collections](https://developers.botify.com/reference/getprojectcollections-1.md): List all collections for a project
+- [/projects/{username}/{project_slug}/collections/{collection}](https://developers.botify.com/reference/getcollectiondetail-1.md): Get the detail of a collection
+- [/users/{username}/datasources_summary_by_projects](https://developers.botify.com/reference/getdatasourcessummarybyprojects-1.md): Get the datasources details for all projects of a user
+
+## Changelog
+- [Welcome to Botify's new API documentation!](https://developers.botify.com/changelog/welcome.md)

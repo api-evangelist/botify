@@ -42,5 +42,29 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Botify is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+Botify is an enterprise organic-search and AI-search visibility platform. It crawls a brand's website, ingests
+its server logs, and joins that with Google Search Console, analytics and third-party data to produce thousands
+of SEO metrics across SiteCrawler, LogAnalyzer, RealKeywords, ActionBoard, AlertPanel, SpeedWorkers, PageWorkers
+and EngagementAnalytics.
+
+- Website: https://www.botify.com/
+- Developer portal: https://developers.botify.com/
+- Legacy developer portal: https://old.developers.botify.com/ (still the only home of the error-code reference)
+- Status: https://status.botify.com/
+
+## API surface
+
+| Surface | Where | Contract |
+|---|---|---|
+| REST API | `https://api.botify.com/v1` | Swagger 2.0, 46 paths / 48 operations, live at `https://api.botify.com/v1/swagger.json` |
+| BQL | `POST /projects/{username}/{project_slug}/query` and `POST /jobs` | Proprietary JSON DSL — the real data interface |
+| MCP | `https://mcp.botify.com/` | "Botify Agents MCP", OAuth 2.1 + PKCE, scope `mcp_read_write`; `tools/list` is auth-gated |
+
+The REST API authenticates with a single unscoped, long-lived per-user token (`Authorization: Token <TOKEN>`).
+The MCP server authenticates through a separate OAuth 2.1 authorization server at `app.botify.com` with dynamic
+client registration, PKCE S256, introspection and revocation. Nothing bridges the two.
+
+Botify publishes **no** webhooks, events or AsyncAPI — data delivery is pull (BQL query, max 2,000 rows) or
+batch (export jobs to direct download, AWS S3, AWS Redshift, Google Cloud Storage or Google BigQuery).
+
+See `apis.yml` for the full artifact index.

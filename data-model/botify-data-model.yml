@@ -1,0 +1,324 @@
+generated: '2026-08-08'
+method: derived
+source: openapi/botify-api-swagger.json
+docs:
+- https://developers.botify.com/docs/getting-started
+- https://developers.botify.com/docs/collections
+api: Botify API
+summary:
+  definitions: 123
+  operations: 48
+  root_entity: Project
+  identifier_style: human-readable slugs, not opaque prefixed ids
+note: >-
+  Botify's model is a three-level hierarchy — a User owns Projects, a Project has Analyses (crawls), and an
+  Analysis has URLs — and almost every path in the API literally spells that hierarchy out as
+  /{username}/{project_slug}/{analysis_slug}/. There are no opaque object ids with type prefixes: entities are
+  addressed by human-readable slugs (`username`, `project_slug`, `analysis_slug` which is a YYYYMMDD crawl
+  date). The one exception is the async job family, which uses numeric ids (`job_id`, `url_export_id`).
+  Below the Analysis sits the DATA layer, which is not modelled as REST resources at all — it is reached
+  through BQL over named collections, and the field set is project-specific and must be read at runtime from
+  the datamodel/collection endpoints rather than assumed from this schema.
+identifiers:
+- name: username
+  entity: User
+  form: account slug
+  where: path segment
+- name: project_slug
+  entity: Project
+  form: URL-friendly project name
+  where: path segment
+- name: analysis_slug
+  entity: Analysis
+  form: crawl date, YYYYMMDD
+  where: path segment
+  note: also used as the collection name for crawl data in BQL, e.g. `crawl.20210205`
+- name: job_id
+  entity: Job
+  form: integer
+  where: path segment
+- name: url_export_id
+  entity: UrlExport
+  form: integer
+  where: path segment
+entities:
+- name: User
+  schema: User
+  operations:
+  - getUserProjects
+  - getAllUserProjects
+  - getDatasourcesSummaryByProjects
+- name: OrganizationUser
+  schema: OrganizationUser
+- name: WebProperty
+  schema: WebProperty
+  note: the billing/subscription container a Project belongs to
+- name: SubscriptionPlan
+  schema: SubscriptionPlan
+- name: Project
+  schema: Project
+  properties: 37
+  operations:
+  - getUserProjects
+  - getAllUserProjects
+  - projectQuery
+  - getProjectUrlsAggs
+  - getProjectCollections
+  - getCollectionDetail
+  - getSavedFilters
+  - getFilter
+  - getAccountSavedFilters
+  - getSavedExplorers
+  - cloneValuesList
+- name: ProjectSettings
+  schema: ProjectSettings
+- name: Analysis
+  schema: Analysis
+  detail_schema: AnalysisDetail
+  operations:
+  - getProjectAnalyses
+  - getProjectAnalysesLight
+  - getAnalysisSummary
+  - launchAnalysisCreate
+  - pauseAnalysis
+  - resumeAnalysis
+  - getAnalysisSegments
+- name: CrawlStatistics
+  schema: CrawlStatistics
+  time_series_schema: CrawlStatisticsTime
+  point_schema: CrawlStatisticsTimePoint
+  operations:
+  - getCrawlStatistics
+  - getCrawlStatisticsByFrequency
+  - getCrawlStatisticsUrls
+- name: Datamodel
+  schema: Datamodel
+  field_schema: DatamodelField
+  group_schema: DatamodelGroup
+  operations:
+  - getUrlsDatamodel
+- name: Collection
+  schema: CollectionDatasets
+  dataset_schema: Dataset
+  field_schema: DatasetField
+  operations:
+  - getProjectCollections
+  - getCollectionDetail
+  - getUrlsDatasets
+  note: >-
+    Collections are the BQL data sources — conversion, conversion.dip, crawl.YYYYMMDD, paid_search.ga4.dip,
+    QueryMaskML.YYYYMMDD, search_console and others. Availability is per-project.
+- name: SavedFilter
+  schema: SavedFilter
+  operations:
+  - getSavedFilters
+  - getFilter
+  - getAccountSavedFilters
+- name: SavedExplorer
+  schema: SavedExplorer
+  operations:
+  - getSavedExplorers
+- name: ValuesList
+  schema: ValuesList
+  operations:
+  - cloneValuesList
+  note: keyword groups; the clone endpoint carries a `type` field defaulting to `keywords`
+- name: Job
+  schema: JobResults
+  operations:
+  - getJobs
+  - createJob
+  - getJob
+  note: the export-job family; a BQL query wrapped with format + destination backend
+- name: UrlExport
+  operations:
+  - getUrlsExports
+  - createUrlsExport
+  - getUrlsExportStatus
+- name: Datasource
+  schema: Datasource
+  summary_schema: ProjectDatasourceSummary
+  operations:
+  - getDatasourcesSummaryByProjects
+- name: SitemapsReport
+  schema: SitemapsReport
+  operations:
+  - getSitemapsReport
+  - getSitemapsSamplesOutOfConfig
+  - getSitemapsSamplesSitemapsOnly
+- name: KeywordsStat
+  schema: KeywordsStat
+  data_schema: KeywordsStatData
+  detail_schema: KeywordsStatDetail
+  operations:
+  - getKeywordsStats
+  note: Google Search Console clicks/impressions, split all / desktop / mobile / tablet
+- name: LinksTopDomains
+  schema: LinksTopDomains
+  operations:
+  - getLinksTopDomains
+  - getLinksTopSubdomains
+- name: LinksPercentiles
+  schema: LinksPercentiles
+  operations:
+  - getLinksPercentiles
+- name: PageRankLost
+  schema: PageRankLost
+  operations:
+  - getPageRankLost
+relationships:
+- from: User
+  to: Project
+  type: has_many
+  via: username path segment
+  operations:
+  - getUserProjects
+  - getAllUserProjects
+- from: Project
+  to: OrganizationUser
+  type: belongs_to
+  via: Project.organization
+- from: Project
+  to: WebProperty
+  type: belongs_to
+  via: Project.webproperty
+- from: WebProperty
+  to: SubscriptionPlan
+  type: has_one
+  via: WebProperty.current_subscription_plan
+- from: WebProperty
+  to: SubscriptionPlan
+  type: has_one
+  via: WebProperty.renewal_subscription_plan
+- from: Project
+  to: ProjectSettings
+  type: has_one
+  via: Project.current_settings
+- from: Project
+  to: Analysis
+  type: has_many
+  via: project_slug path segment
+  operations:
+  - getProjectAnalyses
+  - getProjectAnalysesLight
+- from: Analysis
+  to: User
+  type: belongs_to
+  via: Analysis.user
+- from: AnalysisDetail
+  to: User
+  type: belongs_to
+  via: AnalysisDetail.user
+- from: Analysis
+  to: CrawlStatistics
+  type: has_one
+  via: analysis_slug path segment
+- from: CrawlStatisticsTime
+  to: CrawlStatisticsTimePoint
+  type: has_many
+  via: per-metric arrays (avg_delay, http_code_2xx..5xx, avg_size, new_urls)
+- from: Analysis
+  to: Datamodel
+  type: has_one
+  via: /urls/datamodel
+- from: Datamodel
+  to: DatamodelField
+  type: has_many
+  via: Datamodel.fields
+- from: Datamodel
+  to: DatamodelGroup
+  type: has_many
+  via: Datamodel.groups
+- from: Project
+  to: Collection
+  type: has_many
+  via: /collections
+- from: CollectionDatasets
+  to: Dataset
+  type: has_many
+  via: CollectionDatasets.datasets
+- from: Dataset
+  to: DatasetField
+  type: has_many
+  via: Dataset.fields
+- from: Dataset
+  to: DatasetGroup
+  type: has_many
+  via: Dataset.groups
+- from: Project
+  to: SavedFilter
+  type: has_many
+  via: /filters
+- from: Project
+  to: SavedExplorer
+  type: has_many
+  via: /saved_explorers
+- from: SavedExplorer
+  to: User
+  type: belongs_to
+  via: SavedExplorer.created_by
+- from: SavedExplorer
+  to: User
+  type: belongs_to
+  via: SavedExplorer.modified_by
+- from: ValuesList
+  to: User
+  type: belongs_to
+  via: ValuesList.created_by
+- from: ValuesList
+  to: User
+  type: belongs_to
+  via: ValuesList.modified_by
+- from: Analysis
+  to: UrlExport
+  type: has_many
+  via: /urls/export
+- from: Analysis
+  to: SitemapsReport
+  type: has_one
+  via: /features/sitemaps/report
+- from: SitemapsReport
+  to: SitemapsReportSitemap
+  type: has_many
+  via: SitemapsReport.sitemaps / sitemap_indexes / errors
+- from: SitemapsReportSitemap
+  to: SitemapsReportSitemapError
+  type: has_one
+  via: SitemapsReportSitemap.error
+- from: Analysis
+  to: KeywordsStat
+  type: has_one
+  via: /features/search_console/stats
+- from: KeywordsStat
+  to: KeywordsStatData
+  type: has_many
+  via: KeywordsStat.data
+- from: KeywordsStatData
+  to: KeywordsStatDetail
+  type: has_one
+  via: all / desktop / mobile / tablet
+- from: Analysis
+  to: LinksTopDomains
+  type: has_one
+  via: /features/top_domains/domains
+- from: LinksTopDomains
+  to: LinksTopDomainsSamples
+  type: has_many
+  via: follow_samples / nofollow_samples
+- from: User
+  to: Datasource
+  type: has_many
+  via: /datasources_summary_by_projects
+- from: Job
+  to: JobResults
+  type: has_one
+  via: job result payload
+gaps:
+- >-
+  The URL-level data (the actual SEO metrics) is NOT in this schema. It is reached through BQL over
+  collections, where the field set is project- and crawl-specific. Any client must call getUrlsDatamodel,
+  getProjectCollections or getCollectionDetail to discover fields at runtime.
+- >-
+  A large family of Admin* definitions (AdminProject, AdminProjectSettings with 48 properties, AdminRules,
+  AdminPattern, AdminBucket, AdminSavedExplorer, AdminValuesList, AdminFileDatasource...) is present in the
+  published Swagger but bound to NO public path — internal shapes leaking into the public contract.

@@ -1,0 +1,1 @@
+{"resource":"https://mcp.botify.com/","authorization_servers":["https://app.botify.com/"],"scopes_supported":["mcp_read_write"],"bearer_methods_supported":["header"],"resource_name":"Botify Agents MCP"}

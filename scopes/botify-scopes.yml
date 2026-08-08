@@ -1,0 +1,49 @@
+generated: '2026-08-08'
+method: probed
+source: https://app.botify.com/.well-known/oauth-authorization-server
+docs: https://developers.botify.com/docs/getting-started
+note: >-
+  Botify's OAuth surface exists only for its MCP server. The REST API at api.botify.com/v1 is not OAuth-based —
+  it uses a single per-user API token in the Authorization header with no scope concept at all
+  (see authentication/botify-authentication.yml). The authorization server at app.botify.com advertises exactly
+  one scope, and it is coarse: a single read-write grant over the whole MCP surface. There is no read-only
+  variant, no per-product (SiteCrawler / LogAnalyzer / RealKeywords) split, and no per-project scoping in the
+  published metadata.
+authorization_server: https://app.botify.com/
+protected_resources:
+- resource: https://mcp.botify.com/
+  resource_name: Botify Agents MCP
+  scopes_supported:
+  - mcp_read_write
+scopes:
+- name: mcp_read_write
+  description: >-
+    The only scope advertised by the Botify authorization server. Granted to an MCP client after the
+    authorization-code + PKCE flow; combined read and write access to the Botify Agents MCP surface.
+    Botify publishes no further description of what it covers.
+  read_only: false
+  source: https://app.botify.com/.well-known/oauth-authorization-server
+flows:
+  authorization_code:
+    authorization_endpoint: https://app.botify.com/oauth/authorize
+    token_endpoint: https://app.botify.com/oauth/token/
+    pkce_methods:
+    - S256
+  refresh_token: true
+endpoints:
+  registration: https://app.botify.com/oauth/register/
+  revocation: https://app.botify.com/oauth/revoke/
+  introspection: https://app.botify.com/oauth/introspect/
+token_endpoint_auth_methods_supported:
+- client_secret_basic
+- client_secret_post
+- none
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+  - url: https://app.botify.com/.well-known/oauth-authorization-server
+    http_status: 200
+    content_type: application/json
+  - url: https://mcp.botify.com/.well-known/oauth-protected-resource
+    http_status: 200
+    content_type: application/json

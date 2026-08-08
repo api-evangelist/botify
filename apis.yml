@@ -1,18 +1,101 @@
 aid: botify
 name: Botify
-description: 'Botify is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Botify is an enterprise organic-search and AI-search visibility platform that crawls a brand's website,
+  ingests its server logs, and joins that with Google Search Console, analytics and third-party data to produce
+  thousands of SEO metrics across its SiteCrawler, LogAnalyzer, RealKeywords, ActionBoard, AlertPanel,
+  SpeedWorkers, PageWorkers and EngagementAnalytics products. All of that data is reachable programmatically
+  through the Botify REST API at api.botify.com/v1, which is documented with Swagger/OpenAPI and driven by BQL
+  (Botify Query Language), a JSON DSL used both for interactive queries (up to 2,000 rows per call) and for
+  large export jobs delivered to direct download, AWS S3, AWS Redshift, Google Cloud Storage or Google BigQuery.
+  Botify also operates a hosted, OAuth-protected MCP server ("Botify Agents MCP") at mcp.botify.com so agents
+  can work with Botify data alongside the company's own AI agents.
 url: https://raw.githubusercontent.com/api-evangelist/botify/refs/heads/main/apis.yml
+image: https://cdn.prod.website-files.com/6639e9e213b495098391c3d1/67bcce304f73f509e3630134_Ai%20Search%20Visibility-Featured%20Image%20(1).jpg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-08'
 modified: '2026-08-08'
 tags:
-- Company
-apis: []
+- seo
+- organic-search
+- search-engine-optimization
+- web-crawling
+- log-analysis
+- search-console
+- marketing-analytics
+- ai-search
+- data-export
+- mcp
+- agent-native
+apis:
+- name: Botify API
+  description: >-
+    REST API (Swagger 2.0, 46 paths / 48 operations) over Botify projects, analyses, crawl statistics, URL-level
+    data, collections, saved filters, saved explorers, datasources and export jobs. SEO data itself is retrieved
+    by POSTing a BQL query to /projects/{username}/{project_slug}/query or by creating an export job at /jobs.
+    Authenticated with a per-user API token sent in the Authorization header.
+  humanURL: https://developers.botify.com/
+  baseURL: https://api.botify.com/v1
+  tags:
+  - seo
+  - organic-search
+  - web-crawling
+  - log-analysis
+  - search-console
+  - data-export
+  properties:
+  - type: OpenAPI
+    url: openapi/botify-api-swagger.json
+  - type: OpenAPI
+    url: https://api.botify.com/v1/swagger.json
+  - type: Documentation
+    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
+  - type: APIReference
+    url: https://developers.botify.com/reference/getalluserprojects-1
+  - type: GettingStarted
+    url: https://developers.botify.com/docs/getting-started
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: Conventions
+    url: conventions/botify-conventions.yml
+  - type: ErrorCatalog
+    url: errors/botify-problem-types.yml
+  - type: DataModel
+    url: data-model/botify-data-model.yml
+  - type: Overlay
+    url: overlays/botify-api-swagger-overlay.yaml
+  - type: RateLimits
+    url: https://developers.botify.com/docs/limits
+- name: Botify Agents MCP
+  description: >-
+    Hosted Model Context Protocol server at mcp.botify.com, advertised via RFC 9728 protected-resource metadata
+    as "Botify Agents MCP" with the single scope mcp_read_write. Authorization is delegated to app.botify.com,
+    which publishes RFC 8414 authorization-server metadata supporting authorization_code + refresh_token,
+    PKCE S256 and OAuth 2.0 Dynamic Client Registration. tools/list is auth-gated.
+  humanURL: https://www.botify.com/platform/botify-assist
+  baseURL: https://mcp.botify.com/
+  tags:
+  - mcp
+  - agent-native
+  - seo
+  - ai-search
+  properties:
+  - type: MCPServer
+    url: mcp/botify-mcp.yml
+  - type: MCPServer
+    url: https://mcp.botify.com/
+  - type: ToolCrosswalk
+    url: mcp/botify-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/botify-scopes.yml
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: WellKnown
+    url: well-known/botify-well-known.yml
+  - type: Documentation
+    url: https://www.botify.com/platform/botify-assist
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +103,63 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.botify.com/
+- type: DeveloperPortal
+  url: https://developers.botify.com/
+- type: Documentation
+  url: https://developers.botify.com/docs/introduction
+- type: APIReference
+  url: https://developers.botify.com/reference/getalluserprojects-1
+- type: GettingStarted
+  url: https://developers.botify.com/docs/getting-started
+- type: Support
+  url: https://support.botify.com/
+- type: Blog
+  url: https://www.botify.com/blog
+- type: GitHubOrganization
+  url: https://github.com/botify-labs
+- type: Pricing
+  url: https://www.botify.com/pricing
+- type: SignUp
+  url: https://app.botify.com/
+- type: TermsOfService
+  url: https://www.botify.com/privacy-and-terms
+- type: PrivacyPolicy
+  url: https://www.botify.com/privacy-and-terms
+- type: StatusPage
+  url: https://status.botify.com/
+- type: ChangeLog
+  url: https://developers.botify.com/changelog
+- type: Packages
+  url: packages/botify-packages.yml
+- type: SDKs
+  url: packages/botify-packages.yml
+- type: LLMSTxt
+  url: llms/botify-llms.txt
+- type: WellKnown
+  url: well-known/botify-well-known.yml
+- type: Lifecycle
+  url: lifecycle/botify-lifecycle.yml
+- type: Conformance
+  url: conformance/botify-conformance.yml
+- type: Compliance
+  url: conformance/botify-conformance.yml
+- type: DomainSecurity
+  url: security/botify-domain-security.yml
+- type: ChangeLog
+  url: changelog/botify-changelog.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgentSkill
+  url: skills/botify-query-seo-data.md
+- type: AgentSkill
+  url: skills/botify-export-seo-data.md
+- type: AgentSkill
+  url: skills/botify-run-and-monitor-a-crawl.md
+- type: AgentSkill
+  url: skills/botify-audit-sitemaps-and-orphans.md
+x-enrichment:
+  date: '2026-08-08'
+  status: enriched
+  artifacts_added: 23
+  pass: local-v1

@@ -1,0 +1,55 @@
+generated: '2026-08-08'
+method: searched
+source: https://www.npmjs.com/package/botify-sdk + https://github.com/botify-labs
+note: >-
+  Botify's only first-party client libraries are the JavaScript SDK and its middleware package, published to npm
+  from the botify-labs GitHub organization under the labs@botify.com author address. Both are unmaintained
+  (last publish 2022) and predate BQL, so current integrations are expected to call api.botify.com/v1 directly.
+  No first-party Python, Java, Go, .NET, Ruby, PHP or Rust client was found on PyPI, Maven Central, pkg.go.dev,
+  NuGet, RubyGems, Packagist or crates.io.
+packages:
+- language: javascript
+  registry: npm
+  name: botify-sdk
+  url: https://www.npmjs.com/package/botify-sdk
+  repository: https://github.com/botify-labs/botify-sdk-js
+  install: npm install botify-sdk
+  version: 1.0.0-beta5
+  official: true
+  maintained: false
+  last_published: '2022-06-13'
+- language: javascript
+  registry: npm
+  name: botify-sdk-middlewares
+  url: https://www.npmjs.com/package/botify-sdk-middlewares
+  repository: https://github.com/botify-labs/botify-sdk-js-middlewares
+  install: npm install botify-sdk-middlewares
+  version: 0.18.1
+  official: true
+  maintained: false
+  last_published: '2022-06-13'
+rejected:
+- name: botify (PyPI)
+  url: https://pypi.org/project/botify/
+  reason: Unrelated — "Natural Language based Commands Processing Framework" by a third-party author.
+- name: botify-api (PyPI)
+  url: https://pypi.org/project/botify-api/
+  reason: Third-party wrapper, not published by Botify.
+- name: "@botify-app/cli (npm)"
+  url: https://www.npmjs.com/package/@botify-app/cli
+  reason: Belongs to Botify AI (botify.ai companion-chat product), a different company.
+- name: "@datafire/botify (npm)"
+  url: https://www.npmjs.com/package/@datafire/botify
+  reason: DataFire community integration generated from the Swagger, not first-party.
+- name: "@n8n-dev/n8n-nodes-botify (npm)"
+  url: https://www.npmjs.com/package/@n8n-dev/n8n-nodes-botify
+  reason: Community n8n node, not first-party.
+registries_checked:
+- npm
+- PyPI
+- Maven Central
+- NuGet
+- pkg.go.dev
+- RubyGems
+- Packagist
+- crates.io

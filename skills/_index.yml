@@ -1,0 +1,70 @@
+generated: '2026-08-08'
+method: generated
+source: openapi/botify-api-swagger.json + https://developers.botify.com/
+api: Botify API
+base_url: https://api.botify.com/v1
+note: >-
+  Botify publishes no AGENTS.md, no skills manifest and no llms-full.txt (probed 2026-08-08, all 404). These
+  skills are authored by API Evangelist and grounded entirely in real operationIds from Botify's published
+  Swagger 2.0 document plus the published limits, error-code and BQL documentation. No operation, parameter or
+  error code below was invented.
+skills:
+- name: botify-query-seo-data
+  file: botify-query-seo-data.md
+  description: Interactive BQL query against a Botify project, up to 2,000 rows, after runtime field discovery.
+  operations:
+  - getAllUserProjects
+  - getProjectAnalyses
+  - getProjectCollections
+  - getCollectionDetail
+  - getUrlsDatamodel
+  - projectQuery
+  - getProjectUrlsAggs
+- name: botify-export-seo-data
+  file: botify-export-seo-data.md
+  description: Large export via a BQL-wrapped job to direct download, S3, Redshift, GCS or BigQuery, with the no-idempotency retry trap made explicit.
+  operations:
+  - createJob
+  - getJobs
+  - getJob
+  - createUrlsExport
+  - getUrlsExports
+  - getUrlsExportStatus
+- name: botify-run-and-monitor-a-crawl
+  file: botify-run-and-monitor-a-crawl.md
+  description: Launch, watch, pause, resume and read back a Botify analysis, polling because there is no event surface.
+  operations:
+  - getAllUserProjects
+  - launchAnalysisCreate
+  - getProjectAnalyses
+  - getAnalysisSummary
+  - getCrawlStatistics
+  - getCrawlStatisticsByFrequency
+  - getCrawlStatisticsUrls
+  - pauseAnalysis
+  - resumeAnalysis
+  - getAnalysisSegments
+- name: botify-audit-sitemaps-and-orphans
+  file: botify-audit-sitemaps-and-orphans.md
+  description: Technical-SEO audit across sitemaps, orphan URLs, robots.txt, link structure and scoring, avoiding the Legacy orphan-URL operation.
+  operations:
+  - getProjectAnalyses
+  - getSitemapsReport
+  - getSitemapsSamplesOutOfConfig
+  - getSitemapsSamplesSitemapsOnly
+  - getVisitsOrphanURLs
+  - getRobotsTxtIndexesView
+  - getRobotsTxtFileView
+  - getPageRankLost
+  - getLinksPercentiles
+  - getLinksTopDomains
+  - getLinksTopSubdomains
+  - getScoring
+  - getUrlDetail
+  - getUrlHTML
+cross_links:
+  conventions: conventions/botify-conventions.yml
+  errors: errors/botify-problem-types.yml
+  authentication: authentication/botify-authentication.yml
+  data_model: data-model/botify-data-model.yml
+  lifecycle: lifecycle/botify-lifecycle.yml

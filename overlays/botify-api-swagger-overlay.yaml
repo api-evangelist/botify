@@ -1,0 +1,135 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay for the Botify API
+  version: 1.0.0
+  x-generated: '2026-08-08'
+  x-method: generated
+  x-source: openapi/botify-api-swagger.json
+  x-note: >-
+    Applies API Evangelist enrichments to Botify's published Swagger 2.0 document WITHOUT mutating it.
+    Everything asserted here is grounded in a document Botify publishes — the developer portal, the legacy
+    portal's error-code and rate-limit pages, the limits page, or the OAuth metadata on app.botify.com /
+    mcp.botify.com. Nothing is invented.
+extends: ../openapi/botify-api-swagger.json
+actions:
+- target: $.info
+  description: Point the contract at the human documentation Botify publishes, and record the machine-readable source.
+  update:
+    contact:
+      name: Botify Support
+      url: https://support.botify.com/
+    externalDocs:
+      description: Botify developer portal
+      url: https://developers.botify.com/docs/introduction
+    x-apis-json: https://raw.githubusercontent.com/api-evangelist/botify/refs/heads/main/apis.yml
+    x-source-spec: https://api.botify.com/v1/swagger.json
+    x-legacy-portal: https://old.developers.botify.com/
+- target: $.info
+  description: >-
+    Record the auth model in the contract. The published securityDefinitions name the scheme "DjangoRestToken"
+    but never say what value the Authorization header must carry; the docs do.
+  update:
+    x-authentication:
+      style: api-key-header
+      header: Authorization
+      format: Token <YOUR_TOKEN>
+      token_source: https://app.botify.com/<username>/account
+      scopes: none
+      docs: https://developers.botify.com/docs/getting-started
+- target: $.info
+  description: Attach the rate limits and quotas Botify documents in prose but does not express in the contract.
+  update:
+    x-rate-limits:
+      qps: 5
+      qps_scope: project-related endpoints, including the BQL query endpoint
+      qps_docs: https://developers.botify.com/docs/limits
+      csv_exports_per_day: 50
+      csv_export_max_urls: 100000
+      export_docs: https://old.developers.botify.com/api/rate-limit/
+      shared_with_web_app: true
+      on_exceeded:
+        http_status: 429
+        error_code: '1053'
+      headers_published: false
+- target: $.info
+  description: >-
+    Attach the error contract. The spec declares one untyped `default` response per operation; the real
+    error-code reference lives only on the legacy portal.
+  update:
+    x-error-catalog:
+      url: errors/botify-problem-types.yml
+      reference: https://old.developers.botify.com/api/error-codes/
+      rfc9457: false
+      envelope: '{"error": {"error_code": string, "message": string, "error_detail": object}}'
+      codes: 60
+- target: $.info
+  description: Record the sibling agent surface, which is not part of this contract but shares the same account.
+  update:
+    x-mcp-server:
+      url: https://mcp.botify.com/
+      name: Botify Agents MCP
+      auth: OAuth 2.1 authorization_code + PKCE S256
+      scope: mcp_read_write
+      authorization_server: https://app.botify.com/
+      tools_public: false
+- target: $.info
+  description: Record that this API has no event/webhook surface, so consumers know to poll or export rather than subscribe.
+  update:
+    x-event-surface:
+      webhooks: false
+      asyncapi: false
+      delivery:
+      - pull via BQL query
+      - batch via export jobs to direct download, AWS S3, AWS Redshift, Google Cloud Storage, Google BigQuery
+- target: $.info
+  description: Record the query language, since the REST paths are mostly metadata around it.
+  update:
+    x-query-language:
+      name: BQL (Botify Query Language)
+      type: JSON DSL
+      docs: https://developers.botify.com/docs/bql-introduction
+      interactive:
+        operationId: projectQuery
+        max_rows: 2000
+      export:
+        operationId: createJob
+- target: $.securityDefinitions.DjangoRestToken
+  description: Describe the API-token scheme, which the published spec leaves entirely undocumented.
+  update:
+    description: >-
+      Per-user Botify API token. Send it as `Authorization: Token <YOUR_TOKEN>` on every request. Issued and
+      regenerated from the Botify application account page; regenerating immediately invalidates the previous
+      token. Unscoped and long-lived — there is no read-only variant.
+    x-format: Token <YOUR_TOKEN>
+    x-docs: https://developers.botify.com/docs/getting-started
+- target: $.paths['/projects/{username}/{project_slug}/query'].post
+  description: Mark the BQL query endpoint as the primary interactive data path and record its row ceiling.
+  update:
+    x-primary: true
+    x-max-rows: 2000
+    x-docs: https://developers.botify.com/docs/querying-seo-data
+    x-conventions: conventions/botify-conventions.yml
+- target: $.paths['/jobs'].post
+  description: Mark job creation as the export path and record that it is not idempotent.
+  update:
+    x-idempotent: false
+    x-idempotency-key: null
+    x-consumes-quota: export credits (1 per row; 0.1 per links-graph row)
+    x-docs: https://developers.botify.com/docs/export-seo-data
+- target: $.paths['/analyses/{username}/{project_slug}/{analysis_slug}/urls/export'].post
+  description: Record that a retried export creates a duplicate job and spends credits twice.
+  update:
+    x-idempotent: false
+    x-idempotency-key: null
+    x-conflict-error-code: '1052'
+    x-note: >-
+      Error 1052 "A CSV export is already running" is the only guard against duplicate exports; there is no
+      idempotency key, so a client-side retry after a timeout starts a second export.
+- target: $.paths['/analyses/{username}/{project_slug}/{analysis_slug}/features/ganalytics/orphan_urls/{medium}/{source}'].get
+  description: >-
+    Flag the operation Botify itself labels "Legacy" in its published llms.txt API-reference index but never
+    marks deprecated in the contract.
+  update:
+    x-legacy: true
+    x-superseded-by: getVisitsOrphanURLs
+    x-source: https://developers.botify.com/llms.txt

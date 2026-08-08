@@ -1,0 +1,44 @@
+generated: '2026-08-08'
+method: searched
+source: https://developers.botify.com/changelog
+api: Botify API
+scheme:
+  format: dated post list (ReadMe changelog)
+  url: https://developers.botify.com/changelog
+  llms_index: https://developers.botify.com/llms.txt
+  rss: false
+  machine_readable: false
+current_version: v1
+note: >-
+  Botify runs a changelog surface on its ReadMe-hosted developer portal, but as of this probe it contains a
+  SINGLE post — the announcement of the portal itself — and the API-reference pages all carry the same
+  `updatedAt: 2025-09-18` stamp from that migration. There is no per-release entry, no version numbering, no
+  breaking-change notice, and no feed. The Swagger at api.botify.com/v1/swagger.json is unversioned beyond
+  `info.version: 1.0.0`, so a consumer has no published way to detect that the contract changed. Product-level
+  release news is published on the marketing blog (www.botify.com/blog) instead, which is not an API changelog.
+entries:
+- title: Welcome to Botify's new API documentation!
+  url: https://developers.botify.com/changelog/welcome
+  date: '2025-09-18'
+  date_precision: portal-publish-stamp
+  type: documentation
+  breaking: false
+  highlights:
+  - New ReadMe-hosted developer portal at developers.botify.com replacing old.developers.botify.com.
+  - API reference regenerated from the Swagger; BQL guides, limits and collections documented.
+  note: >-
+    The error-code reference and the export/rate-limit table from the legacy portal were NOT carried over — see
+    lifecycle/botify-lifecycle.yml and errors/botify-problem-types.yml.
+gaps:
+- No RSS/Atom or JSON feed on the changelog.
+- No version identifiers, no dated spec releases, no breaking-change policy.
+- The OpenAPI/Swagger document is not versioned or archived per release.
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+  - url: https://developers.botify.com/changelog
+    http_status: 200
+  - url: https://developers.botify.com/changelog/welcome.md
+    http_status: 200
+  - url: https://developers.botify.com/llms.txt
+    http_status: 200
