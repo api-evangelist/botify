@@ -30,50 +30,12 @@ tags:
 - mcp
 - agent-native
 apis:
-- name: Botify API
-  description: >-
-    REST API (Swagger 2.0, 46 paths / 48 operations) over Botify projects, analyses, crawl statistics, URL-level
-    data, collections, saved filters, saved explorers, datasources and export jobs. SEO data itself is retrieved
-    by POSTing a BQL query to /projects/{username}/{project_slug}/query or by creating an export job at /jobs.
-    Authenticated with a per-user API token sent in the Authorization header.
-  humanURL: https://developers.botify.com/
-  baseURL: https://api.botify.com/v1
-  tags:
-  - seo
-  - organic-search
-  - web-crawling
-  - log-analysis
-  - search-console
-  - data-export
-  properties:
-  - type: OpenAPI
-    url: openapi/botify-api-swagger.json
-  - type: OpenAPI
-    url: https://api.botify.com/v1/swagger.json
-  - type: Documentation
-    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
-  - type: APIReference
-    url: https://developers.botify.com/reference/getalluserprojects-1
-  - type: GettingStarted
-    url: https://developers.botify.com/docs/getting-started
-  - type: Authentication
-    url: authentication/botify-authentication.yml
-  - type: Conventions
-    url: conventions/botify-conventions.yml
-  - type: ErrorCatalog
-    url: errors/botify-problem-types.yml
-  - type: DataModel
-    url: data-model/botify-data-model.yml
-  - type: Overlay
-    url: overlays/botify-api-swagger-overlay.yaml
-  - type: RateLimits
-    url: https://developers.botify.com/docs/limits
 - name: Botify Agents MCP
   description: >-
-    Hosted Model Context Protocol server at mcp.botify.com, advertised via RFC 9728 protected-resource metadata
-    as "Botify Agents MCP" with the single scope mcp_read_write. Authorization is delegated to app.botify.com,
-    which publishes RFC 8414 authorization-server metadata supporting authorization_code + refresh_token,
-    PKCE S256 and OAuth 2.0 Dynamic Client Registration. tools/list is auth-gated.
+    Hosted Model Context Protocol server at mcp.botify.com, advertised via RFC 9728 protected-resource
+    metadata as "Botify Agents MCP" with the single scope mcp_read_write. Authorization is delegated to
+    app.botify.com, which publishes RFC 8414 authorization-server metadata supporting authorization_code
+    + refresh_token, PKCE S256 and OAuth 2.0 Dynamic Client Registration. tools/list is auth-gated.
   humanURL: https://www.botify.com/platform/botify-assist
   baseURL: https://mcp.botify.com/
   tags:
@@ -96,12 +58,222 @@ apis:
     url: well-known/botify-well-known.yml
   - type: Documentation
     url: https://www.botify.com/platform/botify-assist
+- aid: botify:botify-analysis-api
+  name: Botify Analysis API
+  description: The Analysis API from Botify — 30 operation(s) for analysis.
+  humanURL: https://developers.botify.com/
+  baseURL: https://api.botify.com/v1
+  tags:
+  - Analysis
+  properties:
+  - type: OpenAPI
+    url: openapi/botify-analysis-api-openapi.yml
+  - type: Documentation
+    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
+  - type: APIReference
+    url: https://developers.botify.com/reference/getalluserprojects-1
+  - type: GettingStarted
+    url: https://developers.botify.com/docs/getting-started
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: Conventions
+    url: conventions/botify-conventions.yml
+  - type: ErrorCatalog
+    url: errors/botify-problem-types.yml
+  - type: DataModel
+    url: data-model/botify-data-model.yml
+  - type: RateLimits
+    url: https://developers.botify.com/docs/limits
+- aid: botify:botify-collections-api
+  name: Botify Collections API
+  description: The Collections API from Botify — 2 operation(s) for collections.
+  humanURL: https://developers.botify.com/
+  baseURL: https://api.botify.com/v1
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/botify-collections-api-openapi.yml
+  - type: Documentation
+    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
+  - type: APIReference
+    url: https://developers.botify.com/reference/getalluserprojects-1
+  - type: GettingStarted
+    url: https://developers.botify.com/docs/getting-started
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: Conventions
+    url: conventions/botify-conventions.yml
+  - type: ErrorCatalog
+    url: errors/botify-problem-types.yml
+  - type: DataModel
+    url: data-model/botify-data-model.yml
+  - type: RateLimits
+    url: https://developers.botify.com/docs/limits
+- aid: botify:botify-datasource-api
+  name: Botify Datasource API
+  description: The Datasource API from Botify — 1 operation(s) for datasource.
+  humanURL: https://developers.botify.com/
+  baseURL: https://api.botify.com/v1
+  tags:
+  - Datasource
+  properties:
+  - type: OpenAPI
+    url: openapi/botify-datasource-api-openapi.yml
+  - type: Documentation
+    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
+  - type: APIReference
+    url: https://developers.botify.com/reference/getalluserprojects-1
+  - type: GettingStarted
+    url: https://developers.botify.com/docs/getting-started
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: Conventions
+    url: conventions/botify-conventions.yml
+  - type: ErrorCatalog
+    url: errors/botify-problem-types.yml
+  - type: DataModel
+    url: data-model/botify-data-model.yml
+  - type: RateLimits
+    url: https://developers.botify.com/docs/limits
+- aid: botify:botify-job-api
+  name: Botify Job API
+  description: The Job API from Botify — 2 operation(s) for job.
+  humanURL: https://developers.botify.com/
+  baseURL: https://api.botify.com/v1
+  tags:
+  - Job
+  properties:
+  - type: OpenAPI
+    url: openapi/botify-job-api-openapi.yml
+  - type: Documentation
+    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
+  - type: APIReference
+    url: https://developers.botify.com/reference/getalluserprojects-1
+  - type: GettingStarted
+    url: https://developers.botify.com/docs/getting-started
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: Conventions
+    url: conventions/botify-conventions.yml
+  - type: ErrorCatalog
+    url: errors/botify-problem-types.yml
+  - type: DataModel
+    url: data-model/botify-data-model.yml
+  - type: RateLimits
+    url: https://developers.botify.com/docs/limits
+- aid: botify:botify-keywordsgroups-api
+  name: Botify Keywords Groups API
+  description: The KeywordsGroups API from Botify — 1 operation(s) for keywordsgroups.
+  humanURL: https://developers.botify.com/
+  baseURL: https://api.botify.com/v1
+  tags:
+  - KeywordsGroups
+  properties:
+  - type: OpenAPI
+    url: openapi/botify-keywordsgroups-api-openapi.yml
+  - type: Documentation
+    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
+  - type: APIReference
+    url: https://developers.botify.com/reference/getalluserprojects-1
+  - type: GettingStarted
+    url: https://developers.botify.com/docs/getting-started
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: Conventions
+    url: conventions/botify-conventions.yml
+  - type: ErrorCatalog
+    url: errors/botify-problem-types.yml
+  - type: DataModel
+    url: data-model/botify-data-model.yml
+  - type: RateLimits
+    url: https://developers.botify.com/docs/limits
+- aid: botify:botify-project-api
+  name: Botify Project API
+  description: The Project API from Botify — 9 operation(s) for project.
+  humanURL: https://developers.botify.com/
+  baseURL: https://api.botify.com/v1
+  tags:
+  - Project
+  properties:
+  - type: OpenAPI
+    url: openapi/botify-project-api-openapi.yml
+  - type: Documentation
+    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
+  - type: APIReference
+    url: https://developers.botify.com/reference/getalluserprojects-1
+  - type: GettingStarted
+    url: https://developers.botify.com/docs/getting-started
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: Conventions
+    url: conventions/botify-conventions.yml
+  - type: ErrorCatalog
+    url: errors/botify-problem-types.yml
+  - type: DataModel
+    url: data-model/botify-data-model.yml
+  - type: RateLimits
+    url: https://developers.botify.com/docs/limits
+- aid: botify:botify-projectquery-api
+  name: Botify Project Query API
+  description: The ProjectQuery API from Botify — 1 operation(s) for projectquery.
+  humanURL: https://developers.botify.com/
+  baseURL: https://api.botify.com/v1
+  tags:
+  - ProjectQuery
+  properties:
+  - type: OpenAPI
+    url: openapi/botify-projectquery-api-openapi.yml
+  - type: Documentation
+    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
+  - type: APIReference
+    url: https://developers.botify.com/reference/getalluserprojects-1
+  - type: GettingStarted
+    url: https://developers.botify.com/docs/getting-started
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: Conventions
+    url: conventions/botify-conventions.yml
+  - type: ErrorCatalog
+    url: errors/botify-problem-types.yml
+  - type: DataModel
+    url: data-model/botify-data-model.yml
+  - type: RateLimits
+    url: https://developers.botify.com/docs/limits
+- aid: botify:botify-user-api
+  name: Botify User API
+  description: The User API from Botify — 1 operation(s) for user.
+  humanURL: https://developers.botify.com/
+  baseURL: https://api.botify.com/v1
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/botify-user-api-openapi.yml
+  - type: Documentation
+    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
+  - type: APIReference
+    url: https://developers.botify.com/reference/getalluserprojects-1
+  - type: GettingStarted
+    url: https://developers.botify.com/docs/getting-started
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: Conventions
+    url: conventions/botify-conventions.yml
+  - type: ErrorCatalog
+    url: errors/botify-problem-types.yml
+  - type: DataModel
+    url: data-model/botify-data-model.yml
+  - type: RateLimits
+    url: https://developers.botify.com/docs/limits
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/botify-api-swagger-overlay.yaml
 - type: Website
   url: https://www.botify.com/
 - type: DeveloperPortal
