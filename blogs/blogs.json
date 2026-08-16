@@ -1,0 +1,14 @@
+{
+  "repo": "botify",
+  "feeds": [
+    {
+      "source": "https://support.botify.com/",
+      "feed_url": "https://support.botify.com/feed.xml",
+      "title": "",
+      "saved": 1,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 1,
+  "fetched": "2026-08-15T12:22:01Z"
+}
