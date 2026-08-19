@@ -1,0 +1,84 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  description: Botify Saas API
+  title: Botify Datasource API
+servers:
+- url: https://api.botify.com/v1
+security:
+- DjangoRestToken: []
+tags:
+- name: Datasource
+paths:
+  /users/{username}/datasources_summary_by_projects:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    get:
+      description: Get the datasources details for all projects of a user
+      summary: ''
+      operationId: getDatasourcesSummaryByProjects
+      tags:
+      - Datasource
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDatasourceSummary'
+components:
+  schemas:
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
+    ProjectDatasourceSummary:
+      properties:
+        runnable:
+          type: string
+          readOnly: true
+        datasource:
+          type: string
+        date_last_successful_revision:
+          type: string
+          readOnly: true
+        last_revision_status:
+          type: string
+          readOnly: true
+        stats:
+          type: string
+          readOnly: true
+        segments:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - datasource
+  securitySchemes:
+    DjangoRestToken:
+      type: apiKey
+      name: Authorization
+      in: header

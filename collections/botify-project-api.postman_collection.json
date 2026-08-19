@@ -1,0 +1,1939 @@
+{
+  "item": [
+    {
+      "id": "b7cdd2f0-af31-4e05-9e84-74664dbf95d6",
+      "name": "Project",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d407ef80-6ab5-4724-a465-cb372389c367",
+          "name": "get Project Analyses",
+          "request": {
+            "name": "get Project Analyses",
+            "description": {
+              "content": "List all analyses for a project",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analyses",
+                ":username",
+                ":project_slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page Number"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Page Size"
+                },
+                {
+                  "disabled": false,
+                  "key": "only_success",
+                  "value": "true",
+                  "description": "Return only successfully finished analyses"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Which fields to return (comma-separated)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) User's identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) Project's identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "efde003a-a884-4561-a3c3-998dbf9a0c29",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":username",
+                    ":project_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "only_success",
+                      "value": "true"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"count\": 5729,\n  \"results\": [\n    {\n      \"user\": {\n        \"username\": \"string\",\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"email\": \"string\",\n        \"full_name\": \"string\"\n      },\n      \"owner\": \"string\",\n      \"slug\": \"string\",\n      \"name\": \"string\",\n      \"friendly_name\": \"string\",\n      \"url\": \"string\",\n      \"status\": \"string\",\n      \"computing_revision\": \"string\",\n      \"features\": \"string\",\n      \"urls_done\": \"string\",\n      \"urls_in_queue\": \"string\",\n      \"config\": \"string\",\n      \"date_launched\": \"1977-04-05T15:42:49.400Z\",\n      \"date_finished\": \"1961-05-24T13:25:59.474Z\",\n      \"date_last_modified\": \"1977-10-12T21:52:29.695Z\",\n      \"date_created\": \"1962-03-23T00:01:30.866Z\",\n      \"date_crawl_done\": \"string\",\n      \"failures\": \"string\",\n      \"red_button_domain\": \"string\",\n      \"import_keywords_data\": \"string\",\n      \"import_keywords_data_by_country\": true,\n      \"crawl_launch_type\": \"string\",\n      \"to_be_deleted_at\": \"1982-10-22T05:10:46.678Z\",\n      \"comparable\": \"string\",\n      \"excluded_from_trends\": false,\n      \"pk\": \"string\",\n      \"has_raw_pages\": \"string\"\n    },\n    {\n      \"user\": {\n        \"username\": \"string\",\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"email\": \"string\",\n        \"full_name\": \"string\"\n      },\n      \"owner\": \"string\",\n      \"slug\": \"string\",\n      \"name\": \"string\",\n      \"friendly_name\": \"string\",\n      \"url\": \"string\",\n      \"status\": \"string\",\n      \"computing_revision\": \"string\",\n      \"features\": \"string\",\n      \"urls_done\": \"string\",\n      \"urls_in_queue\": \"string\",\n      \"config\": \"string\",\n      \"date_launched\": \"2022-08-23T07:41:32.031Z\",\n      \"date_finished\": \"1975-05-12T10:23:44.984Z\",\n      \"date_last_modified\": \"1960-09-07T15:12:34.044Z\",\n      \"date_created\": \"1995-04-02T17:29:31.013Z\",\n      \"date_crawl_done\": \"string\",\n      \"failures\": \"string\",\n      \"red_button_domain\": \"string\",\n      \"import_keywords_data\": \"string\",\n      \"import_keywords_data_by_country\": true,\n      \"crawl_launch_type\": \"string\",\n      \"to_be_deleted_at\": \"2007-06-05T08:46:54.050Z\",\n      \"comparable\": \"string\",\n      \"excluded_from_trends\": false,\n      \"pk\": \"string\",\n      \"has_raw_pages\": \"string\"\n    }\n  ],\n  \"page\": 2760,\n  \"size\": 37\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "736fddaa-13d5-4340-90d5-3f91275f7e64",
+              "name": "error payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":username",
+                    ":project_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "only_success",
+                      "value": "true"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"error_code\": \"string\",\n    \"error_detail\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ec8482f-596d-46f6-82c8-6dded8caf86a",
+          "name": "get Project Analyses Light",
+          "request": {
+            "name": "get Project Analyses Light",
+            "description": {
+              "content": "List all analyses for a project (light)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analyses",
+                ":username",
+                ":project_slug",
+                "light"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page Number"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Page Size"
+                },
+                {
+                  "disabled": false,
+                  "key": "only_success",
+                  "value": "true",
+                  "description": "Return only successfully finished analyses"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) User's identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) Project's identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f295d309-5757-4624-abc2-a92a20c3d31c",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":username",
+                    ":project_slug",
+                    "light"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "only_success",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"count\": 9510,\n  \"results\": [\n    {\n      \"slug\": \"string\",\n      \"pk\": \"string\",\n      \"name\": \"string\",\n      \"friendly_name\": \"string\",\n      \"url\": \"string\",\n      \"status\": \"string\",\n      \"urls_done\": \"string\",\n      \"urls_in_queue\": \"string\",\n      \"date_launched\": \"1947-01-03T12:11:27.821Z\",\n      \"date_finished\": \"1968-06-01T04:01:00.488Z\",\n      \"date_last_modified\": \"1959-10-22T23:26:26.836Z\",\n      \"date_created\": \"2004-10-07T20:38:33.929Z\",\n      \"to_be_deleted_at\": \"2023-04-25T20:04:02.808Z\",\n      \"comparable\": true,\n      \"excluded_from_trends\": false,\n      \"has_raw_pages\": true\n    },\n    {\n      \"slug\": \"string\",\n      \"pk\": \"string\",\n      \"name\": \"string\",\n      \"friendly_name\": \"string\",\n      \"url\": \"string\",\n      \"status\": \"string\",\n      \"urls_done\": \"string\",\n      \"urls_in_queue\": \"string\",\n      \"date_launched\": \"1974-05-10T01:17:05.115Z\",\n      \"date_finished\": \"2002-05-10T08:25:47.179Z\",\n      \"date_last_modified\": \"2007-01-24T22:16:15.882Z\",\n      \"date_created\": \"1972-01-14T14:13:12.523Z\",\n      \"to_be_deleted_at\": \"1980-03-03T06:41:30.991Z\",\n      \"comparable\": true,\n      \"excluded_from_trends\": false,\n      \"has_raw_pages\": false\n    }\n  ],\n  \"page\": 2010,\n  \"size\": 8654\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0a305a9-1608-4568-9643-73b85660bff8",
+              "name": "error payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":username",
+                    ":project_slug",
+                    "light"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "only_success",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"error_code\": \"string\",\n    \"error_detail\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e426f7ae-4f02-4cc4-8c8c-e2af98751e74",
+          "name": "get Saved Filters",
+          "request": {
+            "name": "get Saved Filters",
+            "description": {
+              "content": "List all the project's saved filters (each filter's name, ID and filter value)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":username",
+                ":project_slug",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page Number"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Page Size"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search query on the filter name"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) User's identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) Project's identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e630dafd-4daf-474c-84d0-62c9e9658569",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"count\": 2809,\n  \"results\": [\n    {\n      \"name\": \"string\",\n      \"filters\": {},\n      \"identifier\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\",\n      \"project_name\": \"string\",\n      \"created_date\": \"1992-01-17T05:07:11.863Z\"\n    },\n    {\n      \"name\": \"string\",\n      \"filters\": {},\n      \"identifier\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\",\n      \"project_name\": \"string\",\n      \"created_date\": \"2020-03-16T17:49:40.185Z\"\n    }\n  ],\n  \"page\": 9387,\n  \"size\": 9378\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4343d3d5-bde6-42dc-8727-2241518b8de6",
+              "name": "error payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"error_code\": \"string\",\n    \"error_detail\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "456d63ec-b83c-439f-9d88-8210341906ee",
+          "name": "get Filter",
+          "request": {
+            "name": "get Filter",
+            "description": {
+              "content": "Retrieve a specific project saved, account or recommended filter's name, ID and filter value",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":username",
+                ":project_slug",
+                "filters",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) User's identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) Project's identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd06ad16-0b1c-4a14-b85a-cd063168e7fe",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "filters",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"filters\": {},\n  \"identifier\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"string\",\n  \"project_name\": \"string\",\n  \"created_date\": \"1968-01-23T15:25:30.360Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c08ae630-a040-4c75-9ee2-5f09992bba2c",
+              "name": "error payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "filters",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"error_code\": \"string\",\n    \"error_detail\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38960eab-29d3-4d59-a0df-94c43e61188f",
+          "name": "project Query",
+          "request": {
+            "name": "project Query",
+            "description": {
+              "content": "Query collections at a project level.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":username",
+                ":project_slug",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page Number"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Page Size"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) User's identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) Project's identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"query\": {\n    \"dimensions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metrics\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": \"<object>\",\n    \"post_filters\": \"<object>\",\n    \"sort\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"periods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "525e9b08-3d40-49f7-b760-b35b7fceeade",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"query\": {\n    \"dimensions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metrics\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": \"<object>\",\n    \"post_filters\": \"<object>\",\n    \"sort\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"periods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"count\": 5416,\n  \"results\": [\n    {\n      \"results\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"results\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"page\": 3698,\n  \"size\": 4844\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61954954-331d-4585-8043-5771af875949",
+              "name": "error payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"query\": {\n    \"dimensions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metrics\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": \"<object>\",\n    \"post_filters\": \"<object>\",\n    \"sort\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"periods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"error_code\": \"string\",\n    \"error_detail\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d9acc09-b259-4d02-b8a9-fcdd74523d66",
+          "name": "get Saved Explorers",
+          "request": {
+            "name": "get Saved Explorers",
+            "description": {
+              "content": "List all the project's Saved Explorers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":username",
+                ":project_slug",
+                "saved_explorers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) User's identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) Project's identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cce8be57-2f1f-45a5-a19a-aa913faaa26c",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "saved_explorers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"query\": {},\n  \"uuid\": \"string\",\n  \"type\": \"string\",\n  \"description\": \"string\",\n  \"created_by\": {\n    \"username\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"string\",\n    \"full_name\": \"string\"\n  },\n  \"modified_by\": {\n    \"username\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"string\",\n    \"full_name\": \"string\"\n  },\n  \"created_date\": \"1996-07-12T23:13:15.279Z\",\n  \"modified_date\": \"2012-01-27T19:50:18.829Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aeb3e1b6-22c5-4d4e-b720-0fa754d33494",
+              "name": "error payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "saved_explorers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"error_code\": \"string\",\n    \"error_detail\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb60ca6f-5759-42f8-b85f-2bfe6fb22377",
+          "name": "get Project Urls Aggs",
+          "request": {
+            "name": "get Project Urls Aggs",
+            "description": {
+              "content": "Project Query aggregator. It accepts multiple queries that will be executed on all completed analyses in the project",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":username",
+                ":project_slug",
+                "urls",
+                "aggs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "area",
+                  "value": "current",
+                  "description": "Analyses context"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_analysis_slug",
+                  "value": "<string>",
+                  "description": "Last analysis on the trend"
+                },
+                {
+                  "disabled": false,
+                  "key": "nb_analyses",
+                  "value": "20",
+                  "description": "Max number of analysis to return"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) User's identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) Project's identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"filters\": \"<object>\",\n    \"aggs\": [\n      \"<object>\",\n      \"<object>\"\n    ]\n  },\n  {\n    \"filters\": \"<object>\",\n    \"aggs\": [\n      \"<object>\",\n      \"<object>\"\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66d6b3a7-3f99-4f1a-ac76-ee4f8f6ac6ff",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "urls",
+                    "aggs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "area",
+                      "value": "current"
+                    },
+                    {
+                      "key": "last_analysis_slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nb_analyses",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"filters\": \"<object>\",\n    \"aggs\": [\n      \"<object>\",\n      \"<object>\"\n    ]\n  },\n  {\n    \"filters\": \"<object>\",\n    \"aggs\": [\n      \"<object>\",\n      \"<object>\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc8dcd8d-d9c5-45e6-9cd4-3a8a00bfc6a6",
+              "name": "error payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "urls",
+                    "aggs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "area",
+                      "value": "current"
+                    },
+                    {
+                      "key": "last_analysis_slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nb_analyses",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"filters\": \"<object>\",\n    \"aggs\": [\n      \"<object>\",\n      \"<object>\"\n    ]\n  },\n  {\n    \"filters\": \"<object>\",\n    \"aggs\": [\n      \"<object>\",\n      \"<object>\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"error_code\": \"string\",\n    \"error_detail\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5aa4279-6598-4122-b562-ffcd7077fe8b",
+          "name": "clone Values List",
+          "request": {
+            "name": "clone Values List",
+            "description": {
+              "content": "Clone all keyword groups of the current project to another one.  This endpoint is a little more general (for further use). That's why you will see a 'type' field (with a default value of: 'keywords').",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":username",
+                ":project_slug",
+                "values_list",
+                "clone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) User's identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) Project's identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_username\": \"<string>\",\n  \"target_project\": \"<string>\",\n  \"type\": \"keywords\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fbb4cb8e-1f35-4448-9dfa-ac92c00b8f92",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "values_list",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_username\": \"<string>\",\n  \"target_project\": \"<string>\",\n  \"type\": \"keywords\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d9e63f5-b832-4e18-b094-f6ba79f8cc38",
+              "name": "error payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username",
+                    ":project_slug",
+                    "values_list",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) Project's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_username\": \"<string>\",\n  \"target_project\": \"<string>\",\n  \"type\": \"keywords\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"error_code\": \"string\",\n    \"error_detail\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04d7bddd-390e-4393-b05c-d39c0fc327c3",
+          "name": "get All User Projects",
+          "request": {
+            "name": "get All User Projects",
+            "description": {
+              "content": "List all active projects for the user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":username",
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) User's identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2d64435-0366-4f5d-b88c-a06dd5361a63",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":username",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"slug\": \"string\",\n  \"organization\": {\n    \"owner\": {\n      \"username\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"email\": \"string\",\n      \"full_name\": \"string\"\n    },\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"is_organization\": \"string\",\n    \"email\": \"string\"\n  },\n  \"current_settings\": {\n    \"blacklisted_domains\": [\n      \"string\",\n      \"string\"\n    ],\n    \"allowed_domains\": [\n      \"string\",\n      \"string\"\n    ],\n    \"pk\": \"string\"\n  },\n  \"has_crawl\": true,\n  \"has_logs\": true,\n  \"actionboard_enabled\": false,\n  \"has_engagement_analytics\": true,\n  \"has_gen_ai\": true,\n  \"has_web_vitals_field_data\": false,\n  \"max_extracts\": 6316,\n  \"webproperty\": {\n    \"public_id\": \"string\",\n    \"name\": \"string\",\n    \"domain\": \"string\",\n    \"current_subscription_plan\": {\n      \"plan\": \"string\",\n      \"start_date\": \"1951-01-12T23:48:03.833Z\",\n      \"data_retention\": \"string\",\n      \"alert_panel\": \"string\",\n      \"smart_activation\": \"string\"\n    },\n    \"renewal_subscription_plan\": {\n      \"plan\": \"string\",\n      \"start_date\": \"2022-05-30T05:20:44.497Z\",\n      \"data_retention\": \"string\",\n      \"alert_panel\": \"string\",\n      \"smart_activation\": \"string\"\n    }\n  },\n  \"pk\": \"string\",\n  \"date_created\": \"string\",\n  \"url\": \"string\",\n  \"permissions\": \"string\",\n  \"roles\": \"string\",\n  \"last_log_revision\": \"string\",\n  \"last_crawls_revisions\": \"string\",\n  \"last_actionboard_revision\": \"string\",\n  \"has_actionboard_changes\": \"string\",\n  \"has_keywords\": \"string\",\n  \"max_gsc_websites\": 11511,\n  \"max_gsc_via_bq_websites\": 31049,\n  \"realkeywords_aggregation_type\": 9323,\n  \"has_actionboard\": \"string\",\n  \"public_id\": 7977038760969462000,\n  \"account_id\": \"string\",\n  \"mcp\": \"string\",\n  \"has_alertpanel\": \"string\",\n  \"has_speedworkers\": \"string\",\n  \"has_pageworkers\": \"string\",\n  \"has_smartcontent\": \"string\",\n  \"has_smartlink\": \"string\",\n  \"has_agentic_catalog\": \"string\",\n  \"has_ai_consent\": \"string\",\n  \"category\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1da86ebd-e0e9-4d27-b036-c5fa80cdd966",
+              "name": "error payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":username",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"error_code\": \"string\",\n    \"error_detail\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.botify.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ed49c5c9-32d2-48c3-b654-1a9af2cdf29f",
+    "name": "Botify Project API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Botify Saas API",
+      "type": "text/plain"
+    }
+  }
+}

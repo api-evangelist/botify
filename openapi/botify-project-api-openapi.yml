@@ -1,0 +1,1022 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  description: Botify Saas API
+  title: Botify Project API
+servers:
+- url: https://api.botify.com/v1
+security:
+- DjangoRestToken: []
+tags:
+- name: Project
+paths:
+  /analyses/{username}/{project_slug}:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    get:
+      description: List all analyses for a project
+      summary: ''
+      operationId: getProjectAnalyses
+      tags:
+      - Project
+      parameters:
+      - in: query
+        name: page
+        description: Page Number
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - in: query
+        name: size
+        required: false
+        description: Page Size
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: only_success
+        required: false
+        description: Return only successfully finished analyses
+        schema:
+          type: boolean
+          default: true
+      - in: query
+        name: fields
+        required: false
+        description: Which fields to return (comma-separated)
+        schema:
+          type: string
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  next:
+                    type: string
+                  previous:
+                    type: string
+                  count:
+                    type: integer
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Analysis'
+                  page:
+                    type: integer
+                  size:
+                    type: integer
+  /analyses/{username}/{project_slug}/light:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    get:
+      description: List all analyses for a project (light)
+      summary: ''
+      operationId: getProjectAnalysesLight
+      tags:
+      - Project
+      parameters:
+      - in: query
+        name: page
+        description: Page Number
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - in: query
+        name: size
+        required: false
+        description: Page Size
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: only_success
+        required: false
+        description: Return only successfully finished analyses
+        schema:
+          type: boolean
+          default: true
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  next:
+                    type: string
+                  previous:
+                    type: string
+                  count:
+                    type: integer
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LightAnalysis'
+                  page:
+                    type: integer
+                  size:
+                    type: integer
+  /projects/{username}/{project_slug}/filters:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    get:
+      description: List all the project's saved filters (each filter's name, ID and filter value)
+      summary: ''
+      operationId: getSavedFilters
+      tags:
+      - Project
+      parameters:
+      - in: query
+        name: page
+        required: false
+        description: Page Number
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: size
+        required: false
+        description: Page Size
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: search
+        required: false
+        description: Search query on the filter name
+        schema:
+          type: string
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  next:
+                    type: string
+                  previous:
+                    type: string
+                  count:
+                    type: integer
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProjectSavedFilter'
+                  page:
+                    type: integer
+                  size:
+                    type: integer
+  /projects/{username}/{project_slug}/filters/{identifier}:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    - name: identifier
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      description: Retrieve a specific project saved, account or recommended filter's name, ID and filter value
+      summary: ''
+      operationId: getFilter
+      tags:
+      - Project
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectSavedFilter'
+  /projects/{username}/{project_slug}/query:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    post:
+      description: Query collections at a project level.
+      summary: ''
+      operationId: projectQuery
+      tags:
+      - Project
+      parameters:
+      - in: query
+        name: page
+        required: false
+        description: Page Number
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: size
+        required: false
+        description: Page Size
+        schema:
+          type: integer
+          format: int32
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  next:
+                    type: string
+                  previous:
+                    type: string
+                  count:
+                    type: integer
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/QueryResponses'
+                  page:
+                    type: integer
+                  size:
+                    type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectQuery'
+        description: Project Query
+  /projects/{username}/{project_slug}/saved_explorers:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    get:
+      description: List all the project's Saved Explorers.
+      summary: ''
+      operationId: getSavedExplorers
+      tags:
+      - Project
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedExplorer'
+  /projects/{username}/{project_slug}/urls/aggs:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    post:
+      description: Project Query aggregator. It accepts multiple queries that will be executed on all completed analyses in the project
+      summary: ''
+      operationId: getProjectUrlsAggs
+      tags:
+      - Project
+      parameters:
+      - in: query
+        name: area
+        required: false
+        description: Analyses context
+        schema:
+          type: string
+          enum:
+          - current
+          - disappeared
+          - new
+          - gsc_keywords
+          - gsc_keywords_by_country
+          default: current
+      - in: query
+        name: last_analysis_slug
+        required: false
+        description: Last analysis on the trend
+        schema:
+          type: string
+      - in: query
+        name: nb_analyses
+        required: false
+        description: Max number of analysis to return
+        schema:
+          type: integer
+          format: int32
+          default: 20
+          maximum: 20
+          minimum: 1
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Default'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AggsQueries'
+        description: AggsQueries
+  /projects/{username}/{project_slug}/values_list/clone:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    post:
+      description: 'Clone all keyword groups of the current project to another one.  This endpoint is a little more general (for further use). That''s why you will see a ''type'' field (with a default value of: ''keywords'').'
+      summary: ''
+      operationId: cloneValuesList
+      tags:
+      - Project
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValuesListCloneResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValuesListCloneRequestBody'
+        description: JSON body to use as request body for ValuesList clone operation
+  /users/{username}/projects:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    get:
+      description: List all active projects for the user
+      summary: ''
+      operationId: getAllUserProjects
+      tags:
+      - Project
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+components:
+  schemas:
+    AggsQueries:
+      type: array
+      items:
+        $ref: '#/components/schemas/AggsQuery'
+    QueryResponses:
+      properties:
+        results:
+          type: array
+          items:
+            type: string
+      type: object
+      description: Query Responses
+    AggsQuery:
+      properties:
+        filters:
+          type: object
+        aggs:
+          type: array
+          items:
+            type: object
+      type: object
+      description: AggsQuery
+    ValuesListCloneRequestBody:
+      properties:
+        target_username:
+          type: string
+          description: the target project username
+        target_project:
+          type: string
+          description: the target project slug
+        type:
+          type: string
+          default: keywords
+          description: for further use only, the type of ValuesList to clone (default to 'keywords')
+      type: object
+      description: JSON body to use as request body for ValuesList clone operation
+      required:
+      - target_username
+      - target_project
+    QueryRequest:
+      properties:
+        dimensions:
+          type: array
+          items:
+            type: string
+        metrics:
+          type: array
+          items:
+            type: string
+        filters:
+          type: object
+        post_filters:
+          type: object
+        sort:
+          type: array
+          items:
+            type: string
+      type: object
+      description: Query Request
+      required:
+      - dimensions
+      - metrics
+    Project:
+      properties:
+        pk:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        slug:
+          type: string
+        organization:
+          $ref: '#/components/schemas/OrganizationUser'
+        current_settings:
+          $ref: '#/components/schemas/ProjectSettings'
+        date_created:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          readOnly: true
+        permissions:
+          type: string
+          readOnly: true
+        roles:
+          type: string
+          readOnly: true
+        last_log_revision:
+          type: string
+          readOnly: true
+        last_crawls_revisions:
+          type: string
+          readOnly: true
+        last_actionboard_revision:
+          type: string
+          readOnly: true
+        has_actionboard_changes:
+          type: string
+          readOnly: true
+        has_crawl:
+          type: boolean
+        has_logs:
+          type: boolean
+        has_keywords:
+          type: string
+          readOnly: true
+        max_gsc_websites:
+          type: integer
+          format: int64
+          minimum: 0
+          maximum: 32767
+        max_gsc_via_bq_websites:
+          type: integer
+          format: int64
+          description: Maximum number of GSC properties that can be activated using BigQuery bulk export
+          minimum: 0
+          maximum: 32767
+        realkeywords_aggregation_type:
+          type: integer
+          format: int64
+          description: 'If ''New: By website & by URL'' is selected, data will be shown aggregated by website wherever possible in RealKeywords'
+        actionboard_enabled:
+          type: boolean
+        has_actionboard:
+          type: string
+          readOnly: true
+        has_engagement_analytics:
+          type: boolean
+        public_id:
+          type: integer
+          format: int64
+          minimum: -9223372036854775808
+          maximum: 9223372036854775807
+        account_id:
+          type: string
+          readOnly: true
+        mcp:
+          type: string
+          readOnly: true
+        has_alertpanel:
+          type: string
+          readOnly: true
+        has_speedworkers:
+          type: string
+          readOnly: true
+        has_pageworkers:
+          type: string
+          readOnly: true
+        has_smartcontent:
+          type: string
+          readOnly: true
+        has_smartlink:
+          type: string
+          readOnly: true
+        has_agentic_catalog:
+          type: string
+          readOnly: true
+        has_gen_ai:
+          type: boolean
+        has_ai_consent:
+          type: string
+          readOnly: true
+        has_web_vitals_field_data:
+          type: boolean
+        max_extracts:
+          type: integer
+          format: int64
+        category:
+          type: string
+          default: 0
+        webproperty:
+          $ref: '#/components/schemas/WebProperty'
+      type: object
+      required:
+      - name
+      - slug
+      - organization
+      - current_settings
+      - has_crawl
+      - has_logs
+      - actionboard_enabled
+      - has_engagement_analytics
+      - has_gen_ai
+      - has_web_vitals_field_data
+      - max_extracts
+      - webproperty
+    OrganizationUser:
+      properties:
+        owner:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+        is_organization:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - owner
+    ValuesListCloneResponse:
+      properties: {}
+      type: object
+    ProjectSavedFilter:
+      properties:
+        name:
+          type: string
+        filters:
+          type: object
+        identifier:
+          type: string
+          readOnly: true
+        description:
+          type: string
+        type:
+          type: string
+          readOnly: true
+        project_name:
+          type: string
+          readOnly: true
+        created_date:
+          type: string
+          format: date-time
+          readOnly: true
+      type: object
+      description: Project's saved UrlFilter
+      required:
+      - name
+      - filters
+    ProjectQuery:
+      properties:
+        collections:
+          type: array
+          items:
+            type: string
+        periods:
+          type: array
+          items:
+            type: string
+        query:
+          $ref: '#/components/schemas/QueryRequest'
+      type: object
+      description: Project Query
+      required:
+      - collections
+      - query
+    LightAnalysis:
+      properties:
+        pk:
+          type: string
+          readOnly: true
+        slug:
+          type: string
+        name:
+          type: string
+          readOnly: true
+        friendly_name:
+          type: string
+        url:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        urls_done:
+          type: string
+          readOnly: true
+        urls_in_queue:
+          type: string
+          readOnly: true
+        date_launched:
+          type: string
+          format: date-time
+        date_finished:
+          type: string
+          format: date-time
+        date_last_modified:
+          type: string
+          format: date-time
+          description: Date of last modified analysis
+        date_created:
+          type: string
+          format: date-time
+        to_be_deleted_at:
+          type: string
+          format: date-time
+        comparable:
+          type: boolean
+          default: true
+        excluded_from_trends:
+          type: boolean
+          description: If yes, this crawl will be excluded from trends data
+        has_raw_pages:
+          type: boolean
+          description: If yes, this crawl has raw HTML pages
+      type: object
+      required:
+      - slug
+    SubscriptionPlan:
+      properties:
+        plan:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        data_retention:
+          type: string
+          readOnly: true
+        alert_panel:
+          type: string
+          readOnly: true
+        smart_activation:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - plan
+      - start_date
+    WebProperty:
+      properties:
+        public_id:
+          type: string
+        name:
+          type: string
+        domain:
+          type: string
+        current_subscription_plan:
+          $ref: '#/components/schemas/SubscriptionPlan'
+        renewal_subscription_plan:
+          $ref: '#/components/schemas/SubscriptionPlan'
+      type: object
+      required:
+      - public_id
+      - name
+      - domain
+      - current_subscription_plan
+      - renewal_subscription_plan
+    User:
+      properties:
+        username:
+          type: string
+          description: Required. 30 characters or fewer. Letters, numbers and /-/_/. characters
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        full_name:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - username
+    Default:
+      properties: {}
+      type: object
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
+    ProjectSettings:
+      properties:
+        blacklisted_domains:
+          type: array
+          items:
+            type: string
+        allowed_domains:
+          type: array
+          items:
+            type: string
+        pk:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - blacklisted_domains
+      - allowed_domains
+    Analysis:
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        owner:
+          type: string
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        friendly_name:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        computing_revision:
+          type: string
+          readOnly: true
+        features:
+          type: string
+          readOnly: true
+        urls_done:
+          type: string
+          readOnly: true
+        urls_in_queue:
+          type: string
+          readOnly: true
+        config:
+          type: string
+          readOnly: true
+        date_launched:
+          type: string
+          format: date-time
+        date_finished:
+          type: string
+          format: date-time
+        date_last_modified:
+          type: string
+          format: date-time
+          description: Date of last modified analysis
+        date_created:
+          type: string
+          format: date-time
+        date_crawl_done:
+          type: string
+          readOnly: true
+        failures:
+          type: string
+          readOnly: true
+        red_button_domain:
+          type: string
+        import_keywords_data:
+          type: string
+          readOnly: true
+        import_keywords_data_by_country:
+          type: boolean
+          default: true
+        crawl_launch_type:
+          type: string
+          readOnly: true
+        to_be_deleted_at:
+          type: string
+          format: date-time
+        comparable:
+          type: string
+          readOnly: true
+        excluded_from_trends:
+          type: boolean
+          default: false
+        pk:
+          type: string
+          readOnly: true
+        has_raw_pages:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - user
+    SavedExplorer:
+      properties:
+        uuid:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        type:
+          type: string
+          readOnly: true
+        description:
+          type: string
+        query:
+          type: object
+        created_by:
+          readOnly: true
+          $ref: '#/components/schemas/User'
+        modified_by:
+          readOnly: true
+          $ref: '#/components/schemas/User'
+        created_date:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_date:
+          type: string
+          format: date-time
+          readOnly: true
+      type: object
+      description: Project's saved explorer
+      required:
+      - name
+      - query
+  securitySchemes:
+    DjangoRestToken:
+      type: apiKey
+      name: Authorization
+      in: header

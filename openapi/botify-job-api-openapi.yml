@@ -1,0 +1,221 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  description: Botify Saas API
+  title: Botify Job API
+servers:
+- url: https://api.botify.com/v1
+security:
+- DjangoRestToken: []
+tags:
+- name: Job
+paths:
+  /jobs:
+    parameters: []
+    get:
+      description: List All jobs
+      summary: ''
+      operationId: getJobs
+      tags:
+      - Job
+      parameters:
+      - in: query
+        name: page
+        description: Page Number
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - in: query
+        name: size
+        description: Page Size
+        required: false
+        schema:
+          type: integer
+      - in: query
+        name: job_type
+        required: false
+        description: The job type
+        schema:
+          type: string
+      - in: query
+        name: project
+        required: false
+        description: The project slug
+        schema:
+          type: string
+      - in: query
+        name: analysis
+        required: false
+        description: The analysis slug
+        schema:
+          type: string
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  next:
+                    type: string
+                  previous:
+                    type: string
+                  count:
+                    type: integer
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/JobResults'
+                  page:
+                    type: integer
+                  size:
+                    type: integer
+    post:
+      description: Creates a job instance of a class which depends on the "job_type" parameter you sent. Returns the model id that manages the task.
+      summary: ''
+      operationId: createJob
+      tags:
+      - Job
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResults'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobCreate'
+        description: Job create
+  /jobs/{job_id}:
+    parameters:
+    - name: job_id
+      in: path
+      required: true
+      description: the id of the job to retrieve
+      schema:
+        type: string
+    get:
+      description: Retrieve one job
+      summary: ''
+      operationId: getJob
+      tags:
+      - Job
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResults'
+components:
+  schemas:
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
+    JobCreate:
+      properties:
+        job_id:
+          type: string
+          readOnly: true
+        job_type:
+          type: string
+        job_url:
+          type: string
+          readOnly: true
+        job_status:
+          type: string
+          readOnly: true
+        payload:
+          type: object
+        results:
+          type: object
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        user:
+          type: string
+          readOnly: true
+        metadata:
+          type: object
+      type: object
+      description: Job create
+      required:
+      - job_type
+      - payload
+    JobResults:
+      properties:
+        job_id:
+          type: string
+          readOnly: true
+        job_type:
+          type: string
+        job_url:
+          type: string
+          readOnly: true
+        job_status:
+          type: string
+          readOnly: true
+        results:
+          type: string
+          readOnly: true
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        payload:
+          type: string
+          readOnly: true
+        user:
+          type: string
+          readOnly: true
+        metadata:
+          type: object
+        crawl_date:
+          type: string
+          readOnly: true
+      type: object
+      description: Job results
+      required:
+      - job_type
+  securitySchemes:
+    DjangoRestToken:
+      type: apiKey
+      name: Authorization
+      in: header

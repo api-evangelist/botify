@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Botify Job API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Job",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getJobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/jobs",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              },
+              {
+                "name": "job_type",
+                "value": "",
+                "type": "query",
+                "description": "The job type"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "The project slug"
+              },
+              {
+                "name": "analysis",
+                "value": "",
+                "type": "query",
+                "description": "The analysis slug"
+              }
+            ]
+          },
+          "docs": "List All jobs"
+        },
+        {
+          "info": {
+            "name": "createJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.botify.com/v1/jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a job instance of a class which depends on the \"job_type\" parameter you sent. Returns the model id that manages the task."
+        },
+        {
+          "info": {
+            "name": "getJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/jobs/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of the job to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieve one job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

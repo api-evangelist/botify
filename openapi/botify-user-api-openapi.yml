@@ -1,0 +1,312 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  description: Botify Saas API
+  title: Botify User API
+servers:
+- url: https://api.botify.com/v1
+security:
+- DjangoRestToken: []
+tags:
+- name: User
+paths:
+  /projects/{username}:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    get:
+      description: List all active projects for the user
+      summary: ''
+      operationId: getUserProjects
+      tags:
+      - User
+      parameters:
+      - in: query
+        name: name
+        description: Project's name
+        schema:
+          type: string
+      - in: query
+        name: page
+        description: Page Number
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - in: query
+        name: size
+        description: Page Size
+        required: false
+        schema:
+          type: integer
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  next:
+                    type: string
+                  previous:
+                    type: string
+                  count:
+                    type: integer
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Project'
+                  page:
+                    type: integer
+                  size:
+                    type: integer
+components:
+  schemas:
+    User:
+      properties:
+        username:
+          type: string
+          description: Required. 30 characters or fewer. Letters, numbers and /-/_/. characters
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        full_name:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - username
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
+    Project:
+      properties:
+        pk:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        slug:
+          type: string
+        organization:
+          $ref: '#/components/schemas/OrganizationUser'
+        current_settings:
+          $ref: '#/components/schemas/ProjectSettings'
+        date_created:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          readOnly: true
+        permissions:
+          type: string
+          readOnly: true
+        roles:
+          type: string
+          readOnly: true
+        last_log_revision:
+          type: string
+          readOnly: true
+        last_crawls_revisions:
+          type: string
+          readOnly: true
+        last_actionboard_revision:
+          type: string
+          readOnly: true
+        has_actionboard_changes:
+          type: string
+          readOnly: true
+        has_crawl:
+          type: boolean
+        has_logs:
+          type: boolean
+        has_keywords:
+          type: string
+          readOnly: true
+        max_gsc_websites:
+          type: integer
+          format: int64
+          minimum: 0
+          maximum: 32767
+        max_gsc_via_bq_websites:
+          type: integer
+          format: int64
+          description: Maximum number of GSC properties that can be activated using BigQuery bulk export
+          minimum: 0
+          maximum: 32767
+        realkeywords_aggregation_type:
+          type: integer
+          format: int64
+          description: 'If ''New: By website & by URL'' is selected, data will be shown aggregated by website wherever possible in RealKeywords'
+        actionboard_enabled:
+          type: boolean
+        has_actionboard:
+          type: string
+          readOnly: true
+        has_engagement_analytics:
+          type: boolean
+        public_id:
+          type: integer
+          format: int64
+          minimum: -9223372036854775808
+          maximum: 9223372036854775807
+        account_id:
+          type: string
+          readOnly: true
+        mcp:
+          type: string
+          readOnly: true
+        has_alertpanel:
+          type: string
+          readOnly: true
+        has_speedworkers:
+          type: string
+          readOnly: true
+        has_pageworkers:
+          type: string
+          readOnly: true
+        has_smartcontent:
+          type: string
+          readOnly: true
+        has_smartlink:
+          type: string
+          readOnly: true
+        has_agentic_catalog:
+          type: string
+          readOnly: true
+        has_gen_ai:
+          type: boolean
+        has_ai_consent:
+          type: string
+          readOnly: true
+        has_web_vitals_field_data:
+          type: boolean
+        max_extracts:
+          type: integer
+          format: int64
+        category:
+          type: string
+          default: 0
+        webproperty:
+          $ref: '#/components/schemas/WebProperty'
+      type: object
+      required:
+      - name
+      - slug
+      - organization
+      - current_settings
+      - has_crawl
+      - has_logs
+      - actionboard_enabled
+      - has_engagement_analytics
+      - has_gen_ai
+      - has_web_vitals_field_data
+      - max_extracts
+      - webproperty
+    OrganizationUser:
+      properties:
+        owner:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+        is_organization:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - owner
+    ProjectSettings:
+      properties:
+        blacklisted_domains:
+          type: array
+          items:
+            type: string
+        allowed_domains:
+          type: array
+          items:
+            type: string
+        pk:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - blacklisted_domains
+      - allowed_domains
+    SubscriptionPlan:
+      properties:
+        plan:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        data_retention:
+          type: string
+          readOnly: true
+        alert_panel:
+          type: string
+          readOnly: true
+        smart_activation:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - plan
+      - start_date
+    WebProperty:
+      properties:
+        public_id:
+          type: string
+        name:
+          type: string
+        domain:
+          type: string
+        current_subscription_plan:
+          $ref: '#/components/schemas/SubscriptionPlan'
+        renewal_subscription_plan:
+          $ref: '#/components/schemas/SubscriptionPlan'
+      type: object
+      required:
+      - public_id
+      - name
+      - domain
+      - current_subscription_plan
+      - renewal_subscription_plan
+  securitySchemes:
+    DjangoRestToken:
+      type: apiKey
+      name: Authorization
+      in: header

@@ -1,0 +1,242 @@
+{
+  "item": [
+    {
+      "id": "38112a13-a82c-4323-ab4b-c2b88e2f86d2",
+      "name": "User",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "386de54f-3bf0-40ce-b9de-060667a43b0c",
+          "name": "get User Projects",
+          "request": {
+            "name": "get User Projects",
+            "description": {
+              "content": "List all active projects for the user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":username"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Project's name"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page Number"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Page Size"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) User's identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7ea44a7-73e8-4038-a5aa-e5919d5c8df2",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"count\": 3367,\n  \"results\": [\n    {\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"organization\": {\n        \"owner\": {\n          \"username\": \"string\",\n          \"first_name\": \"string\",\n          \"last_name\": \"string\",\n          \"email\": \"string\",\n          \"full_name\": \"string\"\n        },\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"is_organization\": \"string\",\n        \"email\": \"string\"\n      },\n      \"current_settings\": {\n        \"blacklisted_domains\": [\n          \"string\",\n          \"string\"\n        ],\n        \"allowed_domains\": [\n          \"string\",\n          \"string\"\n        ],\n        \"pk\": \"string\"\n      },\n      \"has_crawl\": false,\n      \"has_logs\": true,\n      \"actionboard_enabled\": true,\n      \"has_engagement_analytics\": true,\n      \"has_gen_ai\": false,\n      \"has_web_vitals_field_data\": false,\n      \"max_extracts\": 778,\n      \"webproperty\": {\n        \"public_id\": \"string\",\n        \"name\": \"string\",\n        \"domain\": \"string\",\n        \"current_subscription_plan\": {\n          \"plan\": \"string\",\n          \"start_date\": \"2014-03-05T20:23:09.476Z\",\n          \"data_retention\": \"string\",\n          \"alert_panel\": \"string\",\n          \"smart_activation\": \"string\"\n        },\n        \"renewal_subscription_plan\": {\n          \"plan\": \"string\",\n          \"start_date\": \"1957-06-12T19:07:16.908Z\",\n          \"data_retention\": \"string\",\n          \"alert_panel\": \"string\",\n          \"smart_activation\": \"string\"\n        }\n      },\n      \"pk\": \"string\",\n      \"date_created\": \"string\",\n      \"url\": \"string\",\n      \"permissions\": \"string\",\n      \"roles\": \"string\",\n      \"last_log_revision\": \"string\",\n      \"last_crawls_revisions\": \"string\",\n      \"last_actionboard_revision\": \"string\",\n      \"has_actionboard_changes\": \"string\",\n      \"has_keywords\": \"string\",\n      \"max_gsc_websites\": 12629,\n      \"max_gsc_via_bq_websites\": 6443,\n      \"realkeywords_aggregation_type\": 377,\n      \"has_actionboard\": \"string\",\n      \"public_id\": -6794494492658665000,\n      \"account_id\": \"string\",\n      \"mcp\": \"string\",\n      \"has_alertpanel\": \"string\",\n      \"has_speedworkers\": \"string\",\n      \"has_pageworkers\": \"string\",\n      \"has_smartcontent\": \"string\",\n      \"has_smartlink\": \"string\",\n      \"has_agentic_catalog\": \"string\",\n      \"has_ai_consent\": \"string\",\n      \"category\": 0\n    },\n    {\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"organization\": {\n        \"owner\": {\n          \"username\": \"string\",\n          \"first_name\": \"string\",\n          \"last_name\": \"string\",\n          \"email\": \"string\",\n          \"full_name\": \"string\"\n        },\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"is_organization\": \"string\",\n        \"email\": \"string\"\n      },\n      \"current_settings\": {\n        \"blacklisted_domains\": [\n          \"string\",\n          \"string\"\n        ],\n        \"allowed_domains\": [\n          \"string\",\n          \"string\"\n        ],\n        \"pk\": \"string\"\n      },\n      \"has_crawl\": true,\n      \"has_logs\": true,\n      \"actionboard_enabled\": true,\n      \"has_engagement_analytics\": false,\n      \"has_gen_ai\": true,\n      \"has_web_vitals_field_data\": false,\n      \"max_extracts\": 3260,\n      \"webproperty\": {\n        \"public_id\": \"string\",\n        \"name\": \"string\",\n        \"domain\": \"string\",\n        \"current_subscription_plan\": {\n          \"plan\": \"string\",\n          \"start_date\": \"1986-05-26T10:53:58.262Z\",\n          \"data_retention\": \"string\",\n          \"alert_panel\": \"string\",\n          \"smart_activation\": \"string\"\n        },\n        \"renewal_subscription_plan\": {\n          \"plan\": \"string\",\n          \"start_date\": \"1959-05-08T19:56:24.007Z\",\n          \"data_retention\": \"string\",\n          \"alert_panel\": \"string\",\n          \"smart_activation\": \"string\"\n        }\n      },\n      \"pk\": \"string\",\n      \"date_created\": \"string\",\n      \"url\": \"string\",\n      \"permissions\": \"string\",\n      \"roles\": \"string\",\n      \"last_log_revision\": \"string\",\n      \"last_crawls_revisions\": \"string\",\n      \"last_actionboard_revision\": \"string\",\n      \"has_actionboard_changes\": \"string\",\n      \"has_keywords\": \"string\",\n      \"max_gsc_websites\": 5956,\n      \"max_gsc_via_bq_websites\": 10617,\n      \"realkeywords_aggregation_type\": 3292,\n      \"has_actionboard\": \"string\",\n      \"public_id\": -1755824415547586600,\n      \"account_id\": \"string\",\n      \"mcp\": \"string\",\n      \"has_alertpanel\": \"string\",\n      \"has_speedworkers\": \"string\",\n      \"has_pageworkers\": \"string\",\n      \"has_smartcontent\": \"string\",\n      \"has_smartlink\": \"string\",\n      \"has_agentic_catalog\": \"string\",\n      \"has_ai_consent\": \"string\",\n      \"category\": 0\n    }\n  ],\n  \"page\": 392,\n  \"size\": 7827\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "148dcca6-9d0c-4a31-87a1-42882505255e",
+              "name": "error payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":username"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) User's identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"error_code\": \"string\",\n    \"error_detail\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.botify.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8c3ed2d9-3034-4603-946a-2422f4ca2ed7",
+    "name": "Botify User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Botify Saas API",
+      "type": "text/plain"
+    }
+  }
+}

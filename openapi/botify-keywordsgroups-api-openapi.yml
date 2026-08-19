@@ -1,0 +1,94 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  description: Botify Saas API
+  title: Botify Keywords Groups API
+servers:
+- url: https://api.botify.com/v1
+security:
+- DjangoRestToken: []
+tags:
+- name: KeywordsGroups
+paths:
+  /projects/{username}/{project_slug}/values_list/clone:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    post:
+      description: 'Clone all keyword groups of the current project to another one.  This endpoint is a little more general (for further use). That''s why you will see a ''type'' field (with a default value of: ''keywords'').'
+      summary: ''
+      operationId: cloneValuesList
+      tags:
+      - KeywordsGroups
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValuesListCloneResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValuesListCloneRequestBody'
+        description: JSON body to use as request body for ValuesList clone operation
+components:
+  schemas:
+    ValuesListCloneRequestBody:
+      properties:
+        target_username:
+          type: string
+          description: the target project username
+        target_project:
+          type: string
+          description: the target project slug
+        type:
+          type: string
+          default: keywords
+          description: for further use only, the type of ValuesList to clone (default to 'keywords')
+      type: object
+      description: JSON body to use as request body for ValuesList clone operation
+      required:
+      - target_username
+      - target_project
+    ValuesListCloneResponse:
+      properties: {}
+      type: object
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
+  securitySchemes:
+    DjangoRestToken:
+      type: apiKey
+      name: Authorization
+      in: header

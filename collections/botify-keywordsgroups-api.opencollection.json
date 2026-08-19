@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Botify Keywords Groups API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "KeywordsGroups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "cloneValuesList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.botify.com/v1/projects/:username/:project_slug/values_list/clone",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Clone all keyword groups of the current project to another one.  This endpoint is a little more general (for further use). That's why you will see a 'type' field (with a default value of: 'keywords')."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

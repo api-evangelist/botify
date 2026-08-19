@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Botify Project Query API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ProjectQuery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getAccountSavedFilters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/projects/:username/:project_slug/account_filters",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search query on the filter name"
+              },
+              {
+                "name": "disable_project",
+                "value": "",
+                "type": "query",
+                "description": "Flag to return or not filters of this project"
+              }
+            ]
+          },
+          "docs": "List all the account saved filters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

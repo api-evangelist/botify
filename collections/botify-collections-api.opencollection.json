@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Botify Collections API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getProjectCollections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/projects/:username/:project_slug/collections",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              }
+            ]
+          },
+          "docs": "List all collections for a project"
+        },
+        {
+          "info": {
+            "name": "getCollectionDetail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/projects/:username/:project_slug/collections/:collection",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "The collection to query"
+              },
+              {
+                "name": "sequenced",
+                "value": "",
+                "type": "query",
+                "description": "Whether to use sequenced groups"
+              }
+            ]
+          },
+          "docs": "Get the detail of a collection"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

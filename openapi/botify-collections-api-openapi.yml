@@ -1,0 +1,279 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  description: Botify Saas API
+  title: Botify Collections API
+servers:
+- url: https://api.botify.com/v1
+security:
+- DjangoRestToken: []
+tags:
+- name: Collections
+paths:
+  /projects/{username}/{project_slug}/collections:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    get:
+      description: List all collections for a project
+      summary: ''
+      operationId: getProjectCollections
+      tags:
+      - Collections
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+  /projects/{username}/{project_slug}/collections/{collection}:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    - name: collection
+      in: path
+      required: true
+      description: The collection to query
+      schema:
+        type: string
+    get:
+      description: Get the detail of a collection
+      summary: ''
+      operationId: getCollectionDetail
+      tags:
+      - Collections
+      parameters:
+      - in: query
+        name: sequenced
+        required: false
+        description: Whether to use sequenced groups
+        schema:
+          type: boolean
+          default: false
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionDatasets'
+components:
+  schemas:
+    DatasetField:
+      properties:
+        multiple:
+          type: boolean
+        name:
+          type: string
+        subtype:
+          type: string
+        group:
+          type: string
+        type:
+          type: string
+        kind:
+          type: string
+        id:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+        aliases:
+          type: array
+          items:
+            type: string
+        settings:
+          type: object
+        optional:
+          type: boolean
+        suggestion:
+          type: boolean
+        meta:
+          type: object
+        deprecated:
+          type: boolean
+      type: object
+      required:
+      - multiple
+      - name
+      - subtype
+      - type
+      - kind
+      - id
+      - permissions
+      - optional
+    CollectionDatasets:
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+        metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
+      type: object
+      required:
+      - datasets
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
+    DatasetGroup:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        parent:
+          type: string
+        multiple:
+          type: boolean
+        description:
+          type: string
+        type:
+          type: string
+        default:
+          type: string
+        options:
+          type: array
+          items:
+            type: object
+      type: object
+      required:
+      - id
+      - name
+    Dataset:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetGroup'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+        multiple:
+          type: boolean
+        suggested_operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/SuggestedOperations'
+        category:
+          type: array
+          items:
+            type: string
+      type: object
+      required:
+      - id
+      - name
+      - groups
+      - fields
+      - category
+    SuggestedOperations:
+      properties:
+        name:
+          type: string
+        operation:
+          type: object
+        group:
+          type: string
+        meta:
+          type: object
+      type: object
+      required:
+      - name
+      - operation
+      - meta
+    CollectionMetadata:
+      properties:
+        date_start:
+          type: string
+          format: date
+        date_end:
+          type: string
+          format: date
+        date_last_modified:
+          type: string
+          format: date-time
+        config:
+          type: object
+      type: object
+    Collection:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        date:
+          type: string
+          readOnly: true
+        timestamped:
+          type: boolean
+        date_start:
+          type: string
+          format: date
+        date_end:
+          type: string
+          format: date
+        generic_name:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - id
+      - name
+      - timestamped
+  securitySchemes:
+    DjangoRestToken:
+      type: apiKey
+      name: Authorization
+      in: header

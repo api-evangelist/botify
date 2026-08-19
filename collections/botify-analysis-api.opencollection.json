@@ -1,0 +1,1299 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Botify Analysis API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analysis",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "launchAnalysisCreate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/create/launch",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              }
+            ]
+          },
+          "docs": "Create and launch an analysis for a project"
+        },
+        {
+          "info": {
+            "name": "getAnalysisSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "previous_crawl",
+                "value": "",
+                "type": "query",
+                "description": "Previous analysis identifier"
+              }
+            ]
+          },
+          "docs": "Get an Analysis detail"
+        },
+        {
+          "info": {
+            "name": "getCrawlStatistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/crawl_statistics",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              }
+            ]
+          },
+          "docs": "Return global statistics for an analysis"
+        },
+        {
+          "info": {
+            "name": "getCrawlStatisticsByFrequency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/crawl_statistics/time",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "max number of elements to retrieve"
+              },
+              {
+                "name": "frequency",
+                "value": "",
+                "type": "query",
+                "description": "Aggregation frequency"
+              }
+            ]
+          },
+          "docs": "Return crawl statistics grouped by time frequency (1 min, 5 mins or 60 min) for an analysis"
+        },
+        {
+          "info": {
+            "name": "getCrawlStatisticsUrls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/crawl_statistics/urls/:list_type",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "list_type",
+                "value": "",
+                "type": "path",
+                "description": "URLs list type (crawled URLs or error URLs)"
+              }
+            ]
+          },
+          "docs": "Return a list of 1000 latest URLs crawled (all crawled URLs or only URLS with HTTP errors)"
+        },
+        {
+          "info": {
+            "name": "Legacy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/ganalytics/orphan_urls/:medium/:source",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "medium",
+                "value": "",
+                "type": "path",
+                "description": "Type of traffic, value: 'organic' (from search engine)or 'social' (from a social network)"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "path",
+                "description": "Traffic source, value: name of the search engine or social network"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "Legacy    List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings).   For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google"
+        },
+        {
+          "info": {
+            "name": "getLinksPercentiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/links/percentiles",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              }
+            ]
+          },
+          "docs": "Get inlinks percentiles"
+        },
+        {
+          "info": {
+            "name": "getPageRankLost",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/pagerank/lost",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              }
+            ]
+          },
+          "docs": "Lost pagerank"
+        },
+        {
+          "info": {
+            "name": "getScoring",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/scoring/summary",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              }
+            ]
+          },
+          "docs": "Scoring summary"
+        },
+        {
+          "info": {
+            "name": "getKeywordsStats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/search_console/stats",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              }
+            ]
+          },
+          "docs": "List clicks and impressions per day"
+        },
+        {
+          "info": {
+            "name": "getSitemapsReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/sitemaps/report",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              }
+            ]
+          },
+          "docs": "Get global information of the sitemaps found (sitemaps indexes, invalid sitemaps urls, etc.)"
+        },
+        {
+          "info": {
+            "name": "getSitemapsSamplesOutOfConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/sitemaps/samples/out_of_config",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "Sample list of URLs which were found in your sitemaps but outside of the crawl perimeter defined for the project, for instance domain/subdomain or protocol (HTTP/HTTPS) not allowed in the crawl settings."
+        },
+        {
+          "info": {
+            "name": "getSitemapsSamplesSitemapsOnly",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/sitemaps/samples/sitemap_only",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "Sample list of URLs which were found in your sitemaps, within the project allowed scope (allowed domains/subdomains/protocols), but not found by the Botify crawler."
+        },
+        {
+          "info": {
+            "name": "getLinksTopDomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/top_domains/domains",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "Top domains"
+        },
+        {
+          "info": {
+            "name": "getLinksTopSubdomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/top_domains/subdomains",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "Top subddomains"
+        },
+        {
+          "info": {
+            "name": "getVisitsOrphanURLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/features/visits/orphan_urls/:medium/:source",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "medium",
+                "value": "",
+                "type": "path",
+                "description": "Type of traffic, value: 'organic' (from search engine)or 'social' (from a social network)"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "path",
+                "description": "Traffic source, value: name of the search engine or social network"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings).   For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google+, linkedi"
+        },
+        {
+          "info": {
+            "name": "pauseAnalysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/pause",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              }
+            ]
+          },
+          "docs": "Pause an analysis for a project"
+        },
+        {
+          "info": {
+            "name": "resumeAnalysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/resume",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              }
+            ]
+          },
+          "docs": "Resume an analysis for a project"
+        },
+        {
+          "info": {
+            "name": "getAnalysisSegments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/segments",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "Get the segments feature public metadata of an analysis."
+        },
+        {
+          "info": {
+            "name": "getRobotsTxtIndexesView",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/staticfiles/robots-txt-indexes",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "Return an object containing all robots.txt files found on the project's domains. The object is null for virtual robots.txt."
+        },
+        {
+          "info": {
+            "name": "getRobotsTxtFileView",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/staticfiles/robots-txt-indexes/:robots_txt",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "robots_txt",
+                "value": "",
+                "type": "path",
+                "description": "Filename"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "Return content of a robots.txt file."
+        },
+        {
+          "info": {
+            "name": "getUrls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/urls",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "area",
+                "value": "",
+                "type": "query",
+                "description": "Analysis context"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              },
+              {
+                "name": "previous_crawl",
+                "value": "",
+                "type": "query",
+                "description": "Previous analysis identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a query and returns a paginated response"
+        },
+        {
+          "info": {
+            "name": "getUrlsAggs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/urls/aggs",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "area",
+                "value": "",
+                "type": "query",
+                "description": "Analysis context"
+              },
+              {
+                "name": "previous_crawl",
+                "value": "",
+                "type": "query",
+                "description": "Previous analysis identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query aggregator. It accepts multiple queries and dispatches them."
+        },
+        {
+          "info": {
+            "name": "getUrlAI",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/urls/ai/:url",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "url",
+                "value": "",
+                "type": "path",
+                "description": "(Urlencoded) Searched URL"
+              }
+            ]
+          },
+          "docs": "Gets AI suggestions of an URL for an analysis"
+        },
+        {
+          "info": {
+            "name": "getUrlsDatamodel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/urls/datamodel",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "area",
+                "value": "",
+                "type": "query",
+                "description": "Analysis context"
+              },
+              {
+                "name": "previous_crawl",
+                "value": "",
+                "type": "query",
+                "description": "Previous analysis identifier"
+              }
+            ]
+          },
+          "docs": "Gets an Analysis datamodel"
+        },
+        {
+          "info": {
+            "name": "getUrlsDatasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/urls/datasets",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "area",
+                "value": "",
+                "type": "query",
+                "description": "Analysis context"
+              },
+              {
+                "name": "previous_crawl",
+                "value": "",
+                "type": "query",
+                "description": "Previous analysis identifier"
+              },
+              {
+                "name": "deprecated_fields",
+                "value": "",
+                "type": "query",
+                "description": "Include deprecated fields"
+              },
+              {
+                "name": "sequenced",
+                "value": "",
+                "type": "query",
+                "description": "Whether to use sequenced groups"
+              }
+            ]
+          },
+          "docs": "Gets Analysis Datasets"
+        },
+        {
+          "info": {
+            "name": "getUrlsExports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/urls/export",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "A list of the CSV Exports requests and their current status"
+        },
+        {
+          "info": {
+            "name": "createUrlsExport",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/urls/export",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "area",
+                "value": "",
+                "type": "query",
+                "description": "Analysis context"
+              },
+              {
+                "name": "previous_crawl",
+                "value": "",
+                "type": "query",
+                "description": "Previous analysis identifier"
+              },
+              {
+                "name": "export_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum size of the export (deprecated => size instead)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum size of the export"
+              },
+              {
+                "name": "compression",
+                "value": "",
+                "type": "query",
+                "description": "Compressed file format"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new UrlExport object and starts a task that will export the results into a csv. Returns the model id that manages the task"
+        },
+        {
+          "info": {
+            "name": "getUrlsExportStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/urls/export/:url_export_id",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "url_export_id",
+                "value": "",
+                "type": "path",
+                "description": "Url Export ID"
+              }
+            ]
+          },
+          "docs": "Checks the status of an CSVUrlExportJob object. Returns json object with the status."
+        },
+        {
+          "info": {
+            "name": "getUrlHTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/urls/html/:url",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "url",
+                "value": "",
+                "type": "path",
+                "description": "(Urlencoded) Searched URL"
+              }
+            ]
+          },
+          "docs": "Gets the HTML of an URL for an analysis"
+        },
+        {
+          "info": {
+            "name": "getUrlDetail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.botify.com/v1/analyses/:username/:project_slug/:analysis_slug/urls/:url",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "User's identifier"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path",
+                "description": "Project's identifier"
+              },
+              {
+                "name": "analysis_slug",
+                "value": "",
+                "type": "path",
+                "description": "Analysis' identifier"
+              },
+              {
+                "name": "url",
+                "value": "",
+                "type": "path",
+                "description": "(Urlencoded) Searched URL"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "comma separated list of fields to return (c.f. URLs Datamodel)"
+              }
+            ]
+          },
+          "docs": "Gets the detail of an URL for an analysis"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

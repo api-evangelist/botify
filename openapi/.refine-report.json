@@ -1,0 +1,38 @@
+{
+  "provider": "botify",
+  "sources": [
+    "botify-analysis-api-openapi.yml",
+    "botify-collections-api-openapi.yml",
+    "botify-datasource-api-openapi.yml",
+    "botify-job-api-openapi.yml",
+    "botify-keywordsgroups-api-openapi.yml",
+    "botify-project-api-openapi.yml",
+    "botify-projectquery-api-openapi.yml",
+    "botify-user-api-openapi.yml"
+  ],
+  "outputs": [
+    "botify-analysis-api-openapi.yml",
+    "botify-collections-api-openapi.yml",
+    "botify-datasource-api-openapi.yml",
+    "botify-job-api-openapi.yml",
+    "botify-keywordsgroups-api-openapi.yml",
+    "botify-project-api-openapi.yml",
+    "botify-projectquery-api-openapi.yml",
+    "botify-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "botify-analysis-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "botify-collections-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "botify-datasource-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "botify-job-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "botify-keywordsgroups-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "botify-project-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "botify-projectquery-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "botify-user-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

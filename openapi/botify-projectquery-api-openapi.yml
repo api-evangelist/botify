@@ -1,0 +1,137 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  description: Botify Saas API
+  title: Botify Project Query API
+servers:
+- url: https://api.botify.com/v1
+security:
+- DjangoRestToken: []
+tags:
+- name: ProjectQuery
+paths:
+  /projects/{username}/{project_slug}/account_filters:
+    parameters:
+    - name: username
+      in: path
+      required: true
+      description: User's identifier
+      schema:
+        type: string
+    - name: project_slug
+      in: path
+      required: true
+      description: Project's identifier
+      schema:
+        type: string
+    get:
+      description: List all the account saved filters
+      summary: ''
+      operationId: getAccountSavedFilters
+      tags:
+      - ProjectQuery
+      parameters:
+      - in: query
+        name: page
+        required: false
+        description: Page Number
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: size
+        required: false
+        description: Page Size
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: search
+        required: false
+        description: Search query on the filter name
+        schema:
+          type: string
+      - in: query
+        name: disable_project
+        required: false
+        description: Flag to return or not filters of this project
+        schema:
+          type: boolean
+          default: false
+      responses:
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  next:
+                    type: string
+                  previous:
+                    type: string
+                  count:
+                    type: integer
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProjectSavedFilter'
+                  page:
+                    type: integer
+                  size:
+                    type: integer
+components:
+  schemas:
+    ProjectSavedFilter:
+      properties:
+        name:
+          type: string
+        filters:
+          type: object
+        identifier:
+          type: string
+          readOnly: true
+        description:
+          type: string
+        type:
+          type: string
+          readOnly: true
+        project_name:
+          type: string
+          readOnly: true
+        created_date:
+          type: string
+          format: date-time
+          readOnly: true
+      type: object
+      description: Project's saved UrlFilter
+      required:
+      - name
+      - filters
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
+  securitySchemes:
+    DjangoRestToken:
+      type: apiKey
+      name: Authorization
+      in: header
