@@ -18,6 +18,17 @@ specificationVersion: '0.23'
 created: '2026-08-08'
 modified: '2026-08-08'
 tags:
+- SEO
+- organic-search
+- Web Crawling
+- Log Analysis
+- Search Console
+- Marketing Analytics
+- AI Search
+- Data Export
+- MCP
+- agent-native
+tags_raw:
 - seo
 - organic-search
 - search-engine-optimization
@@ -39,6 +50,11 @@ apis:
   humanURL: https://www.botify.com/platform/botify-assist
   baseURL: https://mcp.botify.com/
   tags:
+  - MCP
+  - agent-native
+  - SEO
+  - AI Search
+  tags_raw:
   - mcp
   - agent-native
   - seo
@@ -90,6 +106,8 @@ apis:
   humanURL: https://developers.botify.com/
   baseURL: https://api.botify.com/v1
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -116,6 +134,8 @@ apis:
   humanURL: https://developers.botify.com/
   baseURL: https://api.botify.com/v1
   tags:
+  - DataSource
+  tags_raw:
   - Datasource
   properties:
   - type: OpenAPI
