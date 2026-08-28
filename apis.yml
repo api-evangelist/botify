@@ -11,6 +11,18 @@ description: >-
   Botify also operates a hosted, OAuth-protected MCP server ("Botify Agents MCP") at mcp.botify.com so agents
   can work with Botify data alongside the company's own AI agents.
 url: https://raw.githubusercontent.com/api-evangelist/botify/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.prod.website-files.com/6639e9e213b495098391c3d1/67bcce304f73f509e3630134_Ai%20Search%20Visibility-Featured%20Image%20(1).jpg
 x-type: company
 x-source: harvest:secondary-market
