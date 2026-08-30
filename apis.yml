@@ -31,13 +31,14 @@ created: '2026-08-08'
 modified: '2026-08-08'
 tags:
 - SEO
-- organic-search
-- Web Crawling
-- Log Analysis
-- Search Console
-- Marketing Analytics
+- Organic search
+- search-engine-optimization
+- web-crawling
+- log-analysis
+- search-console
+- marketing-analytics
 - AI Search
-- Data Export
+- data-export
 - MCP
 - agent-native
 tags_raw:
@@ -146,7 +147,7 @@ apis:
   humanURL: https://developers.botify.com/
   baseURL: https://api.botify.com/v1
   tags:
-  - DataSource
+  - Datasource
   tags_raw:
   - Datasource
   properties:
