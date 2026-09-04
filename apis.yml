@@ -23,6 +23,20 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  - scopes
+  - security
+  generated: '2026-09-02'
+  method: derived
 image: https://cdn.prod.website-files.com/6639e9e213b495098391c3d1/67bcce304f73f509e3630134_Ai%20Search%20Visibility-Featured%20Image%20(1).jpg
 x-type: company
 x-source: harvest:secondary-market
