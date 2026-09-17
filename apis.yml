@@ -154,34 +154,6 @@ apis:
     url: data-model/botify-data-model.yml
   - type: RateLimits
     url: https://developers.botify.com/docs/limits
-- aid: botify:botify-datasource-api
-  name: Botify Datasource API
-  description: The Datasource API from Botify — 1 operation(s) for datasource.
-  humanURL: https://developers.botify.com/
-  baseURL: https://api.botify.com/v1
-  tags:
-  - DataSource
-  tags_raw:
-  - Datasource
-  properties:
-  - type: OpenAPI
-    url: openapi/botify-datasource-api-openapi.yml
-  - type: Documentation
-    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
-  - type: APIReference
-    url: https://developers.botify.com/reference/getalluserprojects-1
-  - type: GettingStarted
-    url: https://developers.botify.com/docs/getting-started
-  - type: Authentication
-    url: authentication/botify-authentication.yml
-  - type: Conventions
-    url: conventions/botify-conventions.yml
-  - type: ErrorCatalog
-    url: errors/botify-problem-types.yml
-  - type: DataModel
-    url: data-model/botify-data-model.yml
-  - type: RateLimits
-    url: https://developers.botify.com/docs/limits
 - aid: botify:botify-job-api
   name: Botify Job API
   description: The Job API from Botify — 2 operation(s) for job.
@@ -296,6 +268,32 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/botify-user-api-openapi.yml
+  - type: Documentation
+    url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
+  - type: APIReference
+    url: https://developers.botify.com/reference/getalluserprojects-1
+  - type: GettingStarted
+    url: https://developers.botify.com/docs/getting-started
+  - type: Authentication
+    url: authentication/botify-authentication.yml
+  - type: Conventions
+    url: conventions/botify-conventions.yml
+  - type: ErrorCatalog
+    url: errors/botify-problem-types.yml
+  - type: DataModel
+    url: data-model/botify-data-model.yml
+  - type: RateLimits
+    url: https://developers.botify.com/docs/limits
+- aid: botify:botify-data-source-api
+  name: Botify Data Source API
+  description: The Data Source API from Botify — 1 operation(s) for data source.
+  humanURL: https://www.botify.com/platform/botify-assist
+  baseURL: https://mcp.botify.com/
+  tags:
+  - Data Source
+  properties:
+  - type: OpenAPI
+    url: openapi/botify-data-source-api-openapi.yml
   - type: Documentation
     url: https://developers.botify.com/docs/welcome-to-botifys-api-documentation
   - type: APIReference
