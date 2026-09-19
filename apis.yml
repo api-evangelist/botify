@@ -290,6 +290,8 @@ apis:
   humanURL: https://www.botify.com/platform/botify-assist
   baseURL: https://mcp.botify.com/
   tags:
+  - DataSource
+  tags_raw:
   - Data Source
   properties:
   - type: OpenAPI
