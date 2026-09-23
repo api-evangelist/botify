@@ -26,7 +26,7 @@ paths:
         type: string
     get:
       description: List all the account saved filters
-      summary: ''
+      summary: Get account saved filters
       operationId: getAccountSavedFilters
       tags:
       - ProjectQuery
@@ -86,8 +86,25 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
 components:
   schemas:
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
     ProjectSavedFilter:
       properties:
         name:
@@ -114,22 +131,6 @@ components:
       required:
       - name
       - filters
-    DefaultPayload:
-      type: object
-      description: default payload for object for all HTTP codes that are not covered individually
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              description: Error Message
-              type: string
-            error_code:
-              description: Error Code
-              type: string
-            error_detail:
-              description: If available, detailed error
-              type: object
   securitySchemes:
     DjangoRestToken:
       type: apiKey

@@ -14,7 +14,7 @@ paths:
     parameters: []
     get:
       description: List All jobs
-      summary: ''
+      summary: Get jobs
       operationId: getJobs
       tags:
       - Job
@@ -78,9 +78,10 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
     post:
       description: Creates a job instance of a class which depends on the "job_type" parameter you sent. Returns the model id that manages the task.
-      summary: ''
+      summary: Create job
       operationId: createJob
       tags:
       - Job
@@ -103,6 +104,7 @@ paths:
             schema:
               $ref: '#/components/schemas/JobCreate'
         description: Job create
+      x-summary-source: derived
   /jobs/{job_id}:
     parameters:
     - name: job_id
@@ -113,7 +115,7 @@ paths:
         type: string
     get:
       description: Retrieve one job
-      summary: ''
+      summary: Get job
       operationId: getJob
       tags:
       - Job
@@ -130,24 +132,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobResults'
+      x-summary-source: derived
 components:
   schemas:
-    DefaultPayload:
-      type: object
-      description: default payload for object for all HTTP codes that are not covered individually
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              description: Error Message
-              type: string
-            error_code:
-              description: Error Code
-              type: string
-            error_detail:
-              description: If available, detailed error
-              type: object
     JobCreate:
       properties:
         job_id:
@@ -179,6 +166,22 @@ components:
       required:
       - job_type
       - payload
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
     JobResults:
       properties:
         job_id:

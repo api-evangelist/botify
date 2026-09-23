@@ -26,7 +26,7 @@ paths:
         type: string
     post:
       description: Create and launch an analysis for a project
-      summary: ''
+      summary: Launch analysis create
       operationId: launchAnalysisCreate
       tags:
       - Analysis
@@ -43,6 +43,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AnalysisCreateAndLaunch'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}:
     parameters:
     - name: username
@@ -65,7 +66,7 @@ paths:
         type: string
     get:
       description: Get an Analysis detail
-      summary: ''
+      summary: Get analysis summary
       operationId: getAnalysisSummary
       tags:
       - Analysis
@@ -89,6 +90,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AnalysisDetail'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics:
     parameters:
     - name: username
@@ -111,7 +113,7 @@ paths:
         type: string
     get:
       description: Return global statistics for an analysis
-      summary: ''
+      summary: Get crawl statistics
       operationId: getCrawlStatistics
       tags:
       - Analysis
@@ -128,6 +130,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CrawlStatistics'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics/time:
     parameters:
     - name: username
@@ -150,7 +153,7 @@ paths:
         type: string
     get:
       description: Return crawl statistics grouped by time frequency (1 min, 5 mins or 60 min) for an analysis
-      summary: ''
+      summary: Get crawl statistics by frequency
       operationId: getCrawlStatisticsByFrequency
       tags:
       - Analysis
@@ -185,6 +188,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CrawlStatisticsTime'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics/urls/{list_type}:
     parameters:
     - name: username
@@ -216,7 +220,7 @@ paths:
         - errors
     get:
       description: Return a list of 1000 latest URLs crawled (all crawled URLs or only URLS with HTTP errors)
-      summary: ''
+      summary: Get crawl statistics urls
       operationId: getCrawlStatisticsUrls
       tags:
       - Analysis
@@ -235,6 +239,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/CrawlStatisticsUrls'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/features/ganalytics/orphan_urls/{medium}/{source}:
     parameters:
     - name: username
@@ -288,7 +293,7 @@ paths:
         - yahoo
         - yandex
     get:
-      description: 'Legacy    List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings).   For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google+, linkedin, pinterest, reddit, tumblr, twitter)'
+      description: 'Legacy List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings). For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google+, linkedin, pinterest, reddit, tumblr, twitter)'
       summary: Legacy
       operationId: getGanalyticsOrphanURLs
       tags:
@@ -357,7 +362,7 @@ paths:
         type: string
     get:
       description: Get inlinks percentiles
-      summary: ''
+      summary: Get links percentiles
       operationId: getLinksPercentiles
       tags:
       - Analysis
@@ -374,6 +379,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LinksPercentiles'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/features/pagerank/lost:
     parameters:
     - name: username
@@ -396,7 +402,7 @@ paths:
         type: string
     get:
       description: Lost pagerank
-      summary: ''
+      summary: Get page rank lost
       operationId: getPageRankLost
       tags:
       - Analysis
@@ -413,6 +419,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PageRankLost'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/features/scoring/summary:
     parameters:
     - name: username
@@ -435,7 +442,7 @@ paths:
         type: string
     get:
       description: Scoring summary
-      summary: ''
+      summary: Get scoring
       operationId: getScoring
       tags:
       - Analysis
@@ -452,6 +459,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScoringSummary'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/features/search_console/stats:
     parameters:
     - name: username
@@ -474,7 +482,7 @@ paths:
         type: string
     get:
       description: List clicks and impressions per day
-      summary: ''
+      summary: Get keywords stats
       operationId: getKeywordsStats
       tags:
       - Analysis
@@ -491,6 +499,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/KeywordsStats'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/report:
     parameters:
     - name: username
@@ -513,7 +522,7 @@ paths:
         type: string
     get:
       description: Get global information of the sitemaps found (sitemaps indexes, invalid sitemaps urls, etc.)
-      summary: ''
+      summary: Get sitemaps report
       operationId: getSitemapsReport
       tags:
       - Analysis
@@ -530,6 +539,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SitemapsReport'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/samples/out_of_config:
     parameters:
     - name: username
@@ -552,7 +562,7 @@ paths:
         type: string
     get:
       description: Sample list of URLs which were found in your sitemaps but outside of the crawl perimeter defined for the project, for instance domain/subdomain or protocol (HTTP/HTTPS) not allowed in the crawl settings.
-      summary: ''
+      summary: Get sitemaps samples out of config
       operationId: getSitemapsSamplesOutOfConfig
       tags:
       - Analysis
@@ -598,6 +608,7 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/samples/sitemap_only:
     parameters:
     - name: username
@@ -620,7 +631,7 @@ paths:
         type: string
     get:
       description: Sample list of URLs which were found in your sitemaps, within the project allowed scope (allowed domains/subdomains/protocols), but not found by the Botify crawler.
-      summary: ''
+      summary: Get sitemaps samples sitemaps only
       operationId: getSitemapsSamplesSitemapsOnly
       tags:
       - Analysis
@@ -666,6 +677,7 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/features/top_domains/domains:
     parameters:
     - name: username
@@ -688,7 +700,7 @@ paths:
         type: string
     get:
       description: Top domains
-      summary: ''
+      summary: Get links top domains
       operationId: getLinksTopDomains
       tags:
       - Analysis
@@ -734,6 +746,7 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/features/top_domains/subdomains:
     parameters:
     - name: username
@@ -756,7 +769,7 @@ paths:
         type: string
     get:
       description: Top subddomains
-      summary: ''
+      summary: Get links top subdomains
       operationId: getLinksTopSubdomains
       tags:
       - Analysis
@@ -802,6 +815,7 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/features/visits/orphan_urls/{medium}/{source}:
     parameters:
     - name: username
@@ -855,8 +869,8 @@ paths:
         - yahoo
         - yandex
     get:
-      description: 'List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings).   For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google+, linkedin, pinterest, reddit, tumblr, twitter)'
-      summary: ''
+      description: 'List of Orphan URLs. URLs which generated visits from the selected source according to Google Analytics data, but were not crawled with by the Botify crawler (either because no links to them were found on the website, or because the crawler was not allowed to follow these links according to the project settings). For a search engine (medium: origanic; sources: all, aol, ask, baidu, bing, google, naver, yahoo, yandex) or a social network (medium: social; sources: all, facebook, google+, linkedin, pinterest, reddit, tumblr, twitter)'
+      summary: Get visits orphan URLs
       operationId: getVisitsOrphanURLs
       tags:
       - Analysis
@@ -902,6 +916,7 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/pause:
     parameters:
     - name: username
@@ -924,7 +939,7 @@ paths:
         type: string
     post:
       description: Pause an analysis for a project
-      summary: ''
+      summary: Pause analysis
       operationId: pauseAnalysis
       tags:
       - Analysis
@@ -941,6 +956,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AnalysisPause'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/resume:
     parameters:
     - name: username
@@ -963,7 +979,7 @@ paths:
         type: string
     post:
       description: Resume an analysis for a project
-      summary: ''
+      summary: Resume analysis
       operationId: resumeAnalysis
       tags:
       - Analysis
@@ -980,6 +996,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AnalysisResume'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/segments:
     parameters:
     - name: username
@@ -1002,7 +1019,7 @@ paths:
         type: string
     get:
       description: Get the segments feature public metadata of an analysis.
-      summary: ''
+      summary: Get analysis segments
       operationId: getAnalysisSegments
       tags:
       - Analysis
@@ -1048,6 +1065,7 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/staticfiles/robots-txt-indexes:
     parameters:
     - name: username
@@ -1070,7 +1088,7 @@ paths:
         type: string
     get:
       description: Return an object containing all robots.txt files found on the project's domains. The object is null for virtual robots.txt.
-      summary: ''
+      summary: Get robots txt indexes view
       operationId: getRobotsTxtIndexesView
       tags:
       - Analysis
@@ -1116,6 +1134,7 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/staticfiles/robots-txt-indexes/{robots_txt}:
     parameters:
     - name: username
@@ -1144,7 +1163,7 @@ paths:
         type: string
     get:
       description: Return content of a robots.txt file.
-      summary: ''
+      summary: Get robots txt file view
       operationId: getRobotsTxtFileView
       tags:
       - Analysis
@@ -1190,6 +1209,7 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/urls:
     parameters:
     - name: username
@@ -1212,7 +1232,7 @@ paths:
         type: string
     post:
       description: Executes a query and returns a paginated response
-      summary: ''
+      summary: Get urls
       operationId: getUrls
       tags:
       - Analysis
@@ -1285,6 +1305,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Query'
         description: Query
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/urls/aggs:
     parameters:
     - name: username
@@ -1307,7 +1328,7 @@ paths:
         type: string
     post:
       description: Query aggregator. It accepts multiple queries and dispatches them.
-      summary: ''
+      summary: Get urls aggs
       operationId: getUrlsAggs
       tags:
       - Analysis
@@ -1353,6 +1374,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AggsQueries'
         description: AggsQueries
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/urls/ai/{url}:
     parameters:
     - name: username
@@ -1381,7 +1403,7 @@ paths:
         type: string
     get:
       description: Gets AI suggestions of an URL for an analysis
-      summary: ''
+      summary: Get url AI
       operationId: getUrlAI
       tags:
       - Analysis
@@ -1398,6 +1420,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UrlAI'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/urls/datamodel:
     parameters:
     - name: username
@@ -1420,7 +1443,7 @@ paths:
         type: string
     get:
       description: Gets an Analysis datamodel
-      summary: ''
+      summary: Get urls datamodel
       operationId: getUrlsDatamodel
       tags:
       - Analysis
@@ -1458,6 +1481,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Datamodel'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/urls/datasets:
     parameters:
     - name: username
@@ -1480,7 +1504,7 @@ paths:
         type: string
     get:
       description: Gets Analysis Datasets
-      summary: ''
+      summary: Get urls datasets
       operationId: getUrlsDatasets
       tags:
       - Analysis
@@ -1532,6 +1556,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Datasets'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/urls/export:
     parameters:
     - name: username
@@ -1554,7 +1579,7 @@ paths:
         type: string
     get:
       description: A list of the CSV Exports requests and their current status
-      summary: ''
+      summary: Get urls exports
       operationId: getUrlsExports
       tags:
       - Analysis
@@ -1600,9 +1625,10 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
     post:
       description: Creates a new UrlExport object and starts a task that will export the results into a csv. Returns the model id that manages the task
-      summary: ''
+      summary: Create urls export
       operationId: createUrlsExport
       tags:
       - Analysis
@@ -1670,6 +1696,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Query'
         description: Query
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/urls/export/{url_export_id}:
     parameters:
     - name: username
@@ -1698,7 +1725,7 @@ paths:
         type: string
     get:
       description: Checks the status of an CSVUrlExportJob object. Returns json object with the status.
-      summary: ''
+      summary: Get urls export status
       operationId: getUrlsExportStatus
       tags:
       - Analysis
@@ -1715,6 +1742,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CsvExportStatus'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/urls/html/{url}:
     parameters:
     - name: username
@@ -1743,7 +1771,7 @@ paths:
         type: string
     get:
       description: Gets the HTML of an URL for an analysis
-      summary: ''
+      summary: Get url HTML
       operationId: getUrlHTML
       tags:
       - Analysis
@@ -1760,6 +1788,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UrlHTML'
+      x-summary-source: derived
   /analyses/{username}/{project_slug}/{analysis_slug}/urls/{url}:
     parameters:
     - name: username
@@ -1788,7 +1817,7 @@ paths:
         type: string
     get:
       description: Gets the detail of an URL for an analysis
-      summary: ''
+      summary: Get url detail
       operationId: getUrlDetail
       tags:
       - Analysis
@@ -1816,8 +1845,71 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UrlDetail'
+      x-summary-source: derived
 components:
   schemas:
+    AnalysisPause:
+      properties: {}
+      type: object
+      description: Pause Analysis
+    AggsQueries:
+      type: array
+      items:
+        $ref: '#/components/schemas/AggsQuery'
+    Datamodel:
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatamodelField'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatamodelGroup'
+        max_timeseries_fields:
+          type: integer
+          format: int64
+        aliases:
+          type: object
+      type: object
+      required:
+      - fields
+      - groups
+    Default:
+      properties: {}
+      type: object
+    KeywordsStatDetail:
+      properties:
+        clicks:
+          type: integer
+          format: int64
+        impressions:
+          type: integer
+          format: int64
+        sampled_clicks:
+          type: integer
+          format: int64
+        sampled_impressions:
+          type: integer
+          format: int64
+      type: object
+      required:
+      - clicks
+      - impressions
+      - sampled_clicks
+      - sampled_impressions
+    LinksPercentiles:
+      properties:
+        domain:
+          type: string
+        percentiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinksPercentilesItem'
+      type: object
+      required:
+      - domain
+      - percentiles
     CrawlStatisticsTime:
       properties:
         avg_delay:
@@ -1893,99 +1985,67 @@ components:
       - last_update_date
       - avg_size
       - new_urls
-    CrawlStatisticsTimePoint:
+    DatasetField:
       properties:
-        count:
-          type: integer
-          format: int64
-        datetime:
-          type: string
-          format: date-time
-      type: object
-      required:
-      - count
-      - datetime
-    AggsQueries:
-      type: array
-      items:
-        $ref: '#/components/schemas/AggsQuery'
-    AnalysisPause:
-      properties: {}
-      type: object
-      description: Pause Analysis
-    SuggestedOperations:
-      properties:
+        multiple:
+          type: boolean
         name:
           type: string
-        operation:
-          type: object
+        subtype:
+          type: string
         group:
           type: string
+        type:
+          type: string
+        kind:
+          type: string
+        id:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+        aliases:
+          type: array
+          items:
+            type: string
+        settings:
+          type: object
+        optional:
+          type: boolean
+        suggestion:
+          type: boolean
         meta:
           type: object
+        deprecated:
+          type: boolean
       type: object
       required:
+      - multiple
       - name
-      - operation
-      - meta
-    Datasets:
+      - subtype
+      - type
+      - kind
+      - id
+      - permissions
+      - optional
+    User:
       properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dataset'
-      type: object
-      required:
-      - datasets
-    KeywordsStatDetail:
-      properties:
-        clicks:
-          type: integer
-          format: int64
-        impressions:
-          type: integer
-          format: int64
-        sampled_clicks:
-          type: integer
-          format: int64
-        sampled_impressions:
-          type: integer
-          format: int64
-      type: object
-      required:
-      - clicks
-      - impressions
-      - sampled_clicks
-      - sampled_impressions
-    ErrorAgg:
-      properties:
-        message:
+        username:
           type: string
-        error_code:
+          description: Required. 30 characters or fewer. Letters, numbers and /-/_/. characters
+        first_name:
           type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        full_name:
+          type: string
+          readOnly: true
       type: object
       required:
-      - message
-      - error_code
-    KeywordsStats:
-      properties:
-        stats:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeywordsStat'
-      type: object
-      required:
-      - stats
-    AggsQuery:
-      properties:
-        filters:
-          type: object
-        aggs:
-          type: array
-          items:
-            type: object
-      type: object
-      description: AggsQuery
+      - username
     LinksPercentilesItem:
       properties:
         min:
@@ -2014,6 +2074,20 @@ components:
       - metric_total
       - avg
       - id
+    KeywordsStat:
+      properties:
+        type:
+          type: string
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeywordsStatData'
+      type: object
+      required:
+      - type
+      - data
     Dataset:
       properties:
         id:
@@ -2045,16 +2119,231 @@ components:
       - groups
       - fields
       - category
-    Aggs:
+    KeywordsStats:
       properties:
-        status:
-          type: integer
-          format: int64
-        error:
-          $ref: '#/components/schemas/ErrorAgg'
+        stats:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeywordsStat'
       type: object
       required:
-      - status
+      - stats
+    SuggestedOperations:
+      properties:
+        name:
+          type: string
+        operation:
+          type: object
+        group:
+          type: string
+        meta:
+          type: object
+      type: object
+      required:
+      - name
+      - operation
+      - meta
+    LinksTopDomainsSamples:
+      properties:
+        url:
+          type: string
+        sources:
+          type: array
+          items:
+            type: string
+        unique_links:
+          type: integer
+          format: int64
+      type: object
+      required:
+      - url
+      - sources
+      - unique_links
+    CrawlOrphanURLs:
+      properties:
+        url:
+          type: string
+        visits:
+          type: integer
+          format: int64
+      type: object
+    LinksTopDomains:
+      properties:
+        follow_links:
+          type: integer
+          format: int64
+        nofollow_links:
+          type: integer
+          format: int64
+        domain:
+          type: string
+        follow_samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinksTopDomainsSamples'
+        nofollow_samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinksTopDomainsSamples'
+        unique_follow_links:
+          type: integer
+          format: int64
+        unique_nofollow_links:
+          type: integer
+          format: int64
+      type: object
+      required:
+      - follow_links
+      - nofollow_links
+      - domain
+      - follow_samples
+      - nofollow_samples
+      - unique_follow_links
+      - unique_nofollow_links
+    ErrorAgg:
+      properties:
+        message:
+          type: string
+        error_code:
+          type: string
+      type: object
+      required:
+      - message
+      - error_code
+    DatamodelGroup:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+      required:
+      - id
+      - name
+    SitemapsReport:
+      properties:
+        count:
+          type: integer
+          format: int64
+        sitemap_only:
+          $ref: '#/components/schemas/SitemapsReportOnly'
+        sitemap_indexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SitemapsReportSitemap'
+        sitemaps:
+          type: array
+          items:
+            $ref: '#/components/schemas/SitemapsReportSitemap'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/SitemapsReportSitemap'
+      type: object
+    CrawlStatisticsUrls:
+      properties:
+        http:
+          type: integer
+          format: int64
+        url:
+          type: string
+        redirects_to:
+          type: string
+        delay_last_byte:
+          type: integer
+          format: int64
+        gzip:
+          type: boolean
+        length:
+          type: integer
+          format: int64
+        content_type:
+          type: string
+        date:
+          type: string
+        delay_first_byte:
+          type: integer
+          format: int64
+      type: object
+      required:
+      - http
+      - url
+      - delay_last_byte
+      - gzip
+      - length
+      - content_type
+      - date
+      - delay_first_byte
+    UrlAI:
+      properties:
+        result:
+          type: string
+      type: object
+      required:
+      - result
+    UrlHTML:
+      properties: {}
+      type: object
+    ScoringSummary:
+      properties:
+        results:
+          type: object
+      type: object
+      required:
+      - results
+    CrawlStatistics:
+      properties:
+        depth_current:
+          type: integer
+          format: int64
+        pages_dones_networkerror:
+          type: integer
+          format: int64
+        pages_dones_3xx:
+          type: integer
+          format: int64
+        pages_dones:
+          type: integer
+          format: int64
+        pages_dones_2xx:
+          type: integer
+          format: int64
+        last_upd_dt:
+          type: string
+          format: date-time
+        pages_dones_5xx:
+          type: integer
+          format: int64
+        pages_dones_xxx:
+          type: integer
+          format: int64
+        pages_dones_4xx:
+          type: integer
+          format: int64
+        pages_known:
+          type: integer
+          format: int64
+        crawler_ip:
+          type: string
+      type: object
+      required:
+      - depth_current
+      - pages_dones_networkerror
+      - pages_dones_3xx
+      - pages_dones
+      - pages_dones_2xx
+      - last_upd_dt
+      - pages_dones_5xx
+      - pages_dones_xxx
+      - pages_dones_4xx
+      - pages_known
+    AnalysisSegments:
+      properties:
+        segments:
+          type: string
+          readOnly: true
+      type: object
+      description: Analysis Segments
     AnalysisDetail:
       properties:
         user:
@@ -2143,16 +2432,76 @@ components:
       type: object
       required:
       - user
-    DatamodelGroup:
+    KeywordsStatData:
       properties:
-        id:
-          type: string
-        name:
-          type: string
+        date:
+          type: integer
+          format: int64
+        all:
+          $ref: '#/components/schemas/KeywordsStatDetail'
+        desktop:
+          $ref: '#/components/schemas/KeywordsStatDetail'
+        mobile:
+          $ref: '#/components/schemas/KeywordsStatDetail'
+        tablet:
+          $ref: '#/components/schemas/KeywordsStatDetail'
       type: object
       required:
-      - id
-      - name
+      - date
+      - all
+      - desktop
+      - mobile
+      - tablet
+    SitemapsReportSitemapError:
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      type: object
+    Datasets:
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+      type: object
+      required:
+      - datasets
+    AnalysisResume:
+      properties: {}
+      type: object
+      description: Resume Analysis
+    AnalysisCreateAndLaunch:
+      properties: {}
+      type: object
+      description: Create and Launch Analysis
+    AggsQuery:
+      properties:
+        filters:
+          type: object
+        aggs:
+          type: array
+          items:
+            type: object
+      type: object
+      description: AggsQuery
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
     DatamodelField:
       properties:
         multiple:
@@ -2189,304 +2538,18 @@ components:
       - id
       - permissions
       - optional
-    LinksTopDomains:
+    CrawlStatisticsTimePoint:
       properties:
-        follow_links:
+        count:
           type: integer
           format: int64
-        nofollow_links:
-          type: integer
-          format: int64
-        domain:
-          type: string
-        follow_samples:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinksTopDomainsSamples'
-        nofollow_samples:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinksTopDomainsSamples'
-        unique_follow_links:
-          type: integer
-          format: int64
-        unique_nofollow_links:
-          type: integer
-          format: int64
-      type: object
-      required:
-      - follow_links
-      - nofollow_links
-      - domain
-      - follow_samples
-      - nofollow_samples
-      - unique_follow_links
-      - unique_nofollow_links
-    AnalysisResume:
-      properties: {}
-      type: object
-      description: Resume Analysis
-    ScoringSummary:
-      properties:
-        results:
-          type: object
-      type: object
-      required:
-      - results
-    CrawlStatisticsUrls:
-      properties:
-        http:
-          type: integer
-          format: int64
-        url:
-          type: string
-        redirects_to:
-          type: string
-        delay_last_byte:
-          type: integer
-          format: int64
-        gzip:
-          type: boolean
-        length:
-          type: integer
-          format: int64
-        content_type:
-          type: string
-        date:
-          type: string
-        delay_first_byte:
-          type: integer
-          format: int64
-      type: object
-      required:
-      - http
-      - url
-      - delay_last_byte
-      - gzip
-      - length
-      - content_type
-      - date
-      - delay_first_byte
-    LinksPercentiles:
-      properties:
-        domain:
-          type: string
-        percentiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinksPercentilesItem'
-      type: object
-      required:
-      - domain
-      - percentiles
-    Default:
-      properties: {}
-      type: object
-    PageRankLost:
-      properties:
-        non_crawled:
-          type: number
-          format: float
-        external:
-          type: number
-          format: float
-        robots_txt:
-          type: number
-          format: float
-      type: object
-      required:
-      - non_crawled
-      - external
-      - robots_txt
-    DefaultPayload:
-      type: object
-      description: default payload for object for all HTTP codes that are not covered individually
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              description: Error Message
-              type: string
-            error_code:
-              description: Error Code
-              type: string
-            error_detail:
-              description: If available, detailed error
-              type: object
-    CrawlStatistics:
-      properties:
-        depth_current:
-          type: integer
-          format: int64
-        pages_dones_networkerror:
-          type: integer
-          format: int64
-        pages_dones_3xx:
-          type: integer
-          format: int64
-        pages_dones:
-          type: integer
-          format: int64
-        pages_dones_2xx:
-          type: integer
-          format: int64
-        last_upd_dt:
+        datetime:
           type: string
           format: date-time
-        pages_dones_5xx:
-          type: integer
-          format: int64
-        pages_dones_xxx:
-          type: integer
-          format: int64
-        pages_dones_4xx:
-          type: integer
-          format: int64
-        pages_known:
-          type: integer
-          format: int64
-        crawler_ip:
-          type: string
       type: object
       required:
-      - depth_current
-      - pages_dones_networkerror
-      - pages_dones_3xx
-      - pages_dones
-      - pages_dones_2xx
-      - last_upd_dt
-      - pages_dones_5xx
-      - pages_dones_xxx
-      - pages_dones_4xx
-      - pages_known
-    User:
-      properties:
-        username:
-          type: string
-          description: Required. 30 characters or fewer. Letters, numbers and /-/_/. characters
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-        full_name:
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - username
-    DatasetGroup:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        parent:
-          type: string
-        multiple:
-          type: boolean
-        description:
-          type: string
-        type:
-          type: string
-        default:
-          type: string
-        options:
-          type: array
-          items:
-            type: object
-      type: object
-      required:
-      - id
-      - name
-    UrlDetail:
-      properties: {}
-      type: object
-    SitemapsReportSitemapError:
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      type: object
-    SitemapsReportSitemap:
-      properties:
-        url:
-          type: string
-        valid_urls:
-          type: integer
-          format: int64
-        invalid_urls:
-          type: integer
-          format: int64
-        file_type:
-          type: string
-        last_modified:
-          type: string
-        error:
-          $ref: '#/components/schemas/SitemapsReportSitemapError'
-        sitemap_indexes:
-          type: array
-          items:
-            type: string
-      type: object
-    KeywordsStatData:
-      properties:
-        date:
-          type: integer
-          format: int64
-        all:
-          $ref: '#/components/schemas/KeywordsStatDetail'
-        desktop:
-          $ref: '#/components/schemas/KeywordsStatDetail'
-        mobile:
-          $ref: '#/components/schemas/KeywordsStatDetail'
-        tablet:
-          $ref: '#/components/schemas/KeywordsStatDetail'
-      type: object
-      required:
-      - date
-      - all
-      - desktop
-      - mobile
-      - tablet
-    Query:
-      properties:
-        fields:
-          type: array
-          items:
-            type: string
-        filters:
-          type: object
-        sort:
-          type: array
-          items:
-            type: string
-      type: object
-      description: Query
-    KeywordsStat:
-      properties:
-        type:
-          type: string
-        url:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeywordsStatData'
-      type: object
-      required:
-      - type
-      - data
-    UrlAI:
-      properties:
-        result:
-          type: string
-      type: object
-      required:
-      - result
+      - count
+      - datetime
     CsvExportStatus:
       properties:
         job_id:
@@ -2525,85 +2588,77 @@ components:
       required:
       - query
       - size
-    AnalysisSegments:
+    PageRankLost:
       properties:
-        segments:
-          type: string
-          readOnly: true
+        non_crawled:
+          type: number
+          format: float
+        external:
+          type: number
+          format: float
+        robots_txt:
+          type: number
+          format: float
       type: object
-      description: Analysis Segments
-    CrawlOrphanURLs:
+      required:
+      - non_crawled
+      - external
+      - robots_txt
+    Aggs:
       properties:
-        url:
-          type: string
-        visits:
+        status:
           type: integer
           format: int64
+        error:
+          $ref: '#/components/schemas/ErrorAgg'
       type: object
-    SitemapsReport:
+      required:
+      - status
+    DatasetGroup:
       properties:
-        count:
-          type: integer
-          format: int64
-        sitemap_only:
-          $ref: '#/components/schemas/SitemapsReportOnly'
-        sitemap_indexes:
-          type: array
-          items:
-            $ref: '#/components/schemas/SitemapsReportSitemap'
-        sitemaps:
-          type: array
-          items:
-            $ref: '#/components/schemas/SitemapsReportSitemap'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/SitemapsReportSitemap'
-      type: object
-    DatasetField:
-      properties:
-        multiple:
-          type: boolean
+        id:
+          type: string
         name:
           type: string
-        subtype:
+        parent:
           type: string
-        group:
+        multiple:
+          type: boolean
+        description:
           type: string
         type:
           type: string
-        kind:
+        default:
           type: string
-        id:
-          type: string
-        permissions:
+        options:
           type: array
           items:
-            type: string
-        aliases:
-          type: array
-          items:
-            type: string
-        settings:
-          type: object
-        optional:
-          type: boolean
-        suggestion:
-          type: boolean
-        meta:
-          type: object
-        deprecated:
-          type: boolean
+            type: object
       type: object
       required:
-      - multiple
-      - name
-      - subtype
-      - type
-      - kind
       - id
-      - permissions
-      - optional
+      - name
+    SitemapsReportSitemap:
+      properties:
+        url:
+          type: string
+        valid_urls:
+          type: integer
+          format: int64
+        invalid_urls:
+          type: integer
+          format: int64
+        file_type:
+          type: string
+        last_modified:
+          type: string
+        error:
+          $ref: '#/components/schemas/SitemapsReportSitemapError'
+        sitemap_indexes:
+          type: array
+          items:
+            type: string
+      type: object
     SitemapsReportOnly:
       properties:
         out_of_configuration:
@@ -2613,48 +2668,23 @@ components:
           type: integer
           format: int64
       type: object
-    UrlHTML:
+    UrlDetail:
       properties: {}
       type: object
-    Datamodel:
+    Query:
       properties:
         fields:
           type: array
           items:
-            $ref: '#/components/schemas/DatamodelField'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatamodelGroup'
-        max_timeseries_fields:
-          type: integer
-          format: int64
-        aliases:
+            type: string
+        filters:
           type: object
-      type: object
-      required:
-      - fields
-      - groups
-    AnalysisCreateAndLaunch:
-      properties: {}
-      type: object
-      description: Create and Launch Analysis
-    LinksTopDomainsSamples:
-      properties:
-        url:
-          type: string
-        sources:
+        sort:
           type: array
           items:
             type: string
-        unique_links:
-          type: integer
-          format: int64
       type: object
-      required:
-      - url
-      - sources
-      - unique_links
+      description: Query
   securitySchemes:
     DjangoRestToken:
       type: apiKey

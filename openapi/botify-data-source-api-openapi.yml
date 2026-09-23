@@ -8,7 +8,7 @@ servers:
 security:
 - DjangoRestToken: []
 tags:
-- name: Datasource
+- name: Data Source
 paths:
   /users/{username}/datasources_summary_by_projects:
     parameters:
@@ -20,10 +20,10 @@ paths:
         type: string
     get:
       description: Get the datasources details for all projects of a user
-      summary: ''
+      summary: Get datasources summary by projects
       operationId: getDatasourcesSummaryByProjects
       tags:
-      - Datasource
+      - Data Source
       responses:
         default:
           description: error payload
@@ -37,24 +37,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProjectDatasourceSummary'
+      x-summary-source: derived
 components:
   schemas:
-    DefaultPayload:
-      type: object
-      description: default payload for object for all HTTP codes that are not covered individually
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              description: Error Message
-              type: string
-            error_code:
-              description: Error Code
-              type: string
-            error_detail:
-              description: If available, detailed error
-              type: object
     ProjectDatasourceSummary:
       properties:
         runnable:
@@ -77,6 +62,22 @@ components:
       type: object
       required:
       - datasource
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
   securitySchemes:
     DjangoRestToken:
       type: apiKey

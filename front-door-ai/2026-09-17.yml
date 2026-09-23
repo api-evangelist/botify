@@ -1,0 +1,34 @@
+# Front Door AI Index — botify — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: botify
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.botify.com
+  final_host: www.botify.com
+  ownership: own
+  owner: botify
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 43
+  host_score: 43
+  density: 39.16
+  words: 1098
+  tiers:
+    agentic: 4
+    core: 33
+    model: 6
+  ambiguous: 16
+  top_terms:
+    AI: 33
+    agent: 13
+    OpenAI: 4
+    agentic: 2
+    intelligence: 2
+    AI agent: 1
+    ChatGPT: 1
+    Claude: 1
+    MCP: 1
+    automation: 1

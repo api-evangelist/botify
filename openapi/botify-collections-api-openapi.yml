@@ -26,7 +26,7 @@ paths:
         type: string
     get:
       description: List all collections for a project
-      summary: ''
+      summary: Get project collections
       operationId: getProjectCollections
       tags:
       - Collections
@@ -43,6 +43,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Collection'
+      x-summary-source: derived
   /projects/{username}/{project_slug}/collections/{collection}:
     parameters:
     - name: username
@@ -65,7 +66,7 @@ paths:
         type: string
     get:
       description: Get the detail of a collection
-      summary: ''
+      summary: Get collection detail
       operationId: getCollectionDetail
       tags:
       - Collections
@@ -90,8 +91,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CollectionDatasets'
+      x-summary-source: derived
 components:
   schemas:
+    CollectionDatasets:
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+        metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
+      type: object
+      required:
+      - datasets
+    SuggestedOperations:
+      properties:
+        name:
+          type: string
+        operation:
+          type: object
+        group:
+          type: string
+        meta:
+          type: object
+      type: object
+      required:
+      - name
+      - operation
+      - meta
     DatasetField:
       properties:
         multiple:
@@ -136,17 +164,20 @@ components:
       - id
       - permissions
       - optional
-    CollectionDatasets:
+    CollectionMetadata:
       properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dataset'
-        metadata:
-          $ref: '#/components/schemas/CollectionMetadata'
+        date_start:
+          type: string
+          format: date
+        date_end:
+          type: string
+          format: date
+        date_last_modified:
+          type: string
+          format: date-time
+        config:
+          type: object
       type: object
-      required:
-      - datasets
     DefaultPayload:
       type: object
       description: default payload for object for all HTTP codes that are not covered individually
@@ -218,35 +249,6 @@ components:
       - groups
       - fields
       - category
-    SuggestedOperations:
-      properties:
-        name:
-          type: string
-        operation:
-          type: object
-        group:
-          type: string
-        meta:
-          type: object
-      type: object
-      required:
-      - name
-      - operation
-      - meta
-    CollectionMetadata:
-      properties:
-        date_start:
-          type: string
-          format: date
-        date_end:
-          type: string
-          format: date
-        date_last_modified:
-          type: string
-          format: date-time
-        config:
-          type: object
-      type: object
     Collection:
       properties:
         id:

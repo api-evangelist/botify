@@ -1,14 +1,7 @@
 {
   "provider": "botify",
   "sources": [
-    "botify-analysis-api-openapi.yml",
-    "botify-collections-api-openapi.yml",
-    "botify-datasource-api-openapi.yml",
-    "botify-job-api-openapi.yml",
-    "botify-keywordsgroups-api-openapi.yml",
-    "botify-project-api-openapi.yml",
-    "botify-projectquery-api-openapi.yml",
-    "botify-user-api-openapi.yml"
+    "_original/botify-api-swagger.json"
   ],
   "outputs": [
     "botify-analysis-api-openapi.yml",
@@ -20,19 +13,33 @@
     "botify-projectquery-api-openapi.yml",
     "botify-user-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "botify-analysis-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "botify-collections-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "botify-datasource-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "botify-job-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "botify-keywordsgroups-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "botify-project-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "botify-projectquery-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "botify-user-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "botify-api-swagger.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "botify-api-swagger.json: declared missing tag: Analysis",
+    "botify-api-swagger.json: declared missing tag: Collections",
+    "botify-api-swagger.json: declared missing tag: Datasource",
+    "botify-api-swagger.json: declared missing tag: Job",
+    "botify-api-swagger.json: declared missing tag: KeywordsGroups",
+    "botify-api-swagger.json: declared missing tag: Project",
+    "botify-api-swagger.json: declared missing tag: ProjectQuery",
+    "botify-api-swagger.json: declared missing tag: User",
+    "superseded outputs removed: botify-data-source-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 9 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "botify-analysis-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "botify-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "botify-data-source-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "botify-job-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "botify-keywordsgroups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "botify-project-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "botify-projectquery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "botify-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

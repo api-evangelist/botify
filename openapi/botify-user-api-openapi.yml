@@ -20,7 +20,7 @@ paths:
         type: string
     get:
       description: List all active projects for the user
-      summary: ''
+      summary: Get user projects
       operationId: getUserProjects
       tags:
       - User
@@ -71,8 +71,28 @@ paths:
                     type: integer
                   size:
                     type: integer
+      x-summary-source: derived
 components:
   schemas:
+    WebProperty:
+      properties:
+        public_id:
+          type: string
+        name:
+          type: string
+        domain:
+          type: string
+        current_subscription_plan:
+          $ref: '#/components/schemas/SubscriptionPlan'
+        renewal_subscription_plan:
+          $ref: '#/components/schemas/SubscriptionPlan'
+      type: object
+      required:
+      - public_id
+      - name
+      - domain
+      - current_subscription_plan
+      - renewal_subscription_plan
     User:
       properties:
         username:
@@ -90,22 +110,6 @@ components:
       type: object
       required:
       - username
-    DefaultPayload:
-      type: object
-      description: default payload for object for all HTTP codes that are not covered individually
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              description: Error Message
-              type: string
-            error_code:
-              description: Error Code
-              type: string
-            error_detail:
-              description: If available, detailed error
-              type: object
     Project:
       properties:
         pk:
@@ -230,6 +234,22 @@ components:
       - has_web_vitals_field_data
       - max_extracts
       - webproperty
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
     OrganizationUser:
       properties:
         owner:
@@ -286,25 +306,6 @@ components:
       required:
       - plan
       - start_date
-    WebProperty:
-      properties:
-        public_id:
-          type: string
-        name:
-          type: string
-        domain:
-          type: string
-        current_subscription_plan:
-          $ref: '#/components/schemas/SubscriptionPlan'
-        renewal_subscription_plan:
-          $ref: '#/components/schemas/SubscriptionPlan'
-      type: object
-      required:
-      - public_id
-      - name
-      - domain
-      - current_subscription_plan
-      - renewal_subscription_plan
   securitySchemes:
     DjangoRestToken:
       type: apiKey

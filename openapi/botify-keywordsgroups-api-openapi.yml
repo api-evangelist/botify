@@ -25,8 +25,8 @@ paths:
       schema:
         type: string
     post:
-      description: 'Clone all keyword groups of the current project to another one.  This endpoint is a little more general (for further use). That''s why you will see a ''type'' field (with a default value of: ''keywords'').'
-      summary: ''
+      description: 'Clone all keyword groups of the current project to another one. This endpoint is a little more general (for further use). That''s why you will see a ''type'' field (with a default value of: ''keywords'').'
+      summary: Clone values list
       operationId: cloneValuesList
       tags:
       - KeywordsGroups
@@ -49,8 +49,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ValuesListCloneRequestBody'
         description: JSON body to use as request body for ValuesList clone operation
+      x-summary-source: derived
 components:
   schemas:
+    ValuesListCloneResponse:
+      properties: {}
+      type: object
     ValuesListCloneRequestBody:
       properties:
         target_username:
@@ -68,9 +72,6 @@ components:
       required:
       - target_username
       - target_project
-    ValuesListCloneResponse:
-      properties: {}
-      type: object
     DefaultPayload:
       type: object
       description: default payload for object for all HTTP codes that are not covered individually
