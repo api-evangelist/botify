@@ -135,6 +135,41 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    JobResults:
+      properties:
+        job_id:
+          type: string
+          readOnly: true
+        job_type:
+          type: string
+        job_url:
+          type: string
+          readOnly: true
+        job_status:
+          type: string
+          readOnly: true
+        results:
+          type: string
+          readOnly: true
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        payload:
+          type: string
+          readOnly: true
+        user:
+          type: string
+          readOnly: true
+        metadata:
+          type: object
+        crawl_date:
+          type: string
+          readOnly: true
+      type: object
+      description: Job results
+      required:
+      - job_type
     JobCreate:
       properties:
         job_id:
@@ -182,41 +217,6 @@ components:
             error_detail:
               description: If available, detailed error
               type: object
-    JobResults:
-      properties:
-        job_id:
-          type: string
-          readOnly: true
-        job_type:
-          type: string
-        job_url:
-          type: string
-          readOnly: true
-        job_status:
-          type: string
-          readOnly: true
-        results:
-          type: string
-          readOnly: true
-        date_created:
-          type: string
-          format: date-time
-          readOnly: true
-        payload:
-          type: string
-          readOnly: true
-        user:
-          type: string
-          readOnly: true
-        metadata:
-          type: object
-        crawl_date:
-          type: string
-          readOnly: true
-      type: object
-      description: Job results
-      required:
-      - job_type
   securitySchemes:
     DjangoRestToken:
       type: apiKey

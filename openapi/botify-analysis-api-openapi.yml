@@ -1848,35 +1848,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AnalysisPause:
-      properties: {}
-      type: object
-      description: Pause Analysis
-    AggsQueries:
-      type: array
-      items:
-        $ref: '#/components/schemas/AggsQuery'
-    Datamodel:
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatamodelField'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatamodelGroup'
-        max_timeseries_fields:
-          type: integer
-          format: int64
-        aliases:
-          type: object
-      type: object
-      required:
-      - fields
-      - groups
     Default:
       properties: {}
+      type: object
+    SitemapsReportOnly:
+      properties:
+        out_of_configuration:
+          type: integer
+          format: int64
+        in_configuration:
+          type: integer
+          format: int64
       type: object
     KeywordsStatDetail:
       properties:
@@ -1898,18 +1880,73 @@ components:
       - impressions
       - sampled_clicks
       - sampled_impressions
-    LinksPercentiles:
+    UrlDetail:
+      properties: {}
+      type: object
+    AggsQuery:
       properties:
-        domain:
-          type: string
-        percentiles:
+        filters:
+          type: object
+        aggs:
           type: array
           items:
-            $ref: '#/components/schemas/LinksPercentilesItem'
+            type: object
+      type: object
+      description: AggsQuery
+    CrawlStatisticsUrls:
+      properties:
+        http:
+          type: integer
+          format: int64
+        url:
+          type: string
+        redirects_to:
+          type: string
+        delay_last_byte:
+          type: integer
+          format: int64
+        gzip:
+          type: boolean
+        length:
+          type: integer
+          format: int64
+        content_type:
+          type: string
+        date:
+          type: string
+        delay_first_byte:
+          type: integer
+          format: int64
       type: object
       required:
-      - domain
-      - percentiles
+      - http
+      - url
+      - delay_last_byte
+      - gzip
+      - length
+      - content_type
+      - date
+      - delay_first_byte
+    SitemapsReport:
+      properties:
+        count:
+          type: integer
+          format: int64
+        sitemap_only:
+          $ref: '#/components/schemas/SitemapsReportOnly'
+        sitemap_indexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SitemapsReportSitemap'
+        sitemaps:
+          type: array
+          items:
+            $ref: '#/components/schemas/SitemapsReportSitemap'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/SitemapsReportSitemap'
+      type: object
     CrawlStatisticsTime:
       properties:
         avg_delay:
@@ -1985,6 +2022,416 @@ components:
       - last_update_date
       - avg_size
       - new_urls
+    AnalysisPause:
+      properties: {}
+      type: object
+      description: Pause Analysis
+    ErrorAgg:
+      properties:
+        message:
+          type: string
+        error_code:
+          type: string
+      type: object
+      required:
+      - message
+      - error_code
+    LinksTopDomains:
+      properties:
+        follow_links:
+          type: integer
+          format: int64
+        nofollow_links:
+          type: integer
+          format: int64
+        domain:
+          type: string
+        follow_samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinksTopDomainsSamples'
+        nofollow_samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinksTopDomainsSamples'
+        unique_follow_links:
+          type: integer
+          format: int64
+        unique_nofollow_links:
+          type: integer
+          format: int64
+      type: object
+      required:
+      - follow_links
+      - nofollow_links
+      - domain
+      - follow_samples
+      - nofollow_samples
+      - unique_follow_links
+      - unique_nofollow_links
+    DatasetGroup:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        parent:
+          type: string
+        multiple:
+          type: boolean
+        description:
+          type: string
+        type:
+          type: string
+        default:
+          type: string
+        options:
+          type: array
+          items:
+            type: object
+      type: object
+      required:
+      - id
+      - name
+    CrawlOrphanURLs:
+      properties:
+        url:
+          type: string
+        visits:
+          type: integer
+          format: int64
+      type: object
+    DatamodelGroup:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+      required:
+      - id
+      - name
+    SitemapsReportSitemapError:
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      type: object
+    DatamodelField:
+      properties:
+        multiple:
+          type: boolean
+        name:
+          type: string
+        subtype:
+          type: string
+        group:
+          type: string
+        type:
+          type: string
+        id:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+        aliases:
+          type: array
+          items:
+            type: string
+        optional:
+          type: boolean
+        suggestion:
+          type: boolean
+      type: object
+      required:
+      - multiple
+      - name
+      - subtype
+      - group
+      - type
+      - id
+      - permissions
+      - optional
+    KeywordsStatData:
+      properties:
+        date:
+          type: integer
+          format: int64
+        all:
+          $ref: '#/components/schemas/KeywordsStatDetail'
+        desktop:
+          $ref: '#/components/schemas/KeywordsStatDetail'
+        mobile:
+          $ref: '#/components/schemas/KeywordsStatDetail'
+        tablet:
+          $ref: '#/components/schemas/KeywordsStatDetail'
+      type: object
+      required:
+      - date
+      - all
+      - desktop
+      - mobile
+      - tablet
+    CsvExportStatus:
+      properties:
+        job_id:
+          type: string
+          readOnly: true
+        job_url:
+          type: string
+          readOnly: true
+        job_status:
+          type: string
+          readOnly: true
+        nb_results:
+          type: integer
+          format: int64
+          minimum: 0
+          maximum: 2147483647
+        area:
+          type: string
+          default: 0
+        query:
+          $ref: '#/components/schemas/Query'
+        results:
+          type: string
+          readOnly: true
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        size:
+          type: integer
+          format: int64
+        user:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - query
+      - size
+    PageRankLost:
+      properties:
+        non_crawled:
+          type: number
+          format: float
+        external:
+          type: number
+          format: float
+        robots_txt:
+          type: number
+          format: float
+      type: object
+      required:
+      - non_crawled
+      - external
+      - robots_txt
+    Query:
+      properties:
+        fields:
+          type: array
+          items:
+            type: string
+        filters:
+          type: object
+        sort:
+          type: array
+          items:
+            type: string
+      type: object
+      description: Query
+    AggsQueries:
+      type: array
+      items:
+        $ref: '#/components/schemas/AggsQuery'
+    SitemapsReportSitemap:
+      properties:
+        url:
+          type: string
+        valid_urls:
+          type: integer
+          format: int64
+        invalid_urls:
+          type: integer
+          format: int64
+        file_type:
+          type: string
+        last_modified:
+          type: string
+        error:
+          $ref: '#/components/schemas/SitemapsReportSitemapError'
+        sitemap_indexes:
+          type: array
+          items:
+            type: string
+      type: object
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
+    LinksTopDomainsSamples:
+      properties:
+        url:
+          type: string
+        sources:
+          type: array
+          items:
+            type: string
+        unique_links:
+          type: integer
+          format: int64
+      type: object
+      required:
+      - url
+      - sources
+      - unique_links
+    CrawlStatistics:
+      properties:
+        depth_current:
+          type: integer
+          format: int64
+        pages_dones_networkerror:
+          type: integer
+          format: int64
+        pages_dones_3xx:
+          type: integer
+          format: int64
+        pages_dones:
+          type: integer
+          format: int64
+        pages_dones_2xx:
+          type: integer
+          format: int64
+        last_upd_dt:
+          type: string
+          format: date-time
+        pages_dones_5xx:
+          type: integer
+          format: int64
+        pages_dones_xxx:
+          type: integer
+          format: int64
+        pages_dones_4xx:
+          type: integer
+          format: int64
+        pages_known:
+          type: integer
+          format: int64
+        crawler_ip:
+          type: string
+      type: object
+      required:
+      - depth_current
+      - pages_dones_networkerror
+      - pages_dones_3xx
+      - pages_dones
+      - pages_dones_2xx
+      - last_upd_dt
+      - pages_dones_5xx
+      - pages_dones_xxx
+      - pages_dones_4xx
+      - pages_known
+    Datamodel:
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatamodelField'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatamodelGroup'
+        max_timeseries_fields:
+          type: integer
+          format: int64
+        aliases:
+          type: object
+      type: object
+      required:
+      - fields
+      - groups
+    UrlHTML:
+      properties: {}
+      type: object
+    AnalysisCreateAndLaunch:
+      properties: {}
+      type: object
+      description: Create and Launch Analysis
+    AnalysisSegments:
+      properties:
+        segments:
+          type: string
+          readOnly: true
+      type: object
+      description: Analysis Segments
+    UrlAI:
+      properties:
+        result:
+          type: string
+      type: object
+      required:
+      - result
+    Dataset:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetGroup'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+        multiple:
+          type: boolean
+        suggested_operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/SuggestedOperations'
+        category:
+          type: array
+          items:
+            type: string
+      type: object
+      required:
+      - id
+      - name
+      - groups
+      - fields
+      - category
+    LinksPercentiles:
+      properties:
+        domain:
+          type: string
+        percentiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinksPercentilesItem'
+      type: object
+      required:
+      - domain
+      - percentiles
+    AnalysisResume:
+      properties: {}
+      type: object
+      description: Resume Analysis
     DatasetField:
       properties:
         multiple:
@@ -2046,6 +2493,65 @@ components:
       type: object
       required:
       - username
+    KeywordsStat:
+      properties:
+        type:
+          type: string
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeywordsStatData'
+      type: object
+      required:
+      - type
+      - data
+    SuggestedOperations:
+      properties:
+        name:
+          type: string
+        operation:
+          type: object
+        group:
+          type: string
+        meta:
+          type: object
+      type: object
+      required:
+      - name
+      - operation
+      - meta
+    CrawlStatisticsTimePoint:
+      properties:
+        count:
+          type: integer
+          format: int64
+        datetime:
+          type: string
+          format: date-time
+      type: object
+      required:
+      - count
+      - datetime
+    Datasets:
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+      type: object
+      required:
+      - datasets
+    KeywordsStats:
+      properties:
+        stats:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeywordsStat'
+      type: object
+      required:
+      - stats
     LinksPercentilesItem:
       properties:
         min:
@@ -2074,216 +2580,6 @@ components:
       - metric_total
       - avg
       - id
-    KeywordsStat:
-      properties:
-        type:
-          type: string
-        url:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeywordsStatData'
-      type: object
-      required:
-      - type
-      - data
-    Dataset:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetGroup'
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetField'
-        multiple:
-          type: boolean
-        suggested_operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/SuggestedOperations'
-        category:
-          type: array
-          items:
-            type: string
-      type: object
-      required:
-      - id
-      - name
-      - groups
-      - fields
-      - category
-    KeywordsStats:
-      properties:
-        stats:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeywordsStat'
-      type: object
-      required:
-      - stats
-    SuggestedOperations:
-      properties:
-        name:
-          type: string
-        operation:
-          type: object
-        group:
-          type: string
-        meta:
-          type: object
-      type: object
-      required:
-      - name
-      - operation
-      - meta
-    LinksTopDomainsSamples:
-      properties:
-        url:
-          type: string
-        sources:
-          type: array
-          items:
-            type: string
-        unique_links:
-          type: integer
-          format: int64
-      type: object
-      required:
-      - url
-      - sources
-      - unique_links
-    CrawlOrphanURLs:
-      properties:
-        url:
-          type: string
-        visits:
-          type: integer
-          format: int64
-      type: object
-    LinksTopDomains:
-      properties:
-        follow_links:
-          type: integer
-          format: int64
-        nofollow_links:
-          type: integer
-          format: int64
-        domain:
-          type: string
-        follow_samples:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinksTopDomainsSamples'
-        nofollow_samples:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinksTopDomainsSamples'
-        unique_follow_links:
-          type: integer
-          format: int64
-        unique_nofollow_links:
-          type: integer
-          format: int64
-      type: object
-      required:
-      - follow_links
-      - nofollow_links
-      - domain
-      - follow_samples
-      - nofollow_samples
-      - unique_follow_links
-      - unique_nofollow_links
-    ErrorAgg:
-      properties:
-        message:
-          type: string
-        error_code:
-          type: string
-      type: object
-      required:
-      - message
-      - error_code
-    DatamodelGroup:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      type: object
-      required:
-      - id
-      - name
-    SitemapsReport:
-      properties:
-        count:
-          type: integer
-          format: int64
-        sitemap_only:
-          $ref: '#/components/schemas/SitemapsReportOnly'
-        sitemap_indexes:
-          type: array
-          items:
-            $ref: '#/components/schemas/SitemapsReportSitemap'
-        sitemaps:
-          type: array
-          items:
-            $ref: '#/components/schemas/SitemapsReportSitemap'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/SitemapsReportSitemap'
-      type: object
-    CrawlStatisticsUrls:
-      properties:
-        http:
-          type: integer
-          format: int64
-        url:
-          type: string
-        redirects_to:
-          type: string
-        delay_last_byte:
-          type: integer
-          format: int64
-        gzip:
-          type: boolean
-        length:
-          type: integer
-          format: int64
-        content_type:
-          type: string
-        date:
-          type: string
-        delay_first_byte:
-          type: integer
-          format: int64
-      type: object
-      required:
-      - http
-      - url
-      - delay_last_byte
-      - gzip
-      - length
-      - content_type
-      - date
-      - delay_first_byte
-    UrlAI:
-      properties:
-        result:
-          type: string
-      type: object
-      required:
-      - result
-    UrlHTML:
-      properties: {}
-      type: object
     ScoringSummary:
       properties:
         results:
@@ -2291,59 +2587,16 @@ components:
       type: object
       required:
       - results
-    CrawlStatistics:
+    Aggs:
       properties:
-        depth_current:
+        status:
           type: integer
           format: int64
-        pages_dones_networkerror:
-          type: integer
-          format: int64
-        pages_dones_3xx:
-          type: integer
-          format: int64
-        pages_dones:
-          type: integer
-          format: int64
-        pages_dones_2xx:
-          type: integer
-          format: int64
-        last_upd_dt:
-          type: string
-          format: date-time
-        pages_dones_5xx:
-          type: integer
-          format: int64
-        pages_dones_xxx:
-          type: integer
-          format: int64
-        pages_dones_4xx:
-          type: integer
-          format: int64
-        pages_known:
-          type: integer
-          format: int64
-        crawler_ip:
-          type: string
+        error:
+          $ref: '#/components/schemas/ErrorAgg'
       type: object
       required:
-      - depth_current
-      - pages_dones_networkerror
-      - pages_dones_3xx
-      - pages_dones
-      - pages_dones_2xx
-      - last_upd_dt
-      - pages_dones_5xx
-      - pages_dones_xxx
-      - pages_dones_4xx
-      - pages_known
-    AnalysisSegments:
-      properties:
-        segments:
-          type: string
-          readOnly: true
-      type: object
-      description: Analysis Segments
+      - status
     AnalysisDetail:
       properties:
         user:
@@ -2432,259 +2685,6 @@ components:
       type: object
       required:
       - user
-    KeywordsStatData:
-      properties:
-        date:
-          type: integer
-          format: int64
-        all:
-          $ref: '#/components/schemas/KeywordsStatDetail'
-        desktop:
-          $ref: '#/components/schemas/KeywordsStatDetail'
-        mobile:
-          $ref: '#/components/schemas/KeywordsStatDetail'
-        tablet:
-          $ref: '#/components/schemas/KeywordsStatDetail'
-      type: object
-      required:
-      - date
-      - all
-      - desktop
-      - mobile
-      - tablet
-    SitemapsReportSitemapError:
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      type: object
-    Datasets:
-      properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dataset'
-      type: object
-      required:
-      - datasets
-    AnalysisResume:
-      properties: {}
-      type: object
-      description: Resume Analysis
-    AnalysisCreateAndLaunch:
-      properties: {}
-      type: object
-      description: Create and Launch Analysis
-    AggsQuery:
-      properties:
-        filters:
-          type: object
-        aggs:
-          type: array
-          items:
-            type: object
-      type: object
-      description: AggsQuery
-    DefaultPayload:
-      type: object
-      description: default payload for object for all HTTP codes that are not covered individually
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              description: Error Message
-              type: string
-            error_code:
-              description: Error Code
-              type: string
-            error_detail:
-              description: If available, detailed error
-              type: object
-    DatamodelField:
-      properties:
-        multiple:
-          type: boolean
-        name:
-          type: string
-        subtype:
-          type: string
-        group:
-          type: string
-        type:
-          type: string
-        id:
-          type: string
-        permissions:
-          type: array
-          items:
-            type: string
-        aliases:
-          type: array
-          items:
-            type: string
-        optional:
-          type: boolean
-        suggestion:
-          type: boolean
-      type: object
-      required:
-      - multiple
-      - name
-      - subtype
-      - group
-      - type
-      - id
-      - permissions
-      - optional
-    CrawlStatisticsTimePoint:
-      properties:
-        count:
-          type: integer
-          format: int64
-        datetime:
-          type: string
-          format: date-time
-      type: object
-      required:
-      - count
-      - datetime
-    CsvExportStatus:
-      properties:
-        job_id:
-          type: string
-          readOnly: true
-        job_url:
-          type: string
-          readOnly: true
-        job_status:
-          type: string
-          readOnly: true
-        nb_results:
-          type: integer
-          format: int64
-          minimum: 0
-          maximum: 2147483647
-        area:
-          type: string
-          default: 0
-        query:
-          $ref: '#/components/schemas/Query'
-        results:
-          type: string
-          readOnly: true
-        date_created:
-          type: string
-          format: date-time
-          readOnly: true
-        size:
-          type: integer
-          format: int64
-        user:
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - query
-      - size
-    PageRankLost:
-      properties:
-        non_crawled:
-          type: number
-          format: float
-        external:
-          type: number
-          format: float
-        robots_txt:
-          type: number
-          format: float
-      type: object
-      required:
-      - non_crawled
-      - external
-      - robots_txt
-    Aggs:
-      properties:
-        status:
-          type: integer
-          format: int64
-        error:
-          $ref: '#/components/schemas/ErrorAgg'
-      type: object
-      required:
-      - status
-    DatasetGroup:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        parent:
-          type: string
-        multiple:
-          type: boolean
-        description:
-          type: string
-        type:
-          type: string
-        default:
-          type: string
-        options:
-          type: array
-          items:
-            type: object
-      type: object
-      required:
-      - id
-      - name
-    SitemapsReportSitemap:
-      properties:
-        url:
-          type: string
-        valid_urls:
-          type: integer
-          format: int64
-        invalid_urls:
-          type: integer
-          format: int64
-        file_type:
-          type: string
-        last_modified:
-          type: string
-        error:
-          $ref: '#/components/schemas/SitemapsReportSitemapError'
-        sitemap_indexes:
-          type: array
-          items:
-            type: string
-      type: object
-    SitemapsReportOnly:
-      properties:
-        out_of_configuration:
-          type: integer
-          format: int64
-        in_configuration:
-          type: integer
-          format: int64
-      type: object
-    UrlDetail:
-      properties: {}
-      type: object
-    Query:
-      properties:
-        fields:
-          type: array
-          items:
-            type: string
-        filters:
-          type: object
-        sort:
-          type: array
-          items:
-            type: string
-      type: object
-      description: Query
   securitySchemes:
     DjangoRestToken:
       type: apiKey

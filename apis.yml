@@ -56,7 +56,7 @@ tags:
 - AI Search
 - Data Export
 - MCP
-- agent-native
+- Agent-Native
 tags_raw:
 - seo
 - organic-search
@@ -80,7 +80,7 @@ apis:
   baseURL: https://mcp.botify.com/
   tags:
   - MCP
-  - agent-native
+  - Agent-Native
   - SEO
   - AI Search
   tags_raw:
@@ -293,8 +293,6 @@ apis:
   humanURL: https://www.botify.com/platform/botify-assist
   baseURL: https://mcp.botify.com/
   tags:
-  - DataSource
-  tags_raw:
   - Data Source
   properties:
   - type: OpenAPI

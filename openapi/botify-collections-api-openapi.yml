@@ -120,50 +120,6 @@ components:
       - name
       - operation
       - meta
-    DatasetField:
-      properties:
-        multiple:
-          type: boolean
-        name:
-          type: string
-        subtype:
-          type: string
-        group:
-          type: string
-        type:
-          type: string
-        kind:
-          type: string
-        id:
-          type: string
-        permissions:
-          type: array
-          items:
-            type: string
-        aliases:
-          type: array
-          items:
-            type: string
-        settings:
-          type: object
-        optional:
-          type: boolean
-        suggestion:
-          type: boolean
-        meta:
-          type: object
-        deprecated:
-          type: boolean
-      type: object
-      required:
-      - multiple
-      - name
-      - subtype
-      - type
-      - kind
-      - id
-      - permissions
-      - optional
     CollectionMetadata:
       properties:
         date_start:
@@ -178,46 +134,6 @@ components:
         config:
           type: object
       type: object
-    DefaultPayload:
-      type: object
-      description: default payload for object for all HTTP codes that are not covered individually
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              description: Error Message
-              type: string
-            error_code:
-              description: Error Code
-              type: string
-            error_detail:
-              description: If available, detailed error
-              type: object
-    DatasetGroup:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        parent:
-          type: string
-        multiple:
-          type: boolean
-        description:
-          type: string
-        type:
-          type: string
-        default:
-          type: string
-        options:
-          type: array
-          items:
-            type: object
-      type: object
-      required:
-      - id
-      - name
     Dataset:
       properties:
         id:
@@ -274,6 +190,90 @@ components:
       - id
       - name
       - timestamped
+    DatasetGroup:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        parent:
+          type: string
+        multiple:
+          type: boolean
+        description:
+          type: string
+        type:
+          type: string
+        default:
+          type: string
+        options:
+          type: array
+          items:
+            type: object
+      type: object
+      required:
+      - id
+      - name
+    DatasetField:
+      properties:
+        multiple:
+          type: boolean
+        name:
+          type: string
+        subtype:
+          type: string
+        group:
+          type: string
+        type:
+          type: string
+        kind:
+          type: string
+        id:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+        aliases:
+          type: array
+          items:
+            type: string
+        settings:
+          type: object
+        optional:
+          type: boolean
+        suggestion:
+          type: boolean
+        meta:
+          type: object
+        deprecated:
+          type: boolean
+      type: object
+      required:
+      - multiple
+      - name
+      - subtype
+      - type
+      - kind
+      - id
+      - permissions
+      - optional
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
   securitySchemes:
     DjangoRestToken:
       type: apiKey
