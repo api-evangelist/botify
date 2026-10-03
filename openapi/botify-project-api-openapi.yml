@@ -511,9 +511,132 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ProjectQuery:
+      properties:
+        collections:
+          type: array
+          items:
+            type: string
+        periods:
+          type: array
+          items:
+            type: string
+        query:
+          $ref: '#/components/schemas/QueryRequest'
+      type: object
+      description: Project Query
+      required:
+      - collections
+      - query
+    ValuesListCloneRequestBody:
+      properties:
+        target_username:
+          type: string
+          description: the target project username
+        target_project:
+          type: string
+          description: the target project slug
+        type:
+          type: string
+          default: keywords
+          description: for further use only, the type of ValuesList to clone (default to 'keywords')
+      type: object
+      description: JSON body to use as request body for ValuesList clone operation
+      required:
+      - target_username
+      - target_project
+    ProjectSettings:
+      properties:
+        blacklisted_domains:
+          type: array
+          items:
+            type: string
+        allowed_domains:
+          type: array
+          items:
+            type: string
+        pk:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - blacklisted_domains
+      - allowed_domains
     Default:
       properties: {}
       type: object
+    OrganizationUser:
+      properties:
+        owner:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+        is_organization:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - owner
+    SavedExplorer:
+      properties:
+        uuid:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        type:
+          type: string
+          readOnly: true
+        description:
+          type: string
+        query:
+          type: object
+        created_by:
+          readOnly: true
+          $ref: '#/components/schemas/User'
+        modified_by:
+          readOnly: true
+          $ref: '#/components/schemas/User'
+        created_date:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_date:
+          type: string
+          format: date-time
+          readOnly: true
+      type: object
+      description: Project's saved explorer
+      required:
+      - name
+      - query
+    SubscriptionPlan:
+      properties:
+        plan:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        data_retention:
+          type: string
+          readOnly: true
+        alert_panel:
+          type: string
+          readOnly: true
+        smart_activation:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - plan
+      - start_date
     QueryRequest:
       properties:
         dimensions:
@@ -537,6 +660,16 @@ components:
       required:
       - dimensions
       - metrics
+    AggsQuery:
+      properties:
+        filters:
+          type: object
+        aggs:
+          type: array
+          items:
+            type: object
+      type: object
+      description: AggsQuery
     WebProperty:
       properties:
         public_id:
@@ -556,33 +689,209 @@ components:
       - domain
       - current_subscription_plan
       - renewal_subscription_plan
-    AggsQuery:
+    Analysis:
       properties:
+        user:
+          $ref: '#/components/schemas/User'
+        owner:
+          type: string
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        friendly_name:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        computing_revision:
+          type: string
+          readOnly: true
+        features:
+          type: string
+          readOnly: true
+        urls_done:
+          type: string
+          readOnly: true
+        urls_in_queue:
+          type: string
+          readOnly: true
+        config:
+          type: string
+          readOnly: true
+        date_launched:
+          type: string
+          format: date-time
+        date_finished:
+          type: string
+          format: date-time
+        date_last_modified:
+          type: string
+          format: date-time
+          description: Date of last modified analysis
+        date_created:
+          type: string
+          format: date-time
+        date_crawl_done:
+          type: string
+          readOnly: true
+        failures:
+          type: string
+          readOnly: true
+        red_button_domain:
+          type: string
+        import_keywords_data:
+          type: string
+          readOnly: true
+        import_keywords_data_by_country:
+          type: boolean
+          default: true
+        crawl_launch_type:
+          type: string
+          readOnly: true
+        to_be_deleted_at:
+          type: string
+          format: date-time
+        comparable:
+          type: string
+          readOnly: true
+        excluded_from_trends:
+          type: boolean
+          default: false
+        pk:
+          type: string
+          readOnly: true
+        has_raw_pages:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - user
+    User:
+      properties:
+        username:
+          type: string
+          description: Required. 30 characters or fewer. Letters, numbers and /-/_/. characters
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        full_name:
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - username
+    LightAnalysis:
+      properties:
+        pk:
+          type: string
+          readOnly: true
+        slug:
+          type: string
+        name:
+          type: string
+          readOnly: true
+        friendly_name:
+          type: string
+        url:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        urls_done:
+          type: string
+          readOnly: true
+        urls_in_queue:
+          type: string
+          readOnly: true
+        date_launched:
+          type: string
+          format: date-time
+        date_finished:
+          type: string
+          format: date-time
+        date_last_modified:
+          type: string
+          format: date-time
+          description: Date of last modified analysis
+        date_created:
+          type: string
+          format: date-time
+        to_be_deleted_at:
+          type: string
+          format: date-time
+        comparable:
+          type: boolean
+          default: true
+        excluded_from_trends:
+          type: boolean
+          description: If yes, this crawl will be excluded from trends data
+        has_raw_pages:
+          type: boolean
+          description: If yes, this crawl has raw HTML pages
+      type: object
+      required:
+      - slug
+    DefaultPayload:
+      type: object
+      description: default payload for object for all HTTP codes that are not covered individually
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              description: Error Message
+              type: string
+            error_code:
+              description: Error Code
+              type: string
+            error_detail:
+              description: If available, detailed error
+              type: object
+    ValuesListCloneResponse:
+      properties: {}
+      type: object
+    ProjectSavedFilter:
+      properties:
+        name:
+          type: string
         filters:
           type: object
-        aggs:
-          type: array
-          items:
-            type: object
+        identifier:
+          type: string
+          readOnly: true
+        description:
+          type: string
+        type:
+          type: string
+          readOnly: true
+        project_name:
+          type: string
+          readOnly: true
+        created_date:
+          type: string
+          format: date-time
+          readOnly: true
       type: object
-      description: AggsQuery
-    ProjectQuery:
-      properties:
-        collections:
-          type: array
-          items:
-            type: string
-        periods:
-          type: array
-          items:
-            type: string
-        query:
-          $ref: '#/components/schemas/QueryRequest'
-      type: object
-      description: Project Query
+      description: Project's saved UrlFilter
       required:
-      - collections
-      - query
+      - name
+      - filters
+    AggsQueries:
+      type: array
+      items:
+        $ref: '#/components/schemas/AggsQuery'
     QueryResponses:
       properties:
         results:
@@ -715,315 +1024,6 @@ components:
       - has_web_vitals_field_data
       - max_extracts
       - webproperty
-    AggsQueries:
-      type: array
-      items:
-        $ref: '#/components/schemas/AggsQuery'
-    Analysis:
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-        owner:
-          type: string
-          readOnly: true
-        slug:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        friendly_name:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          readOnly: true
-        status:
-          type: string
-          readOnly: true
-        computing_revision:
-          type: string
-          readOnly: true
-        features:
-          type: string
-          readOnly: true
-        urls_done:
-          type: string
-          readOnly: true
-        urls_in_queue:
-          type: string
-          readOnly: true
-        config:
-          type: string
-          readOnly: true
-        date_launched:
-          type: string
-          format: date-time
-        date_finished:
-          type: string
-          format: date-time
-        date_last_modified:
-          type: string
-          format: date-time
-          description: Date of last modified analysis
-        date_created:
-          type: string
-          format: date-time
-        date_crawl_done:
-          type: string
-          readOnly: true
-        failures:
-          type: string
-          readOnly: true
-        red_button_domain:
-          type: string
-        import_keywords_data:
-          type: string
-          readOnly: true
-        import_keywords_data_by_country:
-          type: boolean
-          default: true
-        crawl_launch_type:
-          type: string
-          readOnly: true
-        to_be_deleted_at:
-          type: string
-          format: date-time
-        comparable:
-          type: string
-          readOnly: true
-        excluded_from_trends:
-          type: boolean
-          default: false
-        pk:
-          type: string
-          readOnly: true
-        has_raw_pages:
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - user
-    LightAnalysis:
-      properties:
-        pk:
-          type: string
-          readOnly: true
-        slug:
-          type: string
-        name:
-          type: string
-          readOnly: true
-        friendly_name:
-          type: string
-        url:
-          type: string
-          readOnly: true
-        status:
-          type: string
-          readOnly: true
-        urls_done:
-          type: string
-          readOnly: true
-        urls_in_queue:
-          type: string
-          readOnly: true
-        date_launched:
-          type: string
-          format: date-time
-        date_finished:
-          type: string
-          format: date-time
-        date_last_modified:
-          type: string
-          format: date-time
-          description: Date of last modified analysis
-        date_created:
-          type: string
-          format: date-time
-        to_be_deleted_at:
-          type: string
-          format: date-time
-        comparable:
-          type: boolean
-          default: true
-        excluded_from_trends:
-          type: boolean
-          description: If yes, this crawl will be excluded from trends data
-        has_raw_pages:
-          type: boolean
-          description: If yes, this crawl has raw HTML pages
-      type: object
-      required:
-      - slug
-    SubscriptionPlan:
-      properties:
-        plan:
-          type: string
-        start_date:
-          type: string
-          format: date-time
-        data_retention:
-          type: string
-          readOnly: true
-        alert_panel:
-          type: string
-          readOnly: true
-        smart_activation:
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - plan
-      - start_date
-    DefaultPayload:
-      type: object
-      description: default payload for object for all HTTP codes that are not covered individually
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              description: Error Message
-              type: string
-            error_code:
-              description: Error Code
-              type: string
-            error_detail:
-              description: If available, detailed error
-              type: object
-    ValuesListCloneRequestBody:
-      properties:
-        target_username:
-          type: string
-          description: the target project username
-        target_project:
-          type: string
-          description: the target project slug
-        type:
-          type: string
-          default: keywords
-          description: for further use only, the type of ValuesList to clone (default to 'keywords')
-      type: object
-      description: JSON body to use as request body for ValuesList clone operation
-      required:
-      - target_username
-      - target_project
-    ValuesListCloneResponse:
-      properties: {}
-      type: object
-    OrganizationUser:
-      properties:
-        owner:
-          $ref: '#/components/schemas/User'
-        name:
-          type: string
-          readOnly: true
-        slug:
-          type: string
-          readOnly: true
-        is_organization:
-          type: string
-          readOnly: true
-        email:
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - owner
-    User:
-      properties:
-        username:
-          type: string
-          description: Required. 30 characters or fewer. Letters, numbers and /-/_/. characters
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-        full_name:
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - username
-    SavedExplorer:
-      properties:
-        uuid:
-          type: string
-          readOnly: true
-        name:
-          type: string
-        type:
-          type: string
-          readOnly: true
-        description:
-          type: string
-        query:
-          type: object
-        created_by:
-          readOnly: true
-          $ref: '#/components/schemas/User'
-        modified_by:
-          readOnly: true
-          $ref: '#/components/schemas/User'
-        created_date:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_date:
-          type: string
-          format: date-time
-          readOnly: true
-      type: object
-      description: Project's saved explorer
-      required:
-      - name
-      - query
-    ProjectSettings:
-      properties:
-        blacklisted_domains:
-          type: array
-          items:
-            type: string
-        allowed_domains:
-          type: array
-          items:
-            type: string
-        pk:
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - blacklisted_domains
-      - allowed_domains
-    ProjectSavedFilter:
-      properties:
-        name:
-          type: string
-        filters:
-          type: object
-        identifier:
-          type: string
-          readOnly: true
-        description:
-          type: string
-        type:
-          type: string
-          readOnly: true
-        project_name:
-          type: string
-          readOnly: true
-        created_date:
-          type: string
-          format: date-time
-          readOnly: true
-      type: object
-      description: Project's saved UrlFilter
-      required:
-      - name
-      - filters
   securitySchemes:
     DjangoRestToken:
       type: apiKey
