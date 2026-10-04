@@ -293,6 +293,8 @@ apis:
   humanURL: https://www.botify.com/platform/botify-assist
   baseURL: https://mcp.botify.com/
   tags:
+  - DataSource
+  tags_raw:
   - Data Source
   properties:
   - type: OpenAPI
@@ -319,6 +321,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/botify-capability-edges.yml
+  name: Botify Business Capability Map
 - type: Overlay
   url: overlays/botify-api-swagger-overlay.yaml
 - type: Website
