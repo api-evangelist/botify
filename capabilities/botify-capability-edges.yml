@@ -1,0 +1,26 @@
+slug: botify
+provider: Botify
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Analysis
+  spec_file: botify-analysis-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: GET /analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics  'Get crawl statistics';
+    'Get keywords stats' (features/search_console/stats); 'Get page rank lost'
+  reason: Operations launch and read website crawl analyses producing SEO metrics (crawl stats, PageRank,
+    sitemap reports, Search Console keyword stats). That is organic-search/web analysis work, i.e. digital
+    marketing management (SEO), not generic IT monitoring.
