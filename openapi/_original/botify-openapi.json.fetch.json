@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/botify-labs/botify-sdk-js/master/swagger.json",
+ "final": "https://raw.githubusercontent.com/botify-labs/botify-sdk-js/master/swagger.json",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 88590,
+ "sha256": "babe177600aa905f4f59f3e648104657ab5634966a871788bab7641ad831e76c",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-archived: the provider's current document replaced a stale archive (roadmap#793); the old files are in openapi/_superseded/2026-10-19-stale"
+}

@@ -3,6 +3,16 @@ info:
   version: 1.0.0
   description: Botify Saas API
   title: Botify User API
+  x-codegen-settings:
+    useMethodPrefix: false
+    useModelPostfix: false
+    useControllerPostfix: false
+    useEnumPostfix: false
+    useConstructorsForConfig: false
+    collectParameters: true
+    brandLabel: Botify
+    nodeHttpClient: NODE_SUPERAGENT
+    arraySerialization: CSV
 servers:
 - url: https://api.botify.com/v1
 security:
@@ -12,44 +22,14 @@ tags:
 paths:
   /projects/{username}:
     parameters:
-    - name: username
-      in: path
+    - description: User's identifier
       required: true
-      description: User's identifier
+      name: username
+      in: path
       schema:
         type: string
     get:
-      description: List all active projects for the user
-      summary: Get user projects
-      operationId: getUserProjects
-      tags:
-      - User
-      parameters:
-      - in: query
-        name: name
-        description: Project's name
-        schema:
-          type: string
-      - in: query
-        name: page
-        description: Page Number
-        required: false
-        schema:
-          type: integer
-          default: 1
-      - in: query
-        name: size
-        description: Page Size
-        required: false
-        schema:
-          type: integer
       responses:
-        default:
-          description: error payload
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultPayload'
         '200':
           description: Successful operation
           content:
@@ -57,239 +37,237 @@ paths:
               schema:
                 type: object
                 properties:
-                  next:
-                    type: string
-                  previous:
-                    type: string
                   count:
+                    readOnly: true
                     type: integer
+                    description: ''
                   results:
-                    type: array
                     items:
                       $ref: '#/components/schemas/Project'
+                    readOnly: true
+                    type: array
+                    description: ''
+                  next:
+                    readOnly: true
+                    type: string
+                    description: ''
+                  previous:
+                    readOnly: true
+                    type: string
+                    description: ''
                   page:
+                    readOnly: true
                     type: integer
+                    description: ''
                   size:
+                    readOnly: true
                     type: integer
-      x-summary-source: derived
+                    description: ''
+        default:
+          description: error payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultPayload'
+      parameters:
+      - description: Page Number
+        name: page
+        in: query
+        schema:
+          type: integer
+      - description: Page Size
+        name: size
+        in: query
+        schema:
+          type: integer
+      tags:
+      - User
+      summary: List all active projects for the user
+      operationId: getUserProjects
 components:
   schemas:
-    OrganizationUser:
-      properties:
-        owner:
-          $ref: '#/components/schemas/User'
-        name:
-          type: string
-          readOnly: true
-        slug:
-          type: string
-          readOnly: true
-        is_organization:
-          type: string
-          readOnly: true
-        email:
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - owner
-    WebProperty:
-      properties:
-        public_id:
-          type: string
-        name:
-          type: string
-        domain:
-          type: string
-        current_subscription_plan:
-          $ref: '#/components/schemas/SubscriptionPlan'
-        renewal_subscription_plan:
-          $ref: '#/components/schemas/SubscriptionPlan'
-      type: object
-      required:
-      - public_id
-      - name
-      - domain
-      - current_subscription_plan
-      - renewal_subscription_plan
-    SubscriptionPlan:
-      properties:
-        plan:
-          type: string
-        start_date:
-          type: string
-          format: date-time
-        data_retention:
-          type: string
-          readOnly: true
-        alert_panel:
-          type: string
-          readOnly: true
-        smart_activation:
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - plan
-      - start_date
     User:
+      type: object
       properties:
-        username:
+        login:
+          readOnly: true
           type: string
-          description: Required. 30 characters or fewer. Letters, numbers and /-/_/. characters
-        first_name:
-          type: string
-        last_name:
-          type: string
+          description: ''
         email:
+          readOnly: false
           type: string
-        full_name:
-          type: string
+          description: ''
+        is_organization:
           readOnly: true
-      type: object
-      required:
-      - username
-    ProjectSettings:
-      properties:
-        blacklisted_domains:
-          type: array
-          items:
-            type: string
-        allowed_domains:
-          type: array
-          items:
-            type: string
-        pk:
           type: string
+          description: ''
+        url:
           readOnly: true
-      type: object
+          type: string
+          description: ''
+        date_joined:
+          readOnly: false
+          type: string
+          description: ''
+          format: date-time
+        status:
+          readOnly: false
+          type: string
+          description: ''
+        first_name:
+          readOnly: false
+          type: string
+          description: ''
+        last_name:
+          readOnly: false
+          type: string
+          description: ''
+        company_name:
+          readOnly: false
+          type: string
+          description: ''
+    ProjectSettingsSerializer:
       required:
+      - start_urls
+      - max_nb_pages
       - blacklisted_domains
       - allowed_domains
-    Project:
-      properties:
-        pk:
-          type: string
-          readOnly: true
-        name:
-          type: string
-        slug:
-          type: string
-        organization:
-          $ref: '#/components/schemas/OrganizationUser'
-        current_settings:
-          $ref: '#/components/schemas/ProjectSettings'
-        date_created:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          readOnly: true
-        permissions:
-          type: string
-          readOnly: true
-        roles:
-          type: string
-          readOnly: true
-        last_log_revision:
-          type: string
-          readOnly: true
-        last_crawls_revisions:
-          type: string
-          readOnly: true
-        last_actionboard_revision:
-          type: string
-          readOnly: true
-        has_actionboard_changes:
-          type: string
-          readOnly: true
-        has_crawl:
-          type: boolean
-        has_logs:
-          type: boolean
-        has_keywords:
-          type: string
-          readOnly: true
-        max_gsc_websites:
-          type: integer
-          format: int64
-          minimum: 0
-          maximum: 32767
-        max_gsc_via_bq_websites:
-          type: integer
-          format: int64
-          description: Maximum number of GSC properties that can be activated using BigQuery bulk export
-          minimum: 0
-          maximum: 32767
-        realkeywords_aggregation_type:
-          type: integer
-          format: int64
-          description: 'If ''New: By website & by URL'' is selected, data will be shown aggregated by website wherever possible in RealKeywords'
-        actionboard_enabled:
-          type: boolean
-        has_actionboard:
-          type: string
-          readOnly: true
-        has_engagement_analytics:
-          type: boolean
-        public_id:
-          type: integer
-          format: int64
-          minimum: -9223372036854775808
-          maximum: 9223372036854775807
-        account_id:
-          type: string
-          readOnly: true
-        mcp:
-          type: string
-          readOnly: true
-        has_alertpanel:
-          type: string
-          readOnly: true
-        has_speedworkers:
-          type: string
-          readOnly: true
-        has_pageworkers:
-          type: string
-          readOnly: true
-        has_smartcontent:
-          type: string
-          readOnly: true
-        has_smartlink:
-          type: string
-          readOnly: true
-        has_agentic_catalog:
-          type: string
-          readOnly: true
-        has_gen_ai:
-          type: boolean
-        has_ai_consent:
-          type: string
-          readOnly: true
-        has_web_vitals_field_data:
-          type: boolean
-        max_extracts:
-          type: integer
-          format: int64
-        category:
-          type: string
-          default: 0
-        webproperty:
-          $ref: '#/components/schemas/WebProperty'
+      - sitemaps
+      - header_settings
       type: object
+      properties:
+        start_urls:
+          description: ''
+          items:
+            type: string
+          readOnly: false
+          type: array
+        max_nb_pages:
+          description: ''
+          format: int64
+          maximum: 2147483647
+          readOnly: false
+          minimum: 1
+          type: integer
+        max_depth:
+          description: ''
+          format: int64
+          maximum: 2147483647
+          readOnly: false
+          minimum: 0
+          type: integer
+        compare_crawl:
+          readOnly: false
+          type: boolean
+          description: ''
+        blacklisted_domains:
+          description: ''
+          items:
+            type: string
+          readOnly: false
+          type: array
+        allowed_domains:
+          description: ''
+          items:
+            type: string
+          readOnly: false
+          type: array
+        respect_nofollow:
+          readOnly: false
+          type: boolean
+          description: ''
+        crawl_gzip:
+          readOnly: false
+          type: boolean
+          description: ''
+        has_robots_txt:
+          readOnly: true
+          type: string
+          description: ''
+        user_agent:
+          readOnly: false
+          type: string
+          description: ''
+        max_pages_per_sec:
+          description: ''
+          format: int64
+          maximum: 2147483647
+          readOnly: false
+          minimum: 1
+          type: integer
+        extra_headers:
+          readOnly: false
+          type: string
+          description: ''
+        google_social_auth_id:
+          description: ''
+          format: int64
+          maximum: 2147483647
+          readOnly: false
+          minimum: -2147483648
+          type: integer
+        google_analytics_site_id:
+          description: ''
+          format: int64
+          maximum: 2147483647
+          readOnly: false
+          minimum: -2147483648
+          type: integer
+        google_analytics_account_email:
+          readOnly: false
+          type: string
+          description: Keep email in case user delete his social auth connection
+        google_analytics_nb_days:
+          description: ''
+          format: int64
+          maximum: 90
+          readOnly: false
+          minimum: 1
+          type: integer
+        sitemaps:
+          description: ''
+          items:
+            type: string
+          readOnly: false
+          type: array
+        header_settings:
+          description: ''
+          items:
+            type: string
+          readOnly: false
+          type: array
+    Project:
       required:
       - name
       - slug
-      - organization
+      - user
       - current_settings
-      - has_crawl
-      - has_logs
-      - actionboard_enabled
-      - has_engagement_analytics
-      - has_gen_ai
-      - has_web_vitals_field_data
-      - max_extracts
-      - webproperty
+      type: object
+      properties:
+        name:
+          readOnly: false
+          type: string
+          description: ''
+        slug:
+          readOnly: false
+          type: string
+          description: ''
+        user:
+          readOnly: false
+          description: ''
+          $ref: '#/components/schemas/User'
+        current_settings:
+          readOnly: false
+          description: ''
+          $ref: '#/components/schemas/ProjectSettingsSerializer'
+        active:
+          readOnly: false
+          type: boolean
+          description: ''
+        date_created:
+          readOnly: true
+          type: string
+          description: ''
     DefaultPayload:
       type: object
       description: default payload for object for all HTTP codes that are not covered individually
@@ -298,14 +276,14 @@ components:
           type: object
           properties:
             message:
+              type: string
               description: Error Message
-              type: string
             error_code:
-              description: Error Code
               type: string
+              description: Error Code
             error_detail:
-              description: If available, detailed error
               type: object
+              description: If available, detailed error
   securitySchemes:
     DjangoRestToken:
       type: apiKey
